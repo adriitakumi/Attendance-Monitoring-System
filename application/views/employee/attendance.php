@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -139,7 +145,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?php echo base_url('images/alt_picture.jpg');?>" class="user-image" alt="<?php echo base_url('images/alt_picture.jpg');?>">
-              <span class="hidden-xs"><?php echo $this->session->first_name." ".$this->session->last_name ?></span>
+              <span class="hidden-xs"><?php echo ucwords($this->session->first_name." ".$this->session->last_name) ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -147,7 +153,7 @@
                 <img src="<?php echo base_url('images/alt_picture.jpg');?>" class="img-circle" alt="<?php echo base_url('images/alt_picture.jpg');?>">
 
                 <p>
-                 <?php echo $this->session->first_name." ".$this->session->last_name." - ".$this->session->position ?>
+                 <?php echo ucwords($this->session->first_name." ".$this->session->last_name." - ".$this->session->position) ?>
                   <small>Member since <?php echo $this->session->date_created ?></small>
                 </p>
               </li>
@@ -194,7 +200,7 @@
           <img src="<?php echo base_url('images/alt_picture.jpg');?>" class="img-circle" alt="<?php echo base_url('images/alt_picture.jpg');?>">
         </div>
         <div class="pull-left info">
-          <p><?php echo $this->session->first_name." ".$this->session->last_name ?></p>
+          <p><?php echo ucwords($this->session->first_name." ".$this->session->last_name) ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -237,7 +243,156 @@
 
     <!-- Main content -->
     <section class="content">
+    <div class="row">
+      <div class="col-md-4">
+        <!-- Calendar -->
+        <div class="box box-solid bg-light-blue-gradient">
+          <div class="box-header">
+            <i class="fa fa-calendar"></i>
 
+            <h3 class="box-title">Calendar</h3>
+              <!-- tools box -->
+              <div class="pull-right box-tools">
+                <!-- button with a dropdown -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-bars"></i></button>
+                  <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="#">Add new event</a></li>
+                    <li><a href="#">Clear events</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">View calendar</a></li>
+                  </ul>
+                </div>
+                <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+              <!-- /. tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <!--The calendar -->
+              <div id="calendar" style="width: 100%"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <div>
+            <button type="button" class="btn btn-lg btn-warning" style="width:100%; margin-bottom: 10px;">Print</button>
+            <button type="button" class="btn btn-lg btn-warning" style="width:100%; margin-bottom: 10px;">Default</button>
+            <button type="button" class="btn btn-lg btn-warning" style="width:100%; margin-bottom: 10px;">Default</button>
+          </div>
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-8">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Time In and Time Outs</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time In</th>
+                  <th>Time Out</th>
+                  <th>No. of hours</th>
+                  <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:30 AM</td>
+                  <td>5:30 PM</td>
+                  <td>8</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:30 AM</td>
+                  <td>5:30 PM</td>
+                  <td>8</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:30 AM</td>
+                  <td>5:30 PM</td>
+                  <td>8</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:30 AM</td>
+                  <td>5:30 PM</td>
+                  <td>8</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:30 AM</td>
+                  <td>5:30 PM</td>
+                  <td>8</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>July 24, 2017</td>
+                  <td>8:30 AM</td>
+                  <td>5:30 PM</td>
+                  <td>8</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:30 AM</td>
+                  <td>5:30 PM</td>
+                  <td>8</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:30 AM</td>
+                  <td>5:30 PM</td>
+                  <td>8</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:30 AM</td>
+                  <td>5:30 PM</td>
+                  <td>8</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:30 AM</td>
+                  <td>5:30 PM</td>
+                  <td>8</td>
+                  <td>Complete</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Date</th>
+                  <th>Time In</th>
+                  <th>Time Out</th>
+                  <th>No. of hours</th>
+                  <th>Status</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
       
 
     </section>
@@ -264,14 +419,50 @@
 <script src="<?php echo base_url(); ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>bower_components/fastclick/lib/fastclick.js"></script>
+<!-- daterangepicker -->
+<script src="<?php echo base_url(); ?>bower_components/moment/min/moment.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>dist/js/demo.js"></script>
 <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
+  // The Calender
+  $('#calendar').datepicker();
+</script>
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
   })
+</script>
+<script>
+  $('.daterange').daterangepicker({
+    ranges   : {
+      'Today'       : [moment(), moment()],
+      'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+      'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+      'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+      'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    },
+    startDate: moment().subtract(29, 'days'),
+    endDate  : moment()
+  }, function (start, end) {
+    window.alert('You chose: ' + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+  });
 </script>
 </body>
 </html>
