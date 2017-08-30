@@ -6,7 +6,7 @@ class login extends CI_Controller {
 	public function index()
 	{	
 		if(isset($this->session->logged_in)) {
-			$this->load->view('employee/index');
+			echo "pota";
 		}
 		else {
 			$this->form_validation->set_rules('username', 'Username', 'required');
@@ -35,7 +35,7 @@ class login extends CI_Controller {
 					);
 
 					$this->session->set_userdata($userdata);
-					$this->load->view('employee/index');
+					redirect('employee/index');
 				}
 				else if($result==1){
 					$data['userError'] = "Username does not exist!";
