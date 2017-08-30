@@ -14,4 +14,9 @@ class employee extends CI_Controller {
 		$this->load->view('employee/dashboard');
 	}
 
+	public function attendance()
+	{
+		$this->load->view('employee/attendance');
+	}
+
 }
