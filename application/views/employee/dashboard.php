@@ -34,7 +34,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo site_url('employee/dashboard') ?>" class="logo">
+    <a href="<?php echo site_url('employee/index') ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>SL</b>A</span>
       <!-- logo for regular state and mobile devices -->
@@ -201,11 +201,21 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li>
-          <a href="<?php echo site_url('/'); ?>">
+        <li class="active">
+          <a href="<?php echo site_url('employee/index'); ?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
+        <li>
+          <a href="<?php echo site_url('employee/attendance'); ?>">
+            <i class="fa fa-files-o"></i>
+            <span>Attendance</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+          </a>
+        </li>
+         <li class="header">LABELS</li>
       </ul>
     </section>
     <!-- /.sidebar -->
