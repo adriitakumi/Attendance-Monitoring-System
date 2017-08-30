@@ -35,7 +35,7 @@ class login extends CI_Controller {
 					);
 
 					$this->session->set_userdata($userdata);
-					redirect('employee/employee');
+					redirect('employee/index');
 				}
 				else if($result==1){
 					$data['userError'] = "Username does not exist!";
