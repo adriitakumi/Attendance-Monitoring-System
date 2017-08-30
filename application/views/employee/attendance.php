@@ -34,7 +34,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo site_url('employee/dashboard') ?>" class="logo">
+    <a href="<?php echo site_url('employee/index') ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>SL</b>A</span>
       <!-- logo for regular state and mobile devices -->
@@ -202,10 +202,18 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="<?php echo site_url('/'); ?>">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          <a href="<?php echo site_url('employee/index'); ?>">
+            <i class="fa fa-dashboard"></i> 
+            <span>Dashboard</span>
           </a>
         </li>
+        <li class="active">
+          <a href="<?php echo site_url('employee/attendance'); ?>">
+            <i class="fa fa-files-o"></i>
+            <span>Attendance</span>
+          </a>
+        </li>
+         <li class="header">LABELS</li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -218,12 +226,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Time ins and time outs for the past month</small>
+        Attendance
+        <small>Monitor your time ins and time outs</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Blank page</li>
+        <li class="active">Attendance</li>
       </ol>
     </section>
 

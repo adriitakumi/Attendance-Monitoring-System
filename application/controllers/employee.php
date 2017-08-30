@@ -6,12 +6,17 @@ class employee extends CI_Controller {
 	public function __construct()
 	{
 	    parent::__construct();
-	    $this->sms_session->checkSession();
+	    $this->sla_session->checkSession();
 	}
 
 	public function index()
 	{
 		$this->load->view('employee/dashboard');
+	}
+
+	public function attendance()
+	{
+		$this->load->view('employee/attendance');
 	}
 
 }
