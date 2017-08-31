@@ -208,7 +208,7 @@
         </li>
         <li>
           <a href="<?php echo site_url('employee/attendance'); ?>">
-            <i class="fa fa-files-o"></i>
+            <i class="fa fa-calendar"></i>
             <span>Attendance</span>
             <span class="pull-right-container">
               <span class="label label-primary pull-right">4</span>
@@ -248,7 +248,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Silverlake Axis</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
 

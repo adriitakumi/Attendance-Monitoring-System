@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Blank Page</title>
+  <title>SLA Attendance Monitoring | Attendance</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -139,7 +139,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?php echo base_url('images/alt_picture.jpg');?>" class="user-image" alt="<?php echo base_url('images/alt_picture.jpg');?>">
-              <span class="hidden-xs"><?php echo $this->session->first_name." ".$this->session->last_name ?></span>
+              <span class="hidden-xs"><?php echo ucwords($this->session->first_name." ".$this->session->last_name) ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -147,7 +147,7 @@
                 <img src="<?php echo base_url('images/alt_picture.jpg');?>" class="img-circle" alt="<?php echo base_url('images/alt_picture.jpg');?>">
 
                 <p>
-                 <?php echo $this->session->first_name." ".$this->session->last_name." - ".$this->session->position ?>
+                 <?php echo ucwords($this->session->first_name." ".$this->session->last_name." - ".$this->session->position) ?>
                   <small>Member since <?php echo $this->session->date_created ?></small>
                 </p>
               </li>
@@ -194,7 +194,7 @@
           <img src="<?php echo base_url('images/alt_picture.jpg');?>" class="img-circle" alt="<?php echo base_url('images/alt_picture.jpg');?>">
         </div>
         <div class="pull-left info">
-          <p><?php echo $this->session->first_name." ".$this->session->last_name ?></p>
+          <p><?php echo ucwords($this->session->first_name." ".$this->session->last_name) ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -209,7 +209,7 @@
         </li>
         <li class="active">
           <a href="<?php echo site_url('employee/attendance'); ?>">
-            <i class="fa fa-files-o"></i>
+            <i class="fa fa-calendar"></i>
             <span>Attendance</span>
           </a>
         </li>
@@ -249,7 +249,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
 
