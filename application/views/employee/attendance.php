@@ -246,8 +246,8 @@
     <div class="row">
       <div class="col-md-4">
         <!-- Calendar -->
-        <div class="box box-solid bg-light-blue-gradient">
-          <div class="box-header">
+        <div class="box box-primary">
+          <div class="box-header bg-light-blue-active" style="color: white;">
             <i class="fa fa-calendar"></i>
 
             <h3 class="box-title">Calendar</h3>
@@ -278,16 +278,16 @@
           </div>
           <!-- /.box -->
 
-          <div>
+          <div style="padding-top: 20px;">
             <button type="button" class="btn btn-lg btn-warning" style="width:100%; margin-bottom: 10px;">Print</button>
-            <button type="button" class="btn btn-lg btn-warning" style="width:100%; margin-bottom: 10px;">Default</button>
-            <button type="button" class="btn btn-lg btn-warning" style="width:100%; margin-bottom: 10px;">Default</button>
+            <button type="button" class="btn btn-lg btn-success" style="width:100%; margin-bottom: 10px;">Export to Excel</button>
+            <button type="button" class="btn btn-lg btn-danger" style="width:100%; margin-bottom: 10px;">Export to PDF</button>
           </div>
         </div>
         <!-- /.col -->
 
         <div class="col-md-8">
-          <div class="box">
+          <div class="box box-primary">
             <div class="box-header">
               <h3 class="box-title">Time In and Time Outs</h3>
             </div>
@@ -299,89 +299,113 @@
                   <th>Date</th>
                   <th>Time In</th>
                   <th>Time Out</th>
-                  <th>No. of hours</th>
+                  <th>Hours Worked</th>
+                  <th>Work Duration</th>
+                  <th>Late By</th>
+                  <th>Over Time</th>
                   <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                   <td>June 24, 2017</td>
-                  <td>8:30 AM</td>
-                  <td>5:30 PM</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
                   <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
                   <td>Complete</td>
                 </tr>
                 <tr>
                   <td>June 24, 2017</td>
-                  <td>8:30 AM</td>
-                  <td>5:30 PM</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
                   <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
                   <td>Complete</td>
                 </tr>
                 <tr>
                   <td>June 24, 2017</td>
-                  <td>8:30 AM</td>
-                  <td>5:30 PM</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
                   <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
                   <td>Complete</td>
                 </tr>
                 <tr>
                   <td>June 24, 2017</td>
-                  <td>8:30 AM</td>
-                  <td>5:30 PM</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
                   <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
                   <td>Complete</td>
                 </tr>
                 <tr>
                   <td>June 24, 2017</td>
-                  <td>8:30 AM</td>
-                  <td>5:30 PM</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
                   <td>8</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>July 24, 2017</td>
-                  <td>8:30 AM</td>
-                  <td>5:30 PM</td>
-                  <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
                   <td>Complete</td>
                 </tr>
                 <tr>
                   <td>June 24, 2017</td>
-                  <td>8:30 AM</td>
-                  <td>5:30 PM</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
                   <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
                   <td>Complete</td>
                 </tr>
                 <tr>
                   <td>June 24, 2017</td>
-                  <td>8:30 AM</td>
-                  <td>5:30 PM</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
                   <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
                   <td>Complete</td>
                 </tr>
                 <tr>
                   <td>June 24, 2017</td>
-                  <td>8:30 AM</td>
-                  <td>5:30 PM</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
                   <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
                   <td>Complete</td>
                 </tr>
                 <tr>
                   <td>June 24, 2017</td>
-                  <td>8:30 AM</td>
-                  <td>5:30 PM</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
                   <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
                   <td>Complete</td>
                 </tr>
-                </tbody>
-                <tfoot>
                 <tr>
-                  <th>Date</th>
-                  <th>Time In</th>
-                  <th>Time Out</th>
-                  <th>No. of hours</th>
-                  <th>Status</th>
+                  <td>June 24, 2017</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
+                  <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
+                  <td>Complete</td>
                 </tr>
                 </tfoot>
               </table>
