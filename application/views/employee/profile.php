@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Silverlake Axis | Attendance</title>
+  <title><?php echo ucwords($this->session->first_name." ".$this->session->last_name) ?> | Profile</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -12,12 +12,6 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -51,9 +45,6 @@
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </a>
 
       <div class="navbar-custom-menu">
@@ -200,20 +191,19 @@
           <img src="<?php echo base_url('images/alt_picture.jpg');?>" class="img-circle" alt="<?php echo base_url('images/alt_picture.jpg');?>">
         </div>
         <div class="pull-left info">
-          <p><?php echo ucwords($this->session->first_name." ".$this->session->last_name) ?></p>
+          <p><?php echo ucwords ($this->session->first_name." ".$this->session->last_name) ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li>
+        <li class="active">
           <a href="<?php echo site_url('employee/index'); ?>">
-            <i class="fa fa-dashboard"></i> 
-            <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="active">
+        <li>
           <a href="<?php echo site_url('employee/attendance'); ?>">
             <i class="fa fa-files-o"></i>
             <span>Attendance</span>
@@ -232,203 +222,57 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Attendance
-        <small>Monitor your time ins and time outs</small>
+        Profile
+        <small>Everything about you</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Attendance</li>
+        <li class="active">Blank page</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-    <div class="row">
-      <div class="col-md-4">
-        <!-- Calendar -->
-        <div class="box box-primary">
-          <div class="box-header bg-light-blue-active" style="color: white;">
-            <i class="fa fa-calendar"></i>
+      <div class="row">
+      	<div class="col-md-1">
+      	</div>
 
-            <h3 class="box-title">Calendar</h3>
-              <!-- tools box -->
-              <div class="pull-right box-tools">
-                <!-- button with a dropdown -->
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bars"></i></button>
-                  <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="#">Add new event</a></li>
-                    <li><a href="#">Clear events</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">View calendar</a></li>
-                  </ul>
-                </div>
-                <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+      	<div class="col-md-10">
+      	<!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-yellow">
+              <div class="widget-user-image">
+                <img class="img-circle" src="<?php echo base_url(); ?>dist/img/user7-128x128.jpg" alt="User Avatar">
               </div>
-              <!-- /. tools -->
+              <!-- /.widget-user-image -->
+              <h3 class="widget-user-username">Nadia Carmichael</h3>
+              <h5 class="widget-user-desc">Lead Developer</h5>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <!--The calendar -->
-              <div id="calendar" style="width: 100%"></div>
+            <div class="box-footer no-padding">
+              <ul class="nav nav-stacked">
+                <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
+                <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
+                <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
+                <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
+              </ul>
             </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
-
-          <div style="padding-top: 20px;">
-            <button type="button" class="btn btn-lg btn-warning" style="width:100%; margin-bottom: 10px;">Print</button>
-            <button type="button" class="btn btn-lg btn-success" style="width:100%; margin-bottom: 10px;">Export to Excel</button>
-            <button type="button" class="btn btn-lg btn-danger" style="width:100%; margin-bottom: 10px;">Export to PDF</button>
-          </div>
+          <!-- /.widget-user -->
         </div>
-        <!-- /.col -->
 
-        <div class="col-md-8">
-          <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Time In and Time Outs</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Time In</th>
-                  <th>Time Out</th>
-                  <th>Hours Worked</th>
-                  <th>Work Duration</th>
-                  <th>Late By</th>
-                  <th>Over Time</th>
-                  <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
+      	<div class="col-md-1">
+      	</div>
+      	
       </div>
-      <!-- /.row -->
       
-
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="#">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -443,40 +287,8 @@
 <script src="<?php echo base_url(); ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>bower_components/fastclick/lib/fastclick.js"></script>
-<!-- daterangepicker -->
-<script src="<?php echo base_url(); ?>bower_components/moment/min/moment.min.js"></script>
-<script src="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- DataTables -->
-<script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
-<script>
-  // The Calender
-  $('#calendar').datepicker();
-</script>
-<script>
-  $(function () {
-    $('#example1').DataTable()
-  })
-</script>
-<script>
-  $('.daterange').daterangepicker({
-    ranges   : {
-      'Today'       : [moment(), moment()],
-      'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-      'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-      'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-      'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    },
-    startDate: moment().subtract(29, 'days'),
-    endDate  : moment()
-  }, function (start, end) {
-    window.alert('You chose: ' + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-  });
-</script>
+
 </body>
 </html>

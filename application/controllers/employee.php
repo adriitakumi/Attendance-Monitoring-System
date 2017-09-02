@@ -19,6 +19,11 @@ class employee extends CI_Controller {
 		$this->load->view('employee/attendance');
 	}
 
+	public function profile()
+	{
+		$this->load->view('employee/profile');
+	}
+
 	
 
 }

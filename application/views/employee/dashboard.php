@@ -171,7 +171,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#profile" class="btn btn-default btn-flat" data-toggle="modal">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -212,9 +212,6 @@
           <a href="<?php echo site_url('employee/attendance'); ?>">
             <i class="fa fa-files-o"></i>
             <span>Attendance</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
           </a>
         </li>
          <li class="header">LABELS</li>
@@ -471,6 +468,31 @@
  </div>
 <!-- ./wrapper -->
 
+<div class="modal modal-primary fade" id="profile">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Profile</h4>
+      </div>
+      <div class="modal-body modal-profile">
+        <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('images/alt_picture.jpg'); ?>" alt="User profile picture">
+        <h3 id="name" class="profile-username text-center" ></h3>
+
+        <p class="text-muted text-center" id="position"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 <!-- jQuery 3 -->
 <script src="<?php echo base_url(); ?>bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -486,13 +508,74 @@
 <script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url(); ?>dist/js/demo.js"></script>
 <script>
   $(function () {
     $('#example1').DataTable()
   })
 </script>
+
+<script>
+$(document).ready(function(){ 
+
+        $(".buttonView").click(function(){
+          var lrn = $(this).closest('tr').find('td:eq(0)').html(); 
+          $.ajax({
+            url: ajaxUrl,
+            type: 'post',
+            dataType: 'json', 
+            data: {'username' : username, 'table': 'users', 'set': 'username' }, 
+            success: function(result){
+              //alert(result);
+              $.each(result, function(index, val) {
+                $('#name').html(val.first_name +" "+ val.middle_name + " " + val.last_name);
+                $('#lrn').html(val.lrn);
+                $('#contact').html(val.contact);
+                $('#birth_date').html(val.birth_date);
+                $('#birth_place').html(val.birth_place);
+                $('#age').html(val.age);
+                $('#mother_tongue').html(val.mother_tongue);
+                $('#religion').html(val.religion);
+                $('#street').html(val.street);
+                $('#barangay').html(val.barangay+", ");
+                $('#city').html(val.city);
+                $('#province').html(val.province);
+                $('#sex').html(val.sex);
+                $('#father_name').html(val.father_name);
+                $('#father_contact').html(val.father_contact);
+                $('#mother_name').html(val.mother_name);
+                $('#mother_contact').html(val.mother_contact);
+                $('#guardian').html(val.guardian);
+                $('#relationship').html(val.relationship);
+                $('#guardian_contact').html(val.guardian_contact);  
+                $('#position').html('Grade '+val.grade+' Student');  
+                $('#modal-note').html(val.note);                   
+                $('.requirements-section').show();                     
+                $('#input-submit').show();                
+                $('#input-lrn').val(val.lrn);  
+              })
+            }
+          });
+
+          $.ajax({
+            url: ajaxReqUrl,
+            type: 'post',
+            dataType: 'json', 
+            data: {'lrn' : lrn, 'table': 'requirements', 'set': 'lrn' }, 
+            success: function(result){
+              //alert(result);
+              var requirements = [];
+              $.each(result, function(index, val) {
+               //alert(val.requirement);
+               requirements.push(val.requirement);
+
+              });
+              $('#modal-requirements').val(requirements);
+              $('#modal-requirements').val(requirements).trigger('change')       
+            }
+          });
+        });
+</script>
+
 <script type="text/javascript">
   $(function () {
     //-------------
