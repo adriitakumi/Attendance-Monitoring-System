@@ -469,7 +469,7 @@
 <!-- ./wrapper -->
 
 <div class="modal modal-primary fade" id="profile">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="align-self: center; max-width: 400px">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -478,9 +478,29 @@
       </div>
       <div class="modal-body modal-profile">
         <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('images/alt_picture.jpg'); ?>" alt="User profile picture">
-        <h3 id="name" class="profile-username text-center" ></h3>
+        <h3 id="name" class="profile-username text-center" >Hakeem Polistico</h3>
 
-        <p class="text-muted text-center" id="position"></p>
+        <p class="text-center" id="position" style="margin-top: -10px;">Employee</p>
+        <hr>
+        <p class="text-bold" style="margin-top: -15px;">Account</p>
+        <div class="row" style="margin-left: 10px;">
+          <div class="col-md-6">
+          Username:
+          </div>
+          <div class="col-md-6">
+          admin
+          </div>
+        </div>
+        <div class="row" style="margin-left: 10px;">
+          <div class="col-md-6">
+          Password:
+          </div>
+          <div class="col-md-6">
+          admin
+          </div>
+        </div>
+        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
