@@ -496,15 +496,18 @@
           Password:
           </div>
           <div class="col-md-6">
-          admin
+          <p style="-webkit-text-security: disc; -moz-appearance: disc;"></p>
           </div>
         </div>
+
+        <hr style="margin-top: 2px;">
+
         
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-outline">Save changes</button>
+        <button type="button" class="btn btn-outline">Edit Profile</button>
       </div>
     </div>
     <!-- /.modal-content -->

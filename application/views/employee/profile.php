@@ -234,32 +234,155 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-      	<div class="col-md-1">
-      	</div>
+
+        <div class="col-md-1">
+        </div>
 
       	<div class="col-md-10">
-      	<!-- Widget: user widget style 1 -->
-          <div class="box box-widget widget-user-2">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user">
             <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="widget-user-header bg-yellow">
-              <div class="widget-user-image">
-                <img class="img-circle" src="<?php echo base_url(); ?>dist/img/user7-128x128.jpg" alt="User Avatar">
-              </div>
-              <!-- /.widget-user-image -->
-              <h3 class="widget-user-username">Nadia Carmichael</h3>
-              <h5 class="widget-user-desc">Lead Developer</h5>
+            <div class="widget-user-header bg-black" style="background: url('../dist/img/photo1.png') center center;">
+              <h3 class="widget-user-username">Elizabeth Pierce</h3>
+              <h5 class="widget-user-desc">Web Designer</h5>
             </div>
-            <div class="box-footer no-padding">
-              <ul class="nav nav-stacked">
-                <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
-                <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
-                <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
-                <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
-              </ul>
+            <div class="widget-user-image">
+              <img class="img-circle" src="<?php echo base_url(); ?>dist/img/user3-128x128.jpg" alt="User Avatar">
+            </div>
+            <div class="box-footer">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">3,200</h5>
+                    <span class="description-text">SALES</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">13,000</h5>
+                    <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4">
+                  <div class="description-block">
+                    <h5 class="description-header">35</h5>
+                    <span class="description-text">PRODUCTS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
             </div>
           </div>
           <!-- /.widget-user -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 style="margin-left: 55px;">Account</h3>
+            </div>
+            <div class="content" style="margin-bottom: -130px;">
+              <div class="row" style="margin-left: 40px;">
+
+                <div class="col-md-4">
+                  <h4>Username:</h4>
+                </div>
+                <!-- /.col -->
+
+                <div class="col-md-6">
+                  <h4>adriitakumi</h4>                  
+                </div> 
+                <!-- /.col -->
+
+              </div>
+              <!-- /.row -->
+
+              <div class="row" style="margin-left: 40px;">
+              
+                <div class="col-md-4">
+                  <h4>Password:</h4>
+                </div>
+                <!-- /.col -->
+
+                <div class="col-md-6">
+                  <h4><a href="#"><u><i>change password</i></u></a></h4>                  
+                </div> 
+                <!-- /.col -->
+
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.content -->
+
+            <hr style="width: 90%; border-style: inset; border-width: 1px;">
+            <h3 style="margin-left: 60px;">Personal</h3>
+            <div class="content">
+
+              <div class="row" style="margin-left: 40px;">
+                <div class="col-md-4">
+                  <h4>Name:</h4>
+                </div>
+                <!-- /.col -->
+
+                <div class="col-md-6">
+                  <h4>Rommel Faustino</h4>                  
+                </div> 
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <div class="row" style="margin-left: 40px;">              
+                <div class="col-md-4">
+                  <h4>Position:</h4>
+                </div>
+                <!-- /.col -->
+
+                <div class="col-md-6">
+                  <h4>Senior Manager - Technology and Infrastructure</h4>                  
+                </div> 
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <div class="row" style="margin-left: 40px;">              
+                <div class="col-md-4">
+                  <h4>Contact No:</h4>
+                </div>
+                <!-- /.col -->
+
+                <div class="col-md-6">
+                  <h4>09178011162</h4>                  
+                </div> 
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <div class="row" style="margin-left: 40px;">              
+                <div class="col-md-4">
+                  <h4>Email:</h4>
+                </div>
+                <!-- /.col -->
+
+                <div class="col-md-6">
+                  <h4>rommel.faustino@silverlakeaxis.com</h4>                  
+                </div> 
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <button class="btn btn-primary pull-right" style="margin-right: 40px;">Edit Personal</button>
+
+
+            </div>
+            <!-- /.content -->
+          </div>
+          <!-- /.box -->
         </div>
+        <!-- /.col -->
 
       	<div class="col-md-1">
       	</div>
