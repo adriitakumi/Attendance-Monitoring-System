@@ -254,7 +254,7 @@
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
                     <h5 class="description-header">3,200</h5>
-                    <span class="description-text">SALES</span>
+                    <span class="description-text">LATES</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
@@ -262,7 +262,7 @@
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
                     <h5 class="description-header">13,000</h5>
-                    <span class="description-text">FOLLOWERS</span>
+                    <span class="description-text">TOTAL HOURS</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
@@ -270,7 +270,7 @@
                 <div class="col-sm-4">
                   <div class="description-block">
                     <h5 class="description-header">35</h5>
-                    <span class="description-text">PRODUCTS</span>
+                    <span class="description-text">OVER TIME</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
@@ -374,7 +374,7 @@
               </div>
               <!-- /.row -->
 
-              <button class="btn btn-primary pull-right" style="margin-right: 40px;">Edit Personal</button>
+              <a href="#profile" class="btn btn-primary pull-right" data-toggle="modal" style="margin-right: 40px;">Edit Personal</a>
 
 
             </div>
@@ -393,6 +393,74 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+
+
+
+<div class="modal modal-primary fade" id="profile">
+  <div class="modal-dialog" style="align-self: center; max-width: 500px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Profile</h4>
+      </div>
+      <div class="modal-body modal-profile">
+        <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('images/alt_picture.jpg'); ?>" alt="User profile picture">
+        <h3 id="name" class="profile-username text-center" >Hakeem Polistico</h3>
+
+        <p class="text-center" id="position" style="margin-top: -10px;">Employee</p>
+        <hr>
+        <p class="text-bold" style="margin-top: -15px;">Personal</p>
+        <div class="row" style="margin-left: 10px; margin-bottom: 15px;">
+          <div class="col-md-4" style="margin-bottom: 10px;">
+          Name:
+          </div>
+          <div class="col-md-6">
+          Rommel Faustino
+          </div>
+        </div>
+        <div class="row" style="margin-left: 10px; margin-bottom: 15px;">
+          <div class="col-md-4" style="margin-bottom: 10px;">
+          Position:
+          </div>
+          <div class="col-md-6">
+          Senior Manager - Technology and Infrastructure
+          </div>
+        </div>
+        <div class="row" style="margin-left: 10px; margin-bottom: 15px;">
+          <div class="col-md-4" style="margin-bottom: 10px;">
+          Contact No:
+          </div>
+          <div class="col-md-6">
+          09178011162
+          </div>
+        </div>
+        <div class="row" style="margin-left: 10px; margin-bottom: 15px;">
+          <div class="col-md-4" style="margin-bottom: 10px;">
+          Email:
+          </div>
+          <div class="col-md-6">
+          rommel.faustino@silverlakeaxis.com
+          </div>
+        </div>
+
+        <hr style="margin-top: 2px;">
+
+        
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline">Save</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2016 <a href="#">Silverlake Axis</a>.</strong> All rights

@@ -171,7 +171,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#profile" class="btn btn-default btn-flat" data-toggle="modal">Profile</a>
+                  <a href="<?php echo site_url('employee/profile') ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -468,53 +468,7 @@
  </div>
 <!-- ./wrapper -->
 
-<div class="modal modal-primary fade" id="profile">
-  <div class="modal-dialog" style="align-self: center; max-width: 400px">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Profile</h4>
-      </div>
-      <div class="modal-body modal-profile">
-        <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('images/alt_picture.jpg'); ?>" alt="User profile picture">
-        <h3 id="name" class="profile-username text-center" >Hakeem Polistico</h3>
 
-        <p class="text-center" id="position" style="margin-top: -10px;">Employee</p>
-        <hr>
-        <p class="text-bold" style="margin-top: -15px;">Account</p>
-        <div class="row" style="margin-left: 10px;">
-          <div class="col-md-6">
-          Username:
-          </div>
-          <div class="col-md-6">
-          admin
-          </div>
-        </div>
-        <div class="row" style="margin-left: 10px;">
-          <div class="col-md-6">
-          Password:
-          </div>
-          <div class="col-md-6">
-          <p style="-webkit-text-security: disc; -moz-appearance: disc;"></p>
-          </div>
-        </div>
-
-        <hr style="margin-top: 2px;">
-
-        
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-outline">Edit Profile</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
 
 <!-- jQuery 3 -->
 <script src="<?php echo base_url(); ?>bower_components/jquery/dist/jquery.min.js"></script>
