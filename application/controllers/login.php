@@ -6,7 +6,7 @@ class login extends CI_Controller {
 	public function index()
 	{	
 		if(isset($this->session->logged_in)) {
-			$this->load->view('employee/index');
+			redirect('employee/index');
 		}
 		else {
 			$this->form_validation->set_rules('username', 'Username', 'required');
