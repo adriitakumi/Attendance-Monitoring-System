@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Dashboard</title>
+  <title>SilverLake Axis  | Attendance</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -203,19 +203,19 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active">
-          <a href="<?php echo site_url('employee/index'); ?>">
+        <li>
+          <a href="<?php echo site_url('admin/index'); ?>">
             <i class="fa fa-dashboard"></i><span> Dashboard</span>
           </a>
         </li>
 
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#"><i class="fa fa-calendar"></i><span> Attendance</span>
             <span class="pull-right-container"></span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
+            <li class="active"><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Upload File</a></li>
           </ul>
         </li>
@@ -243,203 +243,127 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
+        Attendance
         <small>Time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
-        <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        <li> Attendance</a></li>
+        <li class="active"><a href="#"><i class="fa fa-file"></i>View Data</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
+      <div class="container-fluid">
 
-      <div class="row" style="padding: 0 5px;">
-        <div class="col-md-4">
-          <div class="small-box bg-green" data-toggle="modal" data-target="#stem" style="cursor: pointer;">
-            <div class="inner">
-              <h3>154</h3>
+        <h2>Image Gallery</h2>
+        <p>The .thumbnail class can be used to display an image gallery.</p>
+        <p>The .caption class adds proper padding and a dark grey color to text inside thumbnails.</p>
+        <p>Click on the images to enlarge them.</p>
 
-              <h4>Total Hours Worked <br>For This Month</h4>
-            </div>
-            <div class="icon">
-              <i class="fa fa-flask"></i>
-            </div>
-            <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-          <!-- /.small-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-4">
-          <div class="small-box bg-maroon" data-toggle="modal" data-target="#gas" style="cursor: pointer;">
-            <div class="inner">
-              <h3>45</h3>
+        <div class="row" style="height: 30%; width: 45%;">
 
-              <h4>Total Minutes Late<br>For This Month</h4>
-            </div>
-            <div class="icon">
-              <i class="fa fa-book"></i>
-            </div>
-            <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-          <!-- /.small-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-4">
-          <div class="small-box bg-yellow" data-toggle="modal" data-target="#humss" style="cursor: pointer;">
-            <div class="inner">
-              <h3>12</h3>
-
-              <h4>Total Hours Overtimed<br>For This Month</h4>
-            </div>
-            <div class="icon">
-              <i class="fa fa-users"></i>
-            </div>
-            <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-          <!-- /.small-box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-      <div class="row" style="padding: 0 5px;">
-        <div class="col-md-12">
-
-          <!-- BAR CHART -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Bar Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="barChart1" style="height:230px"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-              <div class="row" style="padding: 0 10px;">
-                <div class="col-md-1">
-                  <div class="pull-left">
-                    <i class="fa fa-square fa-2x" style="color:rgba(210, 214, 222, 1);" aria-hidden="true"></i>
-                  </div>
+          <div class="col-md-4">
+            <div class="thumbnail">
+              <a href="/w3images/lights.jpg" target="_blank">
+                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%">
+                <div class="caption">
+                  <center>
+                    <p>Rommel V. Faustino - Manager </p>
+                  </center>
                 </div>
-                <div class="col-md-5" style="padding-top: 3px; margin-left: -10px;">Late</div>
-            
-                <div class="col-md-1">
-                  <div>
-                    <i class="fa fa-square fa-2x" style="color: darkred;" aria-hidden="true"></i>
-                  </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-md-4" >
+            <div class="thumbnail">
+              <a href="/w3images/nature.jpg" target="_blank">
+                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Nature" style="width:100%">
+                <div class="caption">
+                  <center>
+                    <p>Adrielle Kristine Nicolette Escaro - Software Engineer</p>
+                  </center>
                 </div>
-                <div class="col-md-5" style="padding-top: 3px; margin-left: -10px;">Over Time</div>
-              </div>
+              </a>
             </div>
-            <!-- /.box-footer -->
           </div>
-          <!-- /.box -->
-        </div>
-      </div>
-      <div class="row" style="padding: 0 5px;">
 
-        <div class="col-md-6">
-          <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Time In and Time Outs</h3>
+          <div class="col-md-4">
+            <div class="thumbnail">
+              <a href="/w3images/fjords.jpg" target="_blank">
+                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Fjords" style="width:100%">
+                <div class="caption">
+                  <center>
+                    <p>Hakeem Polistico - Software Engineer </p>
+                  </center>
+                </div>
+              </a>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Time IN</th>
-                  <th>Time OUT</th>
-                  <th>Overtime</th>
-                  <th>Late</th>
-                  <th>Total Hours</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Rommel Faustino</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>5</td>
-                  <td>180</td>
-                </tr>
-                <tr>
-                  <td>Adrii Escaro</td>
-                  <td>8:40 AM</td>
-                  <td>7:20 PM</td>
-                  <td>10</td>
-                  <td>5</td>
-                  <td>200</td>
-                </tr>
-                <tr>
-                  <td>Patrick Guzman</td>
-                  <td>8:20 AM</td>
-                  <td>8:20 PM</td>
-                  <td>11</td>
-                  <td>9</td>
-                  <td>175</td>
-                </tr>
-                <tr>
-                  <td>Hakeem Polistico</td>
-                  <td>7:38 AM</td>
-                  <td>7:38 PM</td>
-                  <td>8</td>
-                  <td>0</td>
-                  <td>250</td>
-                </tr>
-                <tr>
-                  <td>Marc Terrobias</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>11</td>
-                  <td>10</td>
-                  <td>369</td>
-                </tr>
-                <tr>
-                  <td>Marc Terrobias</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>11</td>
-                  <td>10</td>
-                  <td>369</td>
-                </tr>
-                <tr>
-                  <td>Marc Terrobias</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>11</td>
-                  <td>10</td>
-                  <td>369</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
+
+          <div class="col-md-4">
+            <div class="thumbnail">
+              <a href="/w3images/lights.jpg" target="_blank">
+                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%">
+                <div class="caption">
+                  <center>
+                    <p>Rommel V. Faustino - Manager </p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="col-md-6">
-          <div class="box box-primary">
-            <div  class="box-body" style= "border-width: 1px; border-style: solid; border-color: #f1f1f1;  height: 350px; max-height: 350;">
-              <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-              <p>Max of 250 characters only.</p>
+        <div class="row" style="height: 30%; width: 45%;">
+          <div class="col-md-4">
+            <div class="thumbnail">
+              <a href="/w3images/lights.jpg" target="_blank">
+                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%">
+                <div class="caption">
+                  <center>
+                    <p>Rommel V. Faustino - Manager </p>
+                  </center>
+                </div>
+              </a>
             </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
+          <div class="col-sm-4" >
+            <div class="thumbnail">
+              <a href="/w3images/nature.jpg" target="_blank">
+                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Nature" style="width:100%">
+                <div class="caption">
+                  <p>Adrielle Kristine Nicolette Escaro - Software Engineer</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="thumbnail">
+              <a href="/w3images/fjords.jpg" target="_blank">
+                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Fjords" style="width:100%">
+                <div class="caption">
+                  <center>
+                    <p>Hakeem Polistico - Software Engineer </p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="thumbnail">
+              <a href="/w3images/lights.jpg" target="_blank">
+                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%">
+                <div class="caption">
+                  <center>
+                    <p>Rommel V. Faustino - Manager </p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -538,78 +462,6 @@ $(document).ready(function(){
             }
           });
         });
-</script>
-
-<script type="text/javascript">
-  $(function () {
-    //-------------
-    //- BAR CHART -
-    //-------------
-    var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      datasets: [
-        {
-          label               : 'Late',
-          fillColor           : 'rgba(210, 214, 222, 1)',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [400, 500, 600, 700, 200, 1000, 800, 100, 250, 300, 150]
-        },
-        {
-          label               : 'Overtime',
-          fillColor           : 'rgba(60,141,188,0.9)',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : 'darkgrey',
-          pointStrokeColor    : 'rgba',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [300, 400, 500, 600, 600, 700, 200, 1000, 800, 100, 250]
-        }
-      ]
-    }
-
-    var barChartCanvas                   = $('#barChart1').get(0).getContext('2d')
-    var barChart                         = new Chart(barChartCanvas)
-    var barChartData                     = areaChartData
-    barChartData.datasets[1].fillColor   = 'darkred'
-    barChartData.datasets[1].strokeColor = 'darkred'
-    barChartData.datasets[1].pointColor  = 'darkred'
-    var barChartOptions                  = {
-      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-      scaleBeginAtZero        : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : true,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,0)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - If there is a stroke on each bar
-      barShowStroke           : true,
-      //Number - Pixel width of the bar stroke
-      barStrokeWidth          : 2,
-      //Number - Spacing between each of the X value sets
-      barValueSpacing         : 5,
-      //Number - Spacing between data sets within X values
-      barDatasetSpacing       : 1,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to make the chart responsive
-      responsive              : true,
-      maintainAspectRatio     : true
-    }
-
-    barChartOptions.datasetFill = false
-    barChart.Bar(barChartData, barChartOptions)
-
-    
-  })
 </script>
 
 </body>

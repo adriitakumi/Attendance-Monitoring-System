@@ -373,7 +373,6 @@
 </script>
 
 <script>
-
   $('.daterange').daterangepicker({
     ranges   : {
       'Today'       : [moment(), moment()],
