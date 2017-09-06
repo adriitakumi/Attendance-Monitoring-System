@@ -246,7 +246,7 @@
     <div class="row">
       <div class="col-md-4">
         <!-- Calendar -->
-        <div class="box box-primary">
+        <div class="box box-primary hidden-print">
           <div class="box-header bg-light-blue-active" style="color: white;">
             <i class="fa fa-calendar"></i>
 
@@ -279,9 +279,9 @@
           <!-- /.box -->
 
           <div style="padding-top: 20px;">
-            <button type="button" class="btn btn-lg btn-warning" style="width:100%; margin-bottom: 10px;">Print</button>
-            <button type="button" class="btn btn-lg btn-success" style="width:100%; margin-bottom: 10px;">Export to Excel</button>
-            <button type="button" class="btn btn-lg btn-danger" style="width:100%; margin-bottom: 10px;">Export to PDF</button>
+            <button type="button" class="btn btn-lg btn-warning hidden-print" style="width:100%; margin-bottom: 10px;" onclick="window.print()">Print</button>
+            <button type="button" class="btn btn-lg btn-success hidden-print" style="width:100%; margin-bottom: 10px;">Export to Excel</button>
+            <button type="button" class="btn btn-lg btn-danger hidden-print" style="width:100%; margin-bottom: 10px;">Export to PDF</button>
           </div>
         </div>
         <!-- /.col -->
@@ -296,118 +296,19 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>Encoded ID</th>
                   <th>Date</th>
-                  <th>Time In</th>
-                  <th>Time Out</th>
-                  <th>Hours Worked</th>
-                  <th>Work Duration</th>
-                  <th>Late By</th>
-                  <th>Over Time</th>
-                  <th>Status</th>
+                  <th>Person</th>
+                  <th>Door</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                <tr>
-                  <td>June 24, 2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>8:30 AM - 5:30 PM</td>
-                  <td>8 minutes</td>
-                  <td>2 hours</td>
-                  <td>Complete</td>
-                </tr>
-                </tfoot>
+                <tbody id="tbody">
+                <tr id="tr">
+                  <td>qwert</td>
+                  <td>qwert</td>
+                  <td>qwer</td>
+                  <td>srty</td>
+                </tr> 
               </table>
             </div>
             <!-- /.box-body -->
@@ -453,16 +354,26 @@
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
+
 <script>
   // The Calender
   $('#calendar').datepicker();
 </script>
+
 <script>
   $(function () {
-    $('#example1').DataTable()
-  })
+    $('#example1').DataTable();
+    $('#tr').hide();
+    var arrofobject = <?php echo $AMADOR ?>;
+
+    $.each(arrofobject, function(index, val){
+      $('#tbody').append('<tr id="hehe"><td>'+val.encoded_id+'</td><td>'+val.date+'</td><td> '+val.person+'</td><td> '+val.door+'</td> </tr>');
+     });
+    })
 </script>
+
 <script>
+
   $('.daterange').daterangepicker({
     ranges   : {
       'Today'       : [moment(), moment()],
