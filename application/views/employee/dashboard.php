@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -169,7 +171,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo site_url('employee/profile') ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -210,9 +212,6 @@
           <a href="<?php echo site_url('employee/attendance'); ?>">
             <i class="fa fa-calendar"></i>
             <span>Attendance</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
           </a>
         </li>
          <li class="header">LABELS</li>
@@ -240,6 +239,220 @@
     <!-- Main content -->
     <section class="content">
 
+      <div class="row" style="padding: 0 5px;">
+        <div class="col-md-4">
+          <div class="small-box bg-green" data-toggle="modal" data-target="#stem" style="cursor: pointer;">
+            <div class="inner">
+              <h3>154</h3>
+
+              <h4>Total Hours Worked <br>For This Month</h4>
+            </div>
+            <div class="icon">
+              <i class="fa fa-flask"></i>
+            </div>
+            <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+          <!-- /.small-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-4">
+          <div class="small-box bg-maroon" data-toggle="modal" data-target="#gas" style="cursor: pointer;">
+            <div class="inner">
+              <h3>45</h3>
+
+              <h4>Total Minutes Late<br>For This Month</h4>
+            </div>
+            <div class="icon">
+              <i class="fa fa-book"></i>
+            </div>
+            <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+          <!-- /.small-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-4">
+          <div class="small-box bg-yellow" data-toggle="modal" data-target="#humss" style="cursor: pointer;">
+            <div class="inner">
+              <h3>12</h3>
+
+              <h4>Total Hours Overtimed<br>For This Month</h4>
+            </div>
+            <div class="icon">
+              <i class="fa fa-users"></i>
+            </div>
+            <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+          <!-- /.small-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <div class="row" style="padding: 0 5px;">
+        <div class="col-md-7">
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Time In and Time Outs</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time In</th>
+                  <th>Time Out</th>
+                  <th>Hours Worked</th>
+                  <th>Work Duration</th>
+                  <th>Late By</th>
+                  <th>Over Time</th>
+                  <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
+                  <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
+                  <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
+                  <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
+                  <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
+                  <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
+                  <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
+                  <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
+                  <td>Complete</td>
+                </tr>
+                <tr>
+                  <td>June 24, 2017</td>
+                  <td>8:38 AM</td>
+                  <td>7:30 PM</td>
+                  <td>8</td>
+                  <td>8:30 AM - 5:30 PM</td>
+                  <td>8 minutes</td>
+                  <td>2 hours</td>
+                  <td>Complete</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-5">
+
+          <!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Bar Chart</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+                <canvas id="barChart" style="height:230px"></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <div class="row" style="padding: 0 10px;">
+                <div class="col-md-1">
+                  <div class="pull-left">
+                    <i class="fa fa-square fa-2x" style="color:rgba(210, 214, 222, 1);" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col-md-5" style="padding-top: 3px; margin-left: -10px;">Late</div>
+            
+                <div class="col-md-1">
+                  <div>
+                    <i class="fa fa-square fa-2x" style="color: darkred;" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col-md-5" style="padding-top: 3px; margin-left: -10px;">Over Time</div>
+              </div>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+
+          <div class="box box-primary">
+            <div  class="box-body" style = "border-width: 1px; border-style: solid; border-color: #f1f1f1;  height: 296px; max-height: 296;">
+              <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+              <p>Max of 250 characters only.</p>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+
+
+      
+
+
       
 
     </section>
@@ -255,6 +468,8 @@
  </div>
 <!-- ./wrapper -->
 
+
+
 <!-- jQuery 3 -->
 <script src="<?php echo base_url(); ?>bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -263,13 +478,149 @@
 <script src="<?php echo base_url(); ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>bower_components/fastclick/lib/fastclick.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- ChartJS -->
+<script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url(); ?>dist/js/demo.js"></script>
 <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
+  $(function () {
+    $('#example1').DataTable()
+  })
+</script>
+
+<script>
+$(document).ready(function(){ 
+
+        $(".buttonView").click(function(){
+          var lrn = $(this).closest('tr').find('td:eq(0)').html(); 
+          $.ajax({
+            url: ajaxUrl,
+            type: 'post',
+            dataType: 'json', 
+            data: {'username' : username, 'table': 'users', 'set': 'username' }, 
+            success: function(result){
+              //alert(result);
+              $.each(result, function(index, val) {
+                $('#name').html(val.first_name +" "+ val.middle_name + " " + val.last_name);
+                $('#lrn').html(val.lrn);
+                $('#contact').html(val.contact);
+                $('#birth_date').html(val.birth_date);
+                $('#birth_place').html(val.birth_place);
+                $('#age').html(val.age);
+                $('#mother_tongue').html(val.mother_tongue);
+                $('#religion').html(val.religion);
+                $('#street').html(val.street);
+                $('#barangay').html(val.barangay+", ");
+                $('#city').html(val.city);
+                $('#province').html(val.province);
+                $('#sex').html(val.sex);
+                $('#father_name').html(val.father_name);
+                $('#father_contact').html(val.father_contact);
+                $('#mother_name').html(val.mother_name);
+                $('#mother_contact').html(val.mother_contact);
+                $('#guardian').html(val.guardian);
+                $('#relationship').html(val.relationship);
+                $('#guardian_contact').html(val.guardian_contact);  
+                $('#position').html('Grade '+val.grade+' Student');  
+                $('#modal-note').html(val.note);                   
+                $('.requirements-section').show();                     
+                $('#input-submit').show();                
+                $('#input-lrn').val(val.lrn);  
+              })
+            }
+          });
+
+          $.ajax({
+            url: ajaxReqUrl,
+            type: 'post',
+            dataType: 'json', 
+            data: {'lrn' : lrn, 'table': 'requirements', 'set': 'lrn' }, 
+            success: function(result){
+              //alert(result);
+              var requirements = [];
+              $.each(result, function(index, val) {
+               //alert(val.requirement);
+               requirements.push(val.requirement);
+
+              });
+              $('#modal-requirements').val(requirements);
+              $('#modal-requirements').val(requirements).trigger('change')       
+            }
+          });
+        });
+</script>
+
+<script type="text/javascript">
+  $(function () {
+    //-------------
+    //- BAR CHART -
+    //-------------
+    var areaChartData = {
+      labels  : ['2016', '2017', '2018', '2019'],
+      datasets: [
+        {
+          label               : 'Electronics',
+          fillColor           : 'rgba(210, 214, 222, 1)',
+          strokeColor         : 'rgba(210, 214, 222, 1)',
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [400, 500, 600, 700]
+        },
+        {
+          label               : 'Digital Goods',
+          fillColor           : 'rgba(60,141,188,0.9)',
+          strokeColor         : 'rgba(60,141,188,0.8)',
+          pointColor          : 'darkgrey',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [300, 400, 500, 600]
+        }
+      ]
+    }
+    var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
+    var barChart                         = new Chart(barChartCanvas)
+    var barChartData                     = areaChartData
+    barChartData.datasets[1].fillColor   = 'darkred'
+    barChartData.datasets[1].strokeColor = 'darkred'
+    barChartData.datasets[1].pointColor  = 'darkred'
+    var barChartOptions                  = {
+      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+      scaleBeginAtZero        : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : true,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - If there is a stroke on each bar
+      barShowStroke           : true,
+      //Number - Pixel width of the bar stroke
+      barStrokeWidth          : 2,
+      //Number - Spacing between each of the X value sets
+      barValueSpacing         : 5,
+      //Number - Spacing between data sets within X values
+      barDatasetSpacing       : 1,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to make the chart responsive
+      responsive              : true,
+      maintainAspectRatio     : true
+    }
+
+    barChartOptions.datasetFill = false
+    barChart.Bar(barChartData, barChartOptions)
+
+    
   })
 </script>
 </body>
