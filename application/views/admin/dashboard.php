@@ -205,16 +205,31 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="active">
           <a href="<?php echo site_url('employee/index'); ?>">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i><span>Dashboard</span>
           </a>
         </li>
-        <li>
-          <a href="<?php echo site_url('employee/attendance'); ?>">
-            <i class="fa fa-calendar"></i>
-            <span>Attendance</span>
+
+        <li class="treeview">
+          <a href="#"><i class="fa fa-calendar"></i><span>Attendance</span>
+            <span class="pull-right-container"></span>
+            <i class="fa fa-angle-left pull-right"></i>
           </a>
+          <ul class="treeview-menu">
+            <li>View Data</li>
+            <li>Upload File</li>
+          </ul>
         </li>
-         <li class="header">LABELS</li>
+
+        <li class="treeview">
+          <a href="#"><i class="fa fa-users"></i><span>Employees</span>
+            <span class="pull-right-container"></span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#">Manage Employees</a></li>
+            <li><a href="#">Leaderboard</a></li>
+        </li>
+        <li class="header">LABELS</li>
       </ul>
     </section>
     <!-- /.sidebar -->
