@@ -18,4 +18,13 @@ class admin extends CI_Controller {
 		$this->load->view("admin/view_grid");
 	}
 
+	public function view_profile()
+	{
+		$this->load->view("admin/view_profile");
+	}
+
+	public function upload_file()
+	{
+		$this->load->view("admin/upload");
+	}
 }

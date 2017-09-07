@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Silverlake Axis | Attendance</title>
+  <title>SilverLake Axis  | Attendance</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -12,10 +12,6 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
@@ -40,7 +36,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo site_url('employee/index') ?>" class="logo">
+    <a href="<?php echo site_url('admin/index') ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>SL</b>A</span>
       <!-- logo for regular state and mobile devices -->
@@ -175,7 +171,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo site_url('employee/profile') ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -200,7 +196,7 @@
           <img src="<?php echo base_url('images/alt_picture.jpg');?>" class="img-circle" alt="<?php echo base_url('images/alt_picture.jpg');?>">
         </div>
         <div class="pull-left info">
-          <p><?php echo ucwords($this->session->first_name." ".$this->session->last_name) ?></p>
+          <p><?php echo ucwords ($this->session->first_name." ".$this->session->last_name) ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -208,18 +204,33 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="<?php echo site_url('employee/index'); ?>">
-            <i class="fa fa-dashboard"></i> 
-            <span>Dashboard</span>
+          <a href="<?php echo site_url('admin/index'); ?>">
+            <i class="fa fa-dashboard"></i><span> Dashboard</span>
           </a>
         </li>
-        <li class="active">
-          <a href="<?php echo site_url('employee/attendance'); ?>">
-            <i class="fa fa-calendar"></i>
-            <span>Attendance</span>
+
+        <li class="treeview active">
+          <a href="#"><i class="fa fa-calendar"></i><span> Attendance</span>
+            <span class="pull-right-container"></span>
+            <i class="fa fa-angle-left pull-right"></i>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
+            <li class="active"><a href="<?php echo site_url('admin/upload_file');?> "><i class="fa fa-circle-o"></i> Upload File</a></li>
+          </ul>
         </li>
-         <li class="header">LABELS</li>
+
+        <li class="treeview">
+          <a href="#"><i class="fa fa-users"></i><span> Employees</span>
+            <span class="pull-right-container"></span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Manage Employees</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Leaderboard</a></li>
+          </ul>
+        </li>
+        <li class="header">LABELS</li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -233,112 +244,34 @@
     <section class="content-header">
       <h1>
         Attendance
-        <small>Monitor your time ins and time outs</small>
+        <small>&middot;Upload time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Attendance</li>
+        <li> Home</a></li>
+        <li> Attendance</a></li>
+        <li class="active"><a href="#"><i class="fa fa-file"></i>Upload File</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-    <div class="row">
-      <div class="col-md-4">
-        <!-- Calendar -->
-        <div class="box box-primary hidden-print">
-          <div class="box-header bg-light-blue-active" style="color: white;">
-            <i class="fa fa-calendar"></i>
+      <div class="container">
 
-            <h3 class="box-title">Calendar</h3>
-              <!-- tools box -->
-              <div class="pull-right box-tools">
-                <!-- button with a dropdown -->
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bars"></i></button>
-                  <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="#">Add new event</a></li>
-                    <li><a href="#">Clear events</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">View calendar</a></li>
-                  </ul>
-                </div>
-                <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-              <!-- /. tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <!--The calendar -->
-              <div id="calendar" style="width: 100%"></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <div style="padding-top: 20px;">
-            <a type="button" class="btn btn-primary btn-lg" style="width">
-              <span class="glyphicon glyphicon-print"></span> Go Back 
-            </a>
-            <button type="button" class="btn btn-lg btn-warning hidden-print" style="width:100%; margin-bottom: 10px;" onclick="window.print()">
-            <i class="glyphicon glyphicon-print">Print</i></button>
-            <button type="button" class="btn btn-lg btn-success hidden-print" style="width:100%; margin-bottom: 10px;">Export to Excel</button>
-            <button type="button" class="btn btn-lg btn-danger hidden-print" style="width:100%; margin-bottom: 10px;">Export to PDF</button>
-          </div>
-        </div>
-        <!-- /.col -->
-
-        <div class="col-md-8">
-          <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Time In and Time Outs</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Encoded ID</th>
-                  <th>Date</th>
-                  <th>Person</th>
-                  <th>Door</th>
-                </tr>
-                </thead>
-                <tbody id="tbody">
-                <tr id="tr">
-                  <td>qwert</td>
-                  <td>qwert</td>
-                  <td>qwer</td>
-                  <td>srty</td>
-                </tr> 
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      
-
+      </div>      
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
     <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
 
  </div>
 <!-- ./wrapper -->
+
+
 
 <!-- jQuery 3 -->
 <script src="<?php echo base_url(); ?>bower_components/jquery/dist/jquery.min.js"></script>
@@ -348,49 +281,80 @@
 <script src="<?php echo base_url(); ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>bower_components/fastclick/lib/fastclick.js"></script>
-<!-- daterangepicker -->
-<script src="<?php echo base_url(); ?>bower_components/moment/min/moment.min.js"></script>
-<script src="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- ChartJS -->
+<script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
-
-<script>
-  // The Calender
-  $('#calendar').datepicker();
-</script>
-
 <script>
   $(function () {
-    $('#example1').DataTable();
-    $('#tr').hide();
-    var arrofobject = <?php echo $AMADOR ?>;
-
-    $.each(arrofobject, function(index, val){
-      $('#tbody').append('<tr id="hehe"><td>'+val.encoded_id+'</td><td>'+val.date+'</td><td> '+val.person+'</td><td> '+val.door+'</td> </tr>');
-     });
-    })
+    $('#example1').DataTable()
+  })
 </script>
 
 <script>
-  $('.daterange').daterangepicker({
-    ranges   : {
-      'Today'       : [moment(), moment()],
-      'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-      'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-      'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-      'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    },
-    startDate: moment().subtract(29, 'days'),
-    endDate  : moment()
-  }, function (start, end) {
-    window.alert('You chose: ' + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-  });
+$(document).ready(function(){ 
+
+        $(".buttonView").click(function(){
+          var lrn = $(this).closest('tr').find('td:eq(0)').html(); 
+          $.ajax({
+            url: ajaxUrl,
+            type: 'post',
+            dataType: 'json', 
+            data: {'username' : username, 'table': 'users', 'set': 'username' }, 
+            success: function(result){
+              //alert(result);
+              $.each(result, function(index, val) {
+                $('#name').html(val.first_name +" "+ val.middle_name + " " + val.last_name);
+                $('#lrn').html(val.lrn);
+                $('#contact').html(val.contact);
+                $('#birth_date').html(val.birth_date);
+                $('#birth_place').html(val.birth_place);
+                $('#age').html(val.age);
+                $('#mother_tongue').html(val.mother_tongue);
+                $('#religion').html(val.religion);
+                $('#street').html(val.street);
+                $('#barangay').html(val.barangay+", ");
+                $('#city').html(val.city);
+                $('#province').html(val.province);
+                $('#sex').html(val.sex);
+                $('#father_name').html(val.father_name);
+                $('#father_contact').html(val.father_contact);
+                $('#mother_name').html(val.mother_name);
+                $('#mother_contact').html(val.mother_contact);
+                $('#guardian').html(val.guardian);
+                $('#relationship').html(val.relationship);
+                $('#guardian_contact').html(val.guardian_contact);  
+                $('#position').html('Grade '+val.grade+' Student');  
+                $('#modal-note').html(val.note);                   
+                $('.requirements-section').show();                     
+                $('#input-submit').show();                
+                $('#input-lrn').val(val.lrn);  
+              })
+            }
+          });
+
+          $.ajax({
+            url: ajaxReqUrl,
+            type: 'post',
+            dataType: 'json', 
+            data: {'lrn' : lrn, 'table': 'requirements', 'set': 'lrn' }, 
+            success: function(result){
+              //alert(result);
+              var requirements = [];
+              $.each(result, function(index, val) {
+               //alert(val.requirement);
+               requirements.push(val.requirement);
+
+              });
+              $('#modal-requirements').val(requirements);
+              $('#modal-requirements').val(requirements).trigger('change')       
+            }
+          });
+        });
 </script>
+
 </body>
 </html>

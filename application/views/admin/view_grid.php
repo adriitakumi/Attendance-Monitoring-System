@@ -216,7 +216,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Upload File</a></li>
+            <li><a href="<?php echo site_url('admin/upload_file');?>"><i class="fa fa-circle-o"></i> Upload File</a></li>
           </ul>
         </li>
 
@@ -244,7 +244,7 @@
     <section class="content-header">
       <h1>
         Attendance
-        <small>Time ins and time outs of Employees</small>
+        <small>&middot;Time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
@@ -257,59 +257,96 @@
     <section class="content">
       <div class="container-fluid">
 
-        <h2>Image Gallery</h2>
-        <p>The .thumbnail class can be used to display an image gallery.</p>
-        <p>The .caption class adds proper padding and a dark grey color to text inside thumbnails.</p>
-        <p>Click on the images to enlarge them.</p>
+        <div class="row" style="padding: 0 5px;">
+          <div class="container">
+            <div class="col-md-12"><center>
+              <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg">View Attendance as LIST</button>
+              <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg active" style="margin-left: 10%">View Attendance as GRID</a></center>
+            </div>
+          </div>
+        </div>
 
-        <div class="row" style="height: 30%; width: 45%;">
+        <br>
 
-          <div class="col-md-4">
+        <div class="row">
+          <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="/w3images/lights.jpg" target="_blank">
-                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%">
+              <a href="<?php echo site_url('admin/view_profile')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Rommel V. Faustino - Manager </p>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
+                    <p>Manager</p>
                   </center>
                 </div>
               </a>
             </div>
           </div>
 
-          <div class="col-md-4" >
+          <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="/w3images/nature.jpg" target="_blank">
-                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Nature" style="width:100%">
+              <a href="<?php echo site_url('admin/view_profile')?>">
+                <img src="<?php echo base_url('images/alt_picture.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Adrielle Kristine Nicolette Escaro - Software Engineer</p>
+                    <p>Adrielle Kristine Nicolette Escaro</p>
+                    <p>Software Engineer</p>
                   </center>
                 </div>
               </a>
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="/w3images/fjords.jpg" target="_blank">
+              <a href="<?php echo site_url('admin/view_profile')?>">
                 <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Fjords" style="width:100%">
                 <div class="caption">
                   <center>
-                    <p>Hakeem Polistico - Software Engineer </p>
+                    <p>Hakeem Polistico</p>
+                    <p>Software Engineer</p> 
                   </center>
                 </div>
               </a>
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="/w3images/lights.jpg" target="_blank">
-                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%">
+              <a href="<?php echo site_url('admin/view_profile')?>">
+                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Rommel V. Faustino - Manager </p>
+                    <p>Rommel V. Faustino</p>
+                    <p>Manager</p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-xs-2">
+            <div class="thumbnail">
+              <a href="<?php echo site_url('admin/view_profile')?>">
+                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
+                <div class="caption">
+                  <center>
+                    <p>Rommel V. Faustino</p>
+                    <p>Manager</p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-xs-2">
+            <div class="thumbnail">
+              <a href="<?php echo site_url('admin/view_profile')?>">
+                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
+                <div class="caption">
+                  <center>
+                    <p>Rommel V. Faustino</p>
+                    <p>Manager</p>
                   </center>
                 </div>
               </a>
@@ -317,48 +354,85 @@
           </div>
         </div>
 
-        <div class="row" style="height: 30%; width: 45%;">
-          <div class="col-md-4">
+        <div class="row">
+          <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="/w3images/lights.jpg" target="_blank">
-                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%">
+              <a href="<?php echo site_url('admin/view_profile')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Rommel V. Faustino - Manager </p>
+                    <p>Rommel V. Faustino</p>
+                    <p>Manager</p>
                   </center>
                 </div>
               </a>
             </div>
           </div>
-          <div class="col-sm-4" >
+
+          <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="/w3images/nature.jpg" target="_blank">
-                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Nature" style="width:100%">
+              <a href="<?php echo site_url('admin/view_profile')?>">
+                <img src="<?php echo base_url('images/alt_picture.jpg');?>" style="width:100%;">
                 <div class="caption">
-                  <p>Adrielle Kristine Nicolette Escaro - Software Engineer</p>
+                  <center>
+                    <p>Adrielle Kristine Nicolette Escaro</p>
+                    <p>Software Engineer</p>
+                  </center>
                 </div>
               </a>
             </div>
           </div>
-          <div class="col-md-4">
+
+          <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="/w3images/fjords.jpg" target="_blank">
+              <a href="<?php echo site_url('admin/view_profile')?>">
                 <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Fjords" style="width:100%">
                 <div class="caption">
                   <center>
-                    <p>Hakeem Polistico - Software Engineer </p>
+                    <p>Hakeem Polistico</p>
+                    <p>Software Engineer</p> 
                   </center>
                 </div>
               </a>
             </div>
           </div>
-          <div class="col-md-4">
+
+          <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="/w3images/lights.jpg" target="_blank">
-                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%">
+              <a href="<?php echo site_url('admin/view_profile')?>">
+                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Rommel V. Faustino - Manager </p>
+                    <p>Rommel V. Faustino</p>
+                    <p>Manager</p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-xs-2">
+            <div class="thumbnail">
+              <a href="<?php echo site_url('admin/view_profile')?>">
+                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
+                <div class="caption">
+                  <center>
+                    <p>Rommel V. Faustino</p>
+                    <p>Manager</p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-xs-2">
+            <div class="thumbnail">
+              <a href="<?php echo site_url('admin/view_profile')?>">
+                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
+                <div class="caption">
+                  <center>
+                    <p>Rommel V. Faustino</p>
+                    <p>Manager</p>
                   </center>
                 </div>
               </a>

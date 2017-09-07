@@ -216,7 +216,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Upload File</a></li>
+            <li><a href="<?php echo site_url('admin/upload_file');?>"><i class="fa fa-circle-o"></i> Upload File</a></li>
           </ul>
         </li>
 
@@ -244,7 +244,7 @@
     <section class="content-header">
       <h1>
         Attendance
-        <small>Time ins and time outs of Employees</small>
+        <small>&middot;Time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
@@ -257,9 +257,15 @@
     <section class="content">
 
       <div class="row" style="padding: 0 5px;">
-        
+        <div class="container">
+          <div class="col-md-12"><center>
+            <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg active" >View Attendance as LIST</button>
+            <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg" style="margin-left: 10%">View Attendance as GRID</a></center>
+          </div>
+        </div>
       </div>
 
+      <br>
       
       <div class="row" style="padding: 0 5px;">
         <div class="col-md-12">
@@ -272,70 +278,62 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Time IN</th>
-                  <th>Time OUT</th>
-                  <th>Overtime</th>
-                  <th>Late</th>
-                  <th>Total Hours</th>
+                  <th>Datetime</th>
+                  <th>Transaction</th>
+                  <th>Person</th>
+                  <th>Encoded ID</th>
+                  <th>Door</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                  <td>Rommel Faustino</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>5</td>
-                  <td>180</td>
-                </tr>
-                <tr>
-                  <td>Adrii Escaro</td>
-                  <td>8:40 AM</td>
-                  <td>7:20 PM</td>
-                  <td>10</td>
-                  <td>5</td>
-                  <td>200</td>
-                </tr>
-                <tr>
-                  <td>Patrick Guzman</td>
-                  <td>8:20 AM</td>
-                  <td>8:20 PM</td>
-                  <td>11</td>
-                  <td>9</td>
-                  <td>175</td>
-                </tr>
-                <tr>
-                  <td>Hakeem Polistico</td>
-                  <td>7:38 AM</td>
-                  <td>7:38 PM</td>
-                  <td>8</td>
-                  <td>0</td>
-                  <td>250</td>
-                </tr>
-                <tr>
+                  <td>8/29/2017 08:20:30</td>
+                  <td>Valid Access</td>
                   <td>Marc Terrobias</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>11</td>
-                  <td>10</td>
-                  <td>369</td>
+                  <td>747</td>
+                  <td>Main Entrance</td>
                 </tr>
                 <tr>
+                  <td>8/29/2017 08:30:30</td>
+                  <td>Valid Access</td>
                   <td>Marc Terrobias</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>11</td>
-                  <td>10</td>
-                  <td>369</td>
+                  <td>747</td>
+                  <td>Office Entrance IN</td>
                 </tr>
                 <tr>
+                  <td>8/29/2017 08:40:30</td>
+                  <td>Valid Access</td>
                   <td>Marc Terrobias</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>11</td>
-                  <td>10</td>
-                  <td>369</td>
+                  <td>747</td>
+                  <td>Office Entrance OUT</td>
+                </tr>
+                <tr>
+                  <td>8/29/2017 08:50:30</td>
+                  <td>Valid Access</td>
+                  <td>Marc Terrobias</td>
+                  <td>747</td>
+                  <td>Main Entrance</td>
+                </tr>
+                <tr>
+                  <td>8/29/2017 09:20:30</td>
+                  <td>Valid Access</td>
+                  <td>Marc Terrobias</td>
+                  <td>747</td>
+                  <td>Office Entrance IN</td>
+                </tr>
+                <tr>
+                  <td>8/29/2017 09:30:30</td>
+                  <td>Valid Access</td>
+                  <td>Marc Terrobias</td>
+                  <td>747</td>
+                  <td>Office Entrance OUT</td>
+                </tr>
+                <tr>
+                  <td>8/29/2017 09:40:30</td>
+                  <td>Valid Access</td>
+                  <td>Marc Terrobias</td>
+                  <td>747</td>
+                  <td>Main Entrance</td>
                 </tr>
                 </tbody>
               </table>

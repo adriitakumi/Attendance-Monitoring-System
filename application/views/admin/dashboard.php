@@ -216,7 +216,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Upload File</a></li>
+            <li><a href="<?php echo site_url('admin/upload_file');?>"><i class="fa fa-circle-o"></i> Upload File</a></li>
           </ul>
         </li>
 
@@ -244,7 +244,7 @@
     <section class="content-header">
       <h1>
         Dashboard
-        <small>Time ins and time outs of Employees</small>
+        <small>&middot;Time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
@@ -261,7 +261,7 @@
             <div class="inner">
               <h3>154</h3>
 
-              <h4>Total Hours Worked <br>For This Month</h4>
+              <h4>Total Number of Employees Late<br>For This Month</h4>
             </div>
             <div class="icon">
               <i class="fa fa-flask"></i>
@@ -276,7 +276,7 @@
             <div class="inner">
               <h3>45</h3>
 
-              <h4>Total Minutes Late<br>For This Month</h4>
+              <h4>Total Number of Employees Overtimed<br>For This Month</h4>
             </div>
             <div class="icon">
               <i class="fa fa-book"></i>
@@ -311,6 +311,7 @@
           <div class="box box-success">
             <div class="box-header with-border">
               <h3 class="box-title">Bar Chart</h3>
+                <small> &nbsp; &middot; No. of lates and overtime this year</small>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -351,7 +352,8 @@
         <div class="col-md-6">
           <div class="box box-primary">
             <div class="box-header">
-              <h3 class="box-title">Time In and Time Outs</h3>
+              <h3 class="box-title">Total Number of Days</h3>
+              <small>&middot; Overtime and Late</small>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -359,69 +361,45 @@
                 <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Time IN</th>
-                  <th>Time OUT</th>
                   <th>Overtime</th>
                   <th>Late</th>
-                  <th>Total Hours</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                   <td>Rommel Faustino</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
                   <td>8</td>
                   <td>5</td>
-                  <td>180</td>
                 </tr>
                 <tr>
                   <td>Adrii Escaro</td>
-                  <td>8:40 AM</td>
-                  <td>7:20 PM</td>
                   <td>10</td>
                   <td>5</td>
-                  <td>200</td>
                 </tr>
                 <tr>
                   <td>Patrick Guzman</td>
-                  <td>8:20 AM</td>
-                  <td>8:20 PM</td>
                   <td>11</td>
                   <td>9</td>
-                  <td>175</td>
                 </tr>
                 <tr>
                   <td>Hakeem Polistico</td>
-                  <td>7:38 AM</td>
-                  <td>7:38 PM</td>
                   <td>8</td>
                   <td>0</td>
-                  <td>250</td>
                 </tr>
                 <tr>
                   <td>Marc Terrobias</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
                   <td>11</td>
                   <td>10</td>
-                  <td>369</td>
                 </tr>
                 <tr>
                   <td>Marc Terrobias</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
                   <td>11</td>
                   <td>10</td>
-                  <td>369</td>
                 </tr>
                 <tr>
                   <td>Marc Terrobias</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
                   <td>11</td>
                   <td>10</td>
-                  <td>369</td>
                 </tr>
                 </tbody>
               </table>
