@@ -25,7 +25,20 @@ class upload extends CI_Controller {
       if($this->upload->do_upload())
       {
          $this->load->library('csv_reader');
-         $result =   $this->csv_reader->parse_file('c:/wamp/www/slaxis/uploads/1.csv');//path to csv file
+         $result =   $this->csv_reader->parse_file('c:/wamp64/www/slaxis/uploads/1.csv');//path to csv file
+
+         $i=0;
+         foreach ($result as $row=>$res) {
+           $i++;
+           $datetime = $res['Date'];
+           $arr = explode(" ",$datetime); 
+           $date = $arr[0];
+           $time = $arr[1];
+           $dateExploded = explode("/",$date); 
+           $m = $dateExploded[0]; $d = $dateExploded[1]; $y = $dateExploded[2];
+           $db_date = $y.'/'.$m.'/'.$d.' '.$time;
+           $result[$i]['Date'] = $db_date;
+         }
 
          $this->global_model->insert_batch('csv', $result);
          $data['csvData'] =  $result;
