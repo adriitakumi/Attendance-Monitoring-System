@@ -1,31 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Sep 06, 2017 at 07:48 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `monitoring`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `records`
---
-
 CREATE TABLE `records` (
   `date` varchar(255) NOT NULL,
   `transaction` varchar(255) NOT NULL,
@@ -39,10 +11,6 @@ CREATE TABLE `records` (
 --
 
 INSERT INTO `records` (`date`, `transaction`, `person`, `encoded_id`, `door`) VALUES
-('', 'ALL ACCESS ATTEMPTS HISTORY REPORT', '', '', ''),
-('', 'between 2017-08-02 06:00:00 and 2017-08-29 21:00:59', '', '', ''),
-('', '', '', '', ''),
-('', 'Transaction', 'Person', 'Encoded ID', 'Door'),
 ('8/2/2017 7:25', 'Valid access', 'AMADOR, JON-GERARD ', '747', 'Main Entrance'),
 ('8/2/2017 7:25', 'Valid access', 'AMADOR, JON-GERARD ', '747', 'Office Entrance IN'),
 ('8/2/2017 7:40', 'Valid access', 'AMADOR, JON-GERARD ', '747', 'Office Entrance OUT'),
@@ -2064,7 +2032,3 @@ INSERT INTO `records` (`date`, `transaction`, `person`, `encoded_id`, `door`) VA
 ('8/29/2017 11:01', 'Valid access', 'BARTOLOME, MARIA IMELDA ', '531', 'Office Entrance IN'),
 ('8/29/2017 12:53', 'Valid access', 'BARTOLOME, MARIA IMELDA ', '531', 'Office Entrance OUT'),
 ('8/29/2017 12:53', 'Valid access', 'BARTOLOME, MARIA IMELDA ', '531', 'Main Entrance');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

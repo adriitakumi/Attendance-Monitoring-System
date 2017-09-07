@@ -357,7 +357,10 @@
 
 <script>
   // The Calender
-  $('#calendar').datepicker();
+  $('#calendar').datepicker().on('changeDate', function(event) {
+  // `e` here contains the extra attributes
+  alert(event.format(['mm-dd-yyyy']));
+});
 </script>
 
 <script>

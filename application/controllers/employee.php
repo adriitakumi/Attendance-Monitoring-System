@@ -16,7 +16,7 @@ class employee extends CI_Controller {
 
 	public function attendance()
 	{
-		$data['AMADOR']  = json_encode($this->global_model->getRow('records','encoded_id','747'));
+		$data['AMADOR']  = json_encode($this->global_model->getMult('records','encoded_id','747', 'DATE(date)', '8/2/2017'));
 		$this->load->view('employee/attendance', $data);
 	}
 
