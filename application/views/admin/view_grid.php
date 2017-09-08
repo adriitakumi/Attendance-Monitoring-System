@@ -215,8 +215,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
             <li><a href="<?php echo site_url('admin/upload_file');?>"><i class="fa fa-circle-o"></i> Upload File</a></li>
+            <li class="active"><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
           </ul>
         </li>
 
@@ -244,7 +244,7 @@
     <section class="content-header">
       <h1>
         Attendance
-        <small>&middot;Time ins and time outs of Employees</small>
+        <small>View Time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
@@ -255,13 +255,22 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+
 
         <div class="row" style="padding: 0 5px;">
-          <div class="container">
-            <div class="col-md-12"><center>
-              <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg">View Attendance as LIST</button>
-              <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg active" style="margin-left: 10%">View Attendance as GRID</a></center>
+          <div class="container-fluid">
+            <div class="col-md-9"><center>
+              <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg" style="margin-left: 35%">View Attendance as LIST</button>
+              <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg active" style="margin-left: 5%">View Attendance as GRID</a></center>
+            </div>
+
+            <div class="col-md-3">
+              <div class="input-group" style="padding-top: 5px; margin-left: 2%">
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                </span>
+              </div><!-- /input-group -->
             </div>
           </div>
         </div>
@@ -439,7 +448,6 @@
             </div>
           </div>
         </div>
-      </div>
     </section>
     <!-- /.content -->
   </div>

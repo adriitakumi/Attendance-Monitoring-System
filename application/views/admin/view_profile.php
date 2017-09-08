@@ -215,8 +215,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
             <li><a href="<?php echo site_url('admin/upload_file');?>"><i class="fa fa-circle-o"></i> Upload File</a></li>
+            <li class="active"><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
           </ul>
         </li>
 
@@ -244,7 +244,7 @@
     <section class="content-header">
       <h1>
         Attendance
-        <small>Time ins and time outs of Employees</small>
+        <small>View Time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
@@ -284,7 +284,7 @@
         <div class="col-xs-10">
           <div class="box box-primary">
             <div class="box-header">
-              <h3 class="box-title">Escaro's Time Ins and Time Outs</h3>
+              <h3 class="box-title">Escaro's Time Ins and Time Outs for this Month</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -292,77 +292,61 @@
                 <thead>
                 <tr>
                   <th>Date</th>
-                  <th>Name</th>
                   <th>Time IN</th>
                   <th>Time OUT</th>
                   <th>Overtime</th>
                   <th>Late</th>
-                  <th>Total Hours</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                   <td>8/29/2017</td>
-                  <td>Rommel Faustino</td>
                   <td>8:38 AM</td>
                   <td>7:30 PM</td>
                   <td>8</td>
                   <td>5</td>
-                  <td>180</td>
                 </tr>
                 <tr>
                   <td>8/29/2017</td>
-                  <td>Adrii Escaro</td>
                   <td>8:40 AM</td>
                   <td>7:20 PM</td>
                   <td>10</td>
                   <td>5</td>
-                  <td>200</td>
                 </tr>
                 <tr>
                   <td>8/29/2017</td>
-                  <td>Patrick Guzman</td>
                   <td>8:20 AM</td>
                   <td>8:20 PM</td>
                   <td>11</td>
                   <td>9</td>
-                  <td>175</td>
                 </tr>
                 <tr>
                   <td>8/29/2017</td>
-                  <td>Hakeem Polistico</td>
                   <td>7:38 AM</td>
                   <td>7:38 PM</td>
                   <td>8</td>
                   <td>0</td>
-                  <td>250</td>
                 </tr>
                 <tr>
                   <td>8/29/2017</td>
-                  <td>Marc Terrobias</td>
                   <td>9:38 AM</td>
                   <td>7:30 PM</td>
                   <td>11</td>
                   <td>10</td>
-                  <td>369</td>
                 </tr>
                 <tr>
                   <td>8/29/2017</td>
-                  <td>Marc Terrobias</td>
                   <td>9:38 AM</td>
                   <td>7:30 PM</td>
                   <td>11</td>
                   <td>10</td>
-                  <td>369</td>
                 </tr>
                 <tr>
-                  <td>8/29/2017</td>  
-                  <td>Marc Terrobias</td>
+                  <td>8/29/2017</td>
                   <td>9:38 AM</td>
                   <td>7:30 PM</td>
                   <td>11</td>
                   <td>10</td>
-                  <td>369</td>
                 </tr>
                 </tbody>
               </table>

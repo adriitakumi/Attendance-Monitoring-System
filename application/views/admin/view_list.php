@@ -215,8 +215,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
             <li><a href="<?php echo site_url('admin/upload_file');?>"><i class="fa fa-circle-o"></i> Upload File</a></li>
+            <li class="active"><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
           </ul>
         </li>
 
@@ -244,7 +244,7 @@
     <section class="content-header">
       <h1>
         Attendance
-        <small>&middot;Time ins and time outs of Employees</small>
+        <small>View Time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
@@ -257,10 +257,10 @@
     <section class="content">
 
       <div class="row" style="padding: 0 5px;">
-        <div class="container">
+        <div class="container-fluid">
           <div class="col-md-12"><center>
             <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg active" >View Attendance as LIST</button>
-            <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg" style="margin-left: 10%">View Attendance as GRID</a></center>
+            <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg" style="margin-left: 4%">View Attendance as GRID</a></center>
           </div>
         </div>
       </div>
@@ -278,62 +278,78 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Datetime</th>
-                  <th>Transaction</th>
-                  <th>Person</th>
-                  <th>Encoded ID</th>
-                  <th>Door</th>
+                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Time IN</th>
+                  <th>Time OUT</th>
+                  <th>Overtime</th>
+                  <th>Late</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                  <td>8/29/2017 08:20:30</td>
-                  <td>Valid Access</td>
+                  <td>8/29/2017</td>
                   <td>Marc Terrobias</td>
-                  <td>747</td>
-                  <td>Main Entrance</td>
+                  <td>Manager</td>
+                  <td>08:20:30</td>
+                  <td>18:20:30</td>
+                  <td>2</td>
+                  <td>3</td>
                 </tr>
                 <tr>
-                  <td>8/29/2017 08:30:30</td>
-                  <td>Valid Access</td>
+                  <td>8/29/2017</td>
                   <td>Marc Terrobias</td>
-                  <td>747</td>
-                  <td>Office Entrance IN</td>
+                  <td>Manager</td>
+                  <td>08:20:30</td>
+                  <td>18:20:30</td>
+                  <td>2</td>
+                  <td>3</td>
                 </tr>
                 <tr>
-                  <td>8/29/2017 08:40:30</td>
-                  <td>Valid Access</td>
+                  <td>8/29/2017</td>
                   <td>Marc Terrobias</td>
-                  <td>747</td>
-                  <td>Office Entrance OUT</td>
+                  <td>Manager</td>
+                  <td>08:20:30</td>
+                  <td>18:20:30</td>
+                  <td>2</td>
+                  <td>3</td>
                 </tr>
                 <tr>
-                  <td>8/29/2017 08:50:30</td>
-                  <td>Valid Access</td>
+                  <td>8/29/2017</td>
                   <td>Marc Terrobias</td>
-                  <td>747</td>
-                  <td>Main Entrance</td>
+                  <td>Manager</td>
+                  <td>08:20:30</td>
+                  <td>18:20:30</td>
+                  <td>2</td>
+                  <td>3</td>
                 </tr>
                 <tr>
-                  <td>8/29/2017 09:20:30</td>
-                  <td>Valid Access</td>
+                  <td>8/29/2017</td>
                   <td>Marc Terrobias</td>
-                  <td>747</td>
-                  <td>Office Entrance IN</td>
+                  <td>Manager</td>
+                  <td>08:20:30</td>
+                  <td>18:20:30</td>
+                  <td>2</td>
+                  <td>3</td>
                 </tr>
                 <tr>
-                  <td>8/29/2017 09:30:30</td>
-                  <td>Valid Access</td>
+                  <td>8/29/2017</td>
                   <td>Marc Terrobias</td>
-                  <td>747</td>
-                  <td>Office Entrance OUT</td>
+                  <td>Manager</td>
+                  <td>08:20:30</td>
+                  <td>18:20:30</td>
+                  <td>2</td>
+                  <td>3</td>
                 </tr>
                 <tr>
-                  <td>8/29/2017 09:40:30</td>
-                  <td>Valid Access</td>
+                  <td>8/29/2017</td>
                   <td>Marc Terrobias</td>
-                  <td>747</td>
-                  <td>Main Entrance</td>
+                  <td>Manager</td>
+                  <td>08:20:30</td>
+                  <td>18:20:30</td>
+                  <td>2</td>
+                  <td>3</td>
                 </tr>
                 </tbody>
               </table>

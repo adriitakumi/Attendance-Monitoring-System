@@ -236,8 +236,8 @@
         <small>Monitor your time ins and time outs</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Attendance</li>
+        <li> Home</a></li>
+        <li class="active"><a href="#"><i class="fa fa-calendar"></i>Attendance</a></li>
       </ol>
     </section>
 
@@ -279,11 +279,7 @@
           <!-- /.box -->
 
           <div style="padding-top: 20px;">
-            <a type="button" class="btn btn-primary btn-lg" style="width">
-              <span class="glyphicon glyphicon-print"></span> Go Back 
-            </a>
-            <button type="button" class="btn btn-lg btn-warning hidden-print" style="width:100%; margin-bottom: 10px;" onclick="window.print()">
-            <i class="glyphicon glyphicon-print">Print</i></button>
+            <button type="button" class="btn btn-lg btn-warning hidden-print" style="width:100%; margin-bottom: 10px;" onclick="window.print()">Print</button>
             <button type="button" class="btn btn-lg btn-success hidden-print" style="width:100%; margin-bottom: 10px;">Export to Excel</button>
             <button type="button" class="btn btn-lg btn-danger hidden-print" style="width:100%; margin-bottom: 10px;">Export to PDF</button>
           </div>

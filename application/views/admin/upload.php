@@ -19,6 +19,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/upload.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -215,8 +216,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
             <li class="active"><a href="<?php echo site_url('admin/upload_file');?> "><i class="fa fa-circle-o"></i> Upload File</a></li>
+            <li><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
           </ul>
         </li>
 
@@ -244,7 +245,7 @@
     <section class="content-header">
       <h1>
         Attendance
-        <small>&middot;Upload time ins and time outs of Employees</small>
+        <small>Upload time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
@@ -255,12 +256,124 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container">
+      <div class="container-fluid"> 
+        <div class="row">
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">Upload <strong>.CSV</strong> Files</div>
+                <div class="panel-body">
+                  <!-- Standard Form -->
+                  <h4>Select files from your computer</h4>
+                  <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+                    <div class="form-inline">
+                      <div class="form-group">
+                        <input type="file" name="files[]" id="js-upload-files" accept=".csv" multiple>
+                      </div>
+                      <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+                    </div>
+                  </form>
+                  <!-- Drop Zone -->
+                  <h4>Or drag and drop files below</h4>
+                  <div class="upload-drop-zone" id="drop-zone">
+                    Just drag and drop files here
+                  </div>
 
-      </div>      
+                  <!-- Progress Bar -->
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                      <span class="sr-only">60% Complete</span>
+                    </div>
+                  </div>
+
+                  <!-- Upload Finished -->
+                  <div class="js-upload-finished">
+                    <h3>Processed files</h3>
+                    <div class="list-group">
+                      <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
+                      <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Time In and Time Outs</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>Datetime</th>
+                      <th>Transaction</th>
+                      <th>Person</th>
+                      <th>Encoded ID</th>
+                      <th>Door</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>8/29/2017 08:20:30</td>
+                      <td>Valid Access</td>
+                      <td>Marc Terrobias</td>
+                      <td>747</td>
+                      <td>Main Entrance</td>
+                    </tr>
+                    <tr>
+                      <td>8/29/2017 08:30:30</td>
+                      <td>Valid Access</td>
+                      <td>Marc Terrobias</td>
+                      <td>747</td>
+                      <td>Office Entrance IN</td>
+                    </tr>
+                    <tr>
+                      <td>8/29/2017 08:40:30</td>
+                      <td>Valid Access</td>
+                      <td>Marc Terrobias</td>
+                      <td>747</td>
+                      <td>Office Entrance OUT</td>
+                    </tr>
+                    <tr>
+                      <td>8/29/2017 08:50:30</td>
+                      <td>Valid Access</td>
+                      <td>Marc Terrobias</td>
+                      <td>747</td>
+                      <td>Main Entrance</td>
+                    </tr>
+                    <tr>
+                      <td>8/29/2017 09:20:30</td>
+                      <td>Valid Access</td>
+                      <td>Marc Terrobias</td>
+                      <td>747</td>
+                      <td>Office Entrance IN</td>
+                    </tr>
+                    <tr>
+                      <td>8/29/2017 09:30:30</td>
+                      <td>Valid Access</td>
+                      <td>Marc Terrobias</td>
+                      <td>747</td>
+                      <td>Office Entrance OUT</td>
+                    </tr>
+                    <tr>
+                      <td>8/29/2017 09:40:30</td>
+                      <td>Valid Access</td>
+                      <td>Marc Terrobias</td>
+                      <td>747</td>
+                      <td>Main Entrance</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /container --> 
     </section>
-    <!-- /.content -->
-  </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
@@ -270,7 +383,6 @@
 
  </div>
 <!-- ./wrapper -->
-
 
 
 <!-- jQuery 3 -->
@@ -288,6 +400,7 @@
 <script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
+
 <script>
   $(function () {
     $('#example1').DataTable()
@@ -354,6 +467,46 @@ $(document).ready(function(){
             }
           });
         });
+</script>
+<script type="text/javascript">
++ function($) {
+    'use strict';
+
+    // UPLOAD CLASS DEFINITION
+    // ======================
+
+    var dropZone = document.getElementById('drop-zone');
+    var uploadForm = document.getElementById('js-upload-form');
+
+    var startUpload = function(files) {
+        console.log(files)
+    }
+
+    uploadForm.addEventListener('submit', function(e) {
+        var uploadFiles = document.getElementById('js-upload-files').files;
+        e.preventDefault()
+
+        startUpload(uploadFiles)
+    })
+
+    dropZone.ondrop = function(e) {
+        e.preventDefault();
+        this.className = 'upload-drop-zone';
+
+        startUpload(e.dataTransfer.files)
+    }
+
+    dropZone.ondragover = function() {
+        this.className = 'upload-drop-zone drop';
+        return false;
+    }
+
+    dropZone.ondragleave = function() {
+        this.className = 'upload-drop-zone';
+        return false;
+    }
+
+}(jQuery);
 </script>
 
 </body>

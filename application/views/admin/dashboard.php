@@ -204,7 +204,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active">
-          <a href="<?php echo site_url('employee/index'); ?>">
+          <a href="<?php echo site_url('admin/index'); ?>">
             <i class="fa fa-dashboard"></i><span> Dashboard</span>
           </a>
         </li>
@@ -215,8 +215,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
             <li><a href="<?php echo site_url('admin/upload_file');?>"><i class="fa fa-circle-o"></i> Upload File</a></li>
+            <li><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
           </ul>
         </li>
 
@@ -244,7 +244,7 @@
     <section class="content-header">
       <h1>
         Dashboard
-        <small>&middot;Time ins and time outs of Employees</small>
+        <small>Time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
@@ -261,10 +261,10 @@
             <div class="inner">
               <h3>154</h3>
 
-              <h4>Total Number of Employees Late<br>For This Month</h4>
+              <h4>Total Number of Employees <br> Late For This Month</h4>
             </div>
             <div class="icon">
-              <i class="fa fa-flask"></i>
+              <i class="ion ion-clock"></i>
             </div>
             <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -276,10 +276,10 @@
             <div class="inner">
               <h3>45</h3>
 
-              <h4>Total Number of Employees Overtimed<br>For This Month</h4>
+              <h4>Total Number of Employees <br> Overtimed For This Month</h4>
             </div>
             <div class="icon">
-              <i class="fa fa-book"></i>
+              <i class="ion ion-ios-time"></i>
             </div>
             <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -291,7 +291,7 @@
             <div class="inner">
               <h3>12</h3>
 
-              <h4>Total Hours Overtimed<br>For This Month</h4>
+              <h4>Total Number of<br>Employees</h4>
             </div>
             <div class="icon">
               <i class="fa fa-users"></i>
