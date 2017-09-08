@@ -25,7 +25,7 @@ class upload extends CI_Controller {
       if($this->upload->do_upload())
       {
          $this->load->library('csv_reader');
-         $result =   $this->csv_reader->parse_file('c:/wamp64/www/slaxis/uploads/1.csv');//path to csv file
+         $result =   $this->csv_reader->parse_file('c:/wamp/www/slaxis/uploads/1.csv');//path to csv file
 
          $i=0;
          foreach ($result as $row=>$res) {
@@ -49,15 +49,6 @@ class upload extends CI_Controller {
          $error = array('error' => $this->upload->display_errors());
          $this->load->view('backend/upload_view', $error);
       }
-   }
-
-   public function readExcel()
-   {
-        $this->load->library('csv_reader');
-        $result =   $this->csvreader->parse_file('c:/wamp/www/slaxis/uploads/1.csv');//path to csv file
-
-        $data['csvData'] =  $result;
-        $this->load->view('backend/upload_success', $data);  
    }
 }
 ?>
