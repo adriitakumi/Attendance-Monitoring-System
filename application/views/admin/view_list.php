@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
@@ -19,6 +23,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/skins/_all-skins.min.css">
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -226,8 +231,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Manage Employees</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Leaderboard</a></li>
+            <li><a href="<?php echo site_url('admin/manage_employees');?>"><i class="fa fa-circle-o"></i> Manage Employees</a></li>
+            <li><a href="<?php echo site_url('admin/leaderboard');?>"><i class="fa fa-circle-o"></i> Leaderboard</a></li>
           </ul>
         </li>
         <li class="header">LABELS</li>
@@ -256,112 +261,118 @@
     <!-- Main content -->
     <section class="content">
 
-      <div class="row" style="padding: 0 5px;">
+      <div class="row" style="padding: 10px;">
         <div class="container-fluid">
-          <div class="col-md-12"><center>
-            <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg active" >View Attendance as LIST</button>
-            <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg" style="margin-left: 4%">View Attendance as GRID</a></center>
-          </div>
+          <center>
+            <div class="col-md-6">
+              <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg active">View Attendance as LIST</a>
+            </div>
+            <div class="col-md-6">
+              <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg">View Attendance as GRID</a>
+            </div>
+          </center>
         </div>
       </div>
-
-      <br>
       
       <div class="row" style="padding: 0 5px;">
-        <div class="col-md-12">
-          <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Time In and Time Outs</h3>
+        <div class="col-md-5">
+          <!-- Calendar -->
+          <div class="box box-primary hidden-print">
+            <div class="box-header bg-light-blue-active" style="color: white;">
+              <i class="fa fa-calendar"></i>
+
+              <h3 class="box-title">Calendar</h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                  <!-- button with a dropdown -->
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                      <i class="fa fa-bars"></i></button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                      <li><a href="#">Add new event</a></li>
+                      <li><a href="#">Clear events</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">View calendar</a></li>
+                    </ul>
+                  </div>
+                  <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+                <!-- /. tools -->
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <!--The calendar -->
+                <div id="calendar" style="width: 100%"></div>
+              </div>
+              <!-- /.box-body -->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Time IN</th>
-                  <th>Time OUT</th>
-                  <th>Overtime</th>
-                  <th>Late</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>Marc Terrobias</td>
-                  <td>Manager</td>
-                  <td>08:20:30</td>
-                  <td>18:20:30</td>
-                  <td>2</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>Marc Terrobias</td>
-                  <td>Manager</td>
-                  <td>08:20:30</td>
-                  <td>18:20:30</td>
-                  <td>2</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>Marc Terrobias</td>
-                  <td>Manager</td>
-                  <td>08:20:30</td>
-                  <td>18:20:30</td>
-                  <td>2</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>Marc Terrobias</td>
-                  <td>Manager</td>
-                  <td>08:20:30</td>
-                  <td>18:20:30</td>
-                  <td>2</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>Marc Terrobias</td>
-                  <td>Manager</td>
-                  <td>08:20:30</td>
-                  <td>18:20:30</td>
-                  <td>2</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>Marc Terrobias</td>
-                  <td>Manager</td>
-                  <td>08:20:30</td>
-                  <td>18:20:30</td>
-                  <td>2</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>Marc Terrobias</td>
-                  <td>Manager</td>
-                  <td>08:20:30</td>
-                  <td>18:20:30</td>
-                  <td>2</td>
-                  <td>3</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
+            <!-- /.box -->
           </div>
-          <!-- /.box -->
+          <!-- /.col -->
+
+          <div class="col-md-7">
+            <div class="box box-primary">
+              <div class="box-header">
+                <h3 class="box-title">Time In and Time Outs</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Time IN</th>
+                    <th>Time OUT</th>
+                    <th>Overtime</th>
+                    <th>Late</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Marc Terrobias</td>
+                    <td>Manager</td>
+                    <td>08:20:30</td>
+                    <td>18:20:30</td>
+                    <td>2</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Marc Terrobias</td>
+                    <td>Manager</td>
+                    <td>08:20:30</td>
+                    <td>18:20:30</td>
+                    <td>2</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Marc Terrobias</td>
+                    <td>Manager</td>
+                    <td>08:20:30</td>
+                    <td>18:20:30</td>
+                    <td>2</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Marc Terrobias</td>
+                    <td>Manager</td>
+                    <td>08:20:30</td>
+                    <td>18:20:30</td>
+                    <td>2</td>
+                    <td>3</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.box-body -->
+            </div>
+          </div>  
         </div>
       </div>
     </section>
     <!-- /.content -->
-  </div>
+
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
@@ -382,13 +393,22 @@
 <script src="<?php echo base_url(); ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>bower_components/fastclick/lib/fastclick.js"></script>
+<!-- daterangepicker -->
+<script src="<?php echo base_url(); ?>bower_components/moment/min/moment.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- ChartJS -->
-<script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
+
+<script>
+  // The Calender
+  $('#calendar').datepicker();
+</script>
+
 <script>
   $(function () {
     $('#example1').DataTable()
