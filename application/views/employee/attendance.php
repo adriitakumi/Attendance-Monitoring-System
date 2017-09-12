@@ -236,8 +236,8 @@
         <small>Monitor your time ins and time outs</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Attendance</li>
+        <li> Home</a></li>
+        <li class="active"><a href="#"><i class="fa fa-calendar"></i>Attendance</a></li>
       </ol>
     </section>
 
@@ -376,7 +376,6 @@
 </script>
 
 <script>
-
   $('.daterange').daterangepicker({
     ranges   : {
       'Today'       : [moment(), moment()],
