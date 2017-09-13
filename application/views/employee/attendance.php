@@ -278,11 +278,50 @@
           </div>
           <!-- /.box -->
 
-          <div style="padding-top: 20px;">
+            <div class="row">
+
+              <div class="col-md-6 text-center">
+                <div class="box box-primary box-solid">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Time In</h3>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                    <p class="dailyTimeIn"></p>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+              <!-- /.col -->
+
+              <div class="col-md-6 text-center">
+                <div class="box box-primary box-solid">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Time Out</h3>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                    <p class="dailyTimeIn"></p>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+              <!-- /.col -->
+
+            </div>
+            <!-- /.row -->
+
+
+          <div>
             <button type="button" class="btn btn-lg btn-warning hidden-print" style="width:100%; margin-bottom: 10px;" onclick="window.print()">Print</button>
             <button type="button" class="btn btn-lg btn-success hidden-print" style="width:100%; margin-bottom: 10px;">Export to Excel</button>
             <button type="button" class="btn btn-lg btn-danger hidden-print" style="width:100%; margin-bottom: 10px;">Export to PDF</button>
           </div>
+
+          
+
         </div>
         <!-- /.col -->
 
@@ -303,7 +342,7 @@
                 </tr>
                 </thead>
                 <tbody id="tbody">
-                <tr id="tr">
+                <tr class="records">
                   <td>qwert</td>
                   <td>qwert</td>
                   <td>qwer</td>
@@ -318,6 +357,8 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+
+
       
 
     </section>
@@ -357,20 +398,61 @@
 
 <script>
   // The Calender
-  $('#calendar').datepicker();
+  $('#calendar').datepicker().on('changeDate', function(event) {
+  // `e` here contains the extra attributes
+  var date = event.format();
+  var arr = date.split("/");
+  var m = arr[0]; 
+  var d = arr[1]; 
+  var y = arr[2];
+  var newDate = y+'-'+m+'-'+d; 
+  var ajaxUrl = "<?php echo base_url("employee/ajax"); ?>"
+  var ajaxMinUrl = "<?php echo base_url("employee/ajaxMinUrl"); ?>"
+
+
+  
+
+  $.ajax({
+            url: ajaxUrl,
+            type: 'post',
+            dataType: 'json', 
+            data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+            success: function(result){
+              //alert(result);
+              $('#example1').DataTable();
+              $('.records').hide();
+
+              $.each(result, function(index, val){
+              $('#tbody').append('<tr class="records"><td>'+val.Date+'</td><td>'+val.Person+'</td><td> '+val.encoded_id+'</td><td> '+val.Door+'</td> </tr>');
+              });
+            }
+          });
+
+  $.ajax({
+            url: ajaxMinUrl,
+            type: 'post',
+            dataType: 'json', 
+            data: {'table': 'csv', 'data': 'Date'}, 
+            success: function(result){
+              console.log(result);
+
+              $('.dailyTimeIn').append('<p>TITE</p>');
+            }
+          });
+});
 </script>
 
-<script>
+<!--<script>
   $(function () {
     $('#example1').DataTable();
     $('#tr').hide();
     var arrofobject = <?php echo $AMADOR ?>;
 
     $.each(arrofobject, function(index, val){
-      $('#tbody').append('<tr id="hehe"><td>'+val.encoded_id+'</td><td>'+val.date+'</td><td> '+val.person+'</td><td> '+val.door+'</td> </tr>');
+      $('#tbody').append('<tr id="hehe"><td>'+val.encoded_id+'</td><td>'+val.Date+'</td><td> '+val.Person+'</td><td> '+val.Door+'</td> </tr>');
      });
     })
-</script>
+</script>-->
 
 <script>
   $('.daterange').daterangepicker({
