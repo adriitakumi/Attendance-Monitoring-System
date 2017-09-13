@@ -344,7 +344,7 @@
           </div>
           <!-- /.box -->
 
-          <div class="box box-primary">
+          <div class="box box-primary" id="ehh" style="display: none;">
             <div class="box-header">
               <h3 class="box-title">Time In and Time Outs</h3>
             </div>
@@ -438,22 +438,34 @@
             data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
             success: function(result){
               alert(JSON.stringify(result));
-              $('#example1').DataTable();
-              $('#noDate').hide();
-              $('#noRecords').hide();
-              $('#recordTable').show();
-              $('.records').hide();
+              
+              var leng = result.length;
+              var des = $('#example1').DataTable();
 
-              $.each(result, function(index, val){
-              $('#tbody').append('<tr class="records"><td>'+val.Date+'</td><td>'+val.Person+'</td><td> '+val.encoded_id+'</td><td> '+val.Door+'</td> </tr>');
-              });
-
-              if (result='[]'){
+              if (leng=0){
+                des.destroy(remove);
+                $('#ehh').css( 'display', 'none' );
                 $('#noDate').hide();
                 $('#noRecords').show();
                 $('.dailyTimeIn').html(" ");
                 $('.dailyTimeOut').html(" ");
-              }
+              } else {
+                $('#noDate').hide();
+                $('#noRecords').hide();
+                $('#recordTable').show();
+                $('.records').hide();
+                $('#example1').DataTable();
+                $('#ehh').css( 'display', 'block' );
+
+                $.each(result, function(index, val){
+                  $('#tbody').append('<tr class="records"><td>'+val.Date+'</td><td>'+val.Person+'</td><td> '+val.encoded_id+'</td><td> '+val.Door+'</td> </tr>');
+                });
+
+              
+
+            }
+
+
 
               $.ajax({
                         url: ajaxMinUrl,

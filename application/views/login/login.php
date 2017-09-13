@@ -36,8 +36,8 @@
 
       <?php echo form_open('login/'); ?>
       <div class="form-group has-feedback" style="margin-top: -30px;">
-        <input id="input_username" name="username" type="text" class="form-control" placeholder="Username">
-        <div class="text-danger" style="margin-top: -5px; margin-left: 5px;"><h6 id ="validation"><?php echo form_error('username'); ?></h6></div> 
+        <input id="input_email" name="email" type="text" class="form-control" placeholder="Email">
+        <div class="text-danger" style="margin-top: -5px; margin-left: 5px;"><h6 id ="validation"><?php echo form_error('email'); ?></h6></div> 
         <div class="text-danger" style="margin-top: -5px; margin-left: 5px;"><h6 id ="validation"><?php if(isset($userError)) echo $userError; ?></h6></div> 
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
