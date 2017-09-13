@@ -286,7 +286,7 @@
                     <h3 class="box-title">Time In</h3>
                   </div>
                   <!-- /.box-header -->
-                  <div class="box-body">
+                  <div class="box-body timeIn">
                     <p class="dailyTimeIn"></p>
                   </div>
                   <!-- /.box-body -->
@@ -301,8 +301,8 @@
                     <h3 class="box-title">Time Out</h3>
                   </div>
                   <!-- /.box-header -->
-                  <div class="box-body">
-                    <p class="dailyTimeIn"></p>
+                  <div class="box-body timeOut">
+                    <p class="dailyTimeOut"></p>
                   </div>
                   <!-- /.box-body -->
                 </div>
@@ -326,6 +326,24 @@
         <!-- /.col -->
 
         <div class="col-md-8">
+          <div class="box box-default bg-gray box-solid" id="noDate">
+            <div class="box-body" style="padding: 20px 40px 40px 40px; ">
+              <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>No date selected!</h2>
+              <h4>Please click on a date in the calendar to show records for that day.</h4>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <div hidden class="box box-default bg-gray box-solid">
+            <div class="box-body" style="padding: 20px 40px 40px 40px; ">
+              <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>Sorry!</h2>
+              <h4>There are no records for the selected date.</h4>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
           <div class="box box-primary">
             <div class="box-header">
               <h3 class="box-title">Time In and Time Outs</h3>
@@ -408,6 +426,7 @@
   var newDate = y+'-'+m+'-'+d; 
   var ajaxUrl = "<?php echo base_url("employee/ajax"); ?>"
   var ajaxMinUrl = "<?php echo base_url("employee/ajaxMinUrl"); ?>"
+  var ajaxMaxUrl = "<?php echo base_url("employee/ajaxMaxUrl"); ?>"
 
 
   
@@ -418,27 +437,93 @@
             dataType: 'json', 
             data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
             success: function(result){
-              //alert(result);
+              alert(JSON.stringify(result));
               $('#example1').DataTable();
+              $('#noDate').hide();
+              $('#noRecords').hide();
+              $('#recordTable').show();
               $('.records').hide();
 
               $.each(result, function(index, val){
               $('#tbody').append('<tr class="records"><td>'+val.Date+'</td><td>'+val.Person+'</td><td> '+val.encoded_id+'</td><td> '+val.Door+'</td> </tr>');
               });
+
+              if (result='[]'){
+                $('#noDate').hide();
+                $('#noRecords').show();
+                $('.dailyTimeIn').html(" ");
+                $('.dailyTimeOut').html(" ");
+              }
+
+              $.ajax({
+                        url: ajaxMinUrl,
+                        type: 'post',
+                        dataType: 'json', 
+                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+                        success: function(result){
+                          var timeIn = JSON.stringify(result);
+                          var splitDate = timeIn.split(" ");
+                          var newerDate = splitDate[1];
+                          var eh = newerDate.split("");
+                          var h1 = eh[0];
+                          var h2 = eh[1];
+                          var colon = eh[2];
+                          var m1 = eh[3];
+                          var m2 = eh[4];
+                          var newestDate = h1+h2+colon+m1+m2;
+
+                          $('.dailyTimeIn').hide();
+                          $('.timeIn').append('<p class="dailyTimeIn">'+newestDate+'</p>');
+                          
+                        }
+              });
+
+              $.ajax({
+                        url: ajaxMaxUrl,
+                        type: 'post',
+                        dataType: 'json', 
+                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+                        success: function(result){
+                          var timeOut = JSON.stringify(result);
+                          var splitDate = timeOut.split(" ");
+                          var newerDate = splitDate[1];
+                          var eh = newerDate.split("");
+                          var h1 = eh[0];
+                          var h2 = eh[1];
+                          var colon = eh[2];
+                          var m1 = eh[3];
+                          var m2 = eh[4];
+                          var newestDate = h1+h2+colon+m1+m2;
+
+                          $('.dailyTimeOut').hide();
+                          $('.timeOut').append('<p class="dailyTimeOut">'+newestDate+'</p>');
+                          
+                        }
+              });
+
+              /*var timeIn = $daily;
+              alert(timeIn);
+
+              $('.daily').hide();
+              $('.dailyTimeIn').append('<p class="daily">'+val.timeIn+'</p>');*/
+
+
+
+              //$.ajax({
+                       // url: ajaxMinUrl,
+                       // type: 'post',
+                        //dataType: 'json', 
+                        //data: {RESULT NUNG NAUNANG AJAX DAPAT DITO}, 
+                        //success: function(result){
+                          //tapos bale hahanapin niya yung first column, tas dun siya mag eexecute ng query na $this->db->select_min
+                         // $('.daily').hide();
+                         // $('.dailyTimeIn').append('<p class="daily">TITE</p>');
+                       // }
+              //});
+
             }
           });
 
-  $.ajax({
-            url: ajaxMinUrl,
-            type: 'post',
-            dataType: 'json', 
-            data: {'table': 'csv', 'data': 'Date'}, 
-            success: function(result){
-              console.log(result);
-
-              $('.dailyTimeIn').append('<p>TITE</p>');
-            }
-          });
 });
 </script>
 
