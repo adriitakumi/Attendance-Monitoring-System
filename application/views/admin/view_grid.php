@@ -226,8 +226,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Manage Employees</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Leaderboard</a></li>
+            <li><a href="<?php echo site_url('admin/manage_employees');?>"><i class="fa fa-circle-o"></i> Manage Employees</a></li>
+            <li><a href="<?php echo site_url('admin/leaderboard');?>"><i class="fa fa-circle-o"></i> Leaderboard</a></li>
           </ul>
         </li>
         <li class="header">LABELS</li>
@@ -257,15 +257,18 @@
     <section class="content">
 
 
-        <div class="row" style="padding: 0 5px;">
+        <div class="row" style="padding: 10px;">
           <div class="container-fluid">
-            <div class="col-md-9"><center>
-              <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg" style="margin-left: 35%">View Attendance as LIST</button>
-              <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg active" style="margin-left: 5%">View Attendance as GRID</a></center>
+            <center>
+            <div class="col-xs-4">
+              <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg">View Attendance as LIST</a>
             </div>
-
-            <div class="col-md-3">
-              <div class="input-group" style="padding-top: 5px; margin-left: 2%">
+            <div class="col-xs-3">
+              <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg active">View Attendance as GRID</a>
+            </div>
+            </center> 
+            <div class="col-xs-5">
+              <div class="input-group" style="padding-top: 5px; margin-left: 30%">
                 <input type="text" class="form-control" placeholder="Search">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
@@ -274,8 +277,6 @@
             </div>
           </div>
         </div>
-
-        <br>
 
         <div class="row">
           <div class="col-xs-2">
