@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Attendance</title>
+  <title>SilverLake Axis  | Employees</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -19,7 +19,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/upload.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -210,24 +209,24 @@
           </a>
         </li>
 
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#"><i class="fa fa-calendar"></i><span> Attendance</span>
             <span class="pull-right-container"></span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo site_url('admin/upload_file');?> "><i class="fa fa-circle-o"></i> Upload File</a></li>
+            <li><a href="<?php echo site_url('admin/upload_file');?>"><i class="fa fa-circle-o"></i> Upload File</a></li>
             <li><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#"><i class="fa fa-users"></i><span> Employees</span>
             <span class="pull-right-container"></span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('admin/manage_employees');?>"><i class="fa fa-circle-o"></i> Manage Employees</a></li>
+            <li class="active"><a href="<?php echo site_url('admin/manage_employees');?>"><i class="fa fa-circle-o"></i> Manage Employees</a></li>
             <li><a href="<?php echo site_url('admin/leaderboard');?>"><i class="fa fa-circle-o"></i> Leaderboard</a></li>
           </ul>
         </li>
@@ -244,56 +243,98 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Attendance
-        <small>Upload time ins and time outs of Employees</small>
+        Employees
+        <small>Manage employee's schedule</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
-        <li> Attendance</a></li>
-        <li class="active"><a href="#"><i class="fa fa-file"></i>Upload File</a></li>
+        <li> Employees</a></li>
+        <li class="active"><a href="#"><i class="fa fa-users"></i>Manage Employees</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid"> 
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">Upload <strong>.CSV</strong> Files</div>
-                <div class="panel-body">
-                  <!-- Standard Form -->
-                  <h4>Select files from your computer</h4>
-                  <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <input type="file" name="files[]" id="js-upload-files" accept=".csv" multiple>
-                      </div>
-                      <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
-                    </div>
-                  </form>
-                  <!-- Drop Zone -->
-                  <h4>Or drag and drop files below</h4>
-                  <div class="upload-drop-zone" id="drop-zone">
-                    Just drag and drop files here
-                  </div>
-                </div>
-              </div>
+      
+      <div class="row" style="padding: 0 5px;">
+        <div class="col-md-5">
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Time In and Time Outs</h3>
             </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Position</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>244</td>
+                  <td>Rommel Faustino</td>
+                  <td>Senior Manager</td>
+                </tr>
+                <tr>
+                  <td>245</td>
+                  <td>Hakeem Polistico</td>
+                  <td>Software Engineer</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
           </div>
+          <!-- /.box -->
+        </div>
+        <div class="col-md-7">
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Time In and Time Outs</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Position</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>244</td>
+                  <td>Rommel Faustino</td>
+                  <td>Senior Manager</td>
+                </tr>
+                <tr>
+                  <td>245</td>
+                  <td>Hakeem Polistico</td>
+                  <td>Software Engineer</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
       </div>
-      <!-- /container --> 
     </section>
+    <!-- /.content -->
+  </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
-
- </div>
 <!-- ./wrapper -->
+
 
 
 <!-- jQuery 3 -->
@@ -311,10 +352,10 @@
 <script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
-
 <script>
   $(function () {
     $('#example1').DataTable()
+    $('#example2').DataTable()
   })
 </script>
 
@@ -379,46 +420,7 @@ $(document).ready(function(){
           });
         });
 </script>
-<script type="text/javascript">
-+ function($) {
-    'use strict';
-
-    // UPLOAD CLASS DEFINITION
-    // ======================
-
-    var dropZone = document.getElementById('drop-zone');
-    var uploadForm = document.getElementById('js-upload-form');
-
-    var startUpload = function(files) {
-        console.log(files)
-    }
-
-    uploadForm.addEventListener('submit', function(e) {
-        var uploadFiles = document.getElementById('js-upload-files').files;
-        e.preventDefault()
-
-        startUpload(uploadFiles)
-    })
-
-    dropZone.ondrop = function(e) {
-        e.preventDefault();
-        this.className = 'upload-drop-zone';
-
-        startUpload(e.dataTransfer.files)
-    }
-
-    dropZone.ondragover = function() {
-        this.className = 'upload-drop-zone drop';
-        return false;
-    }
-
-    dropZone.ondragleave = function() {
-        this.className = 'upload-drop-zone';
-        return false;
-    }
-
-}(jQuery);
-</script>
 
 </body>
 </html>
+  

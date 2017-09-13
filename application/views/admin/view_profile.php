@@ -209,7 +209,7 @@
           </a>
         </li>
 
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#"><i class="fa fa-calendar"></i><span> Attendance</span>
             <span class="pull-right-container"></span>
             <i class="fa fa-angle-left pull-right"></i>
@@ -220,7 +220,7 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#"><i class="fa fa-users"></i><span> Employees</span>
             <span class="pull-right-container"></span>
             <i class="fa fa-angle-left pull-right"></i>
