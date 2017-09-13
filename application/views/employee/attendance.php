@@ -219,7 +219,13 @@
             <span>Attendance</span>
           </a>
         </li>
-         <li class="header">LABELS</li>
+        <li>
+          <a href="<?php echo site_url('employee/view_ranges');?>">
+            <i class="fa fa-list"></i>
+            <span>View Ranges</span>
+          </a>
+        </li>
+        <li class="header">LABELS</li>
       </ul>
     </section>
     <!-- /.sidebar -->

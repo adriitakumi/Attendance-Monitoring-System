@@ -291,10 +291,10 @@
             <div class="inner">
               <h3>12</h3>
 
-              <h4>Total Number of<br>Employees</h4>
+              <h4>Total Number of Employees<br>On-time For This Month</h4>
             </div>
             <div class="icon">
-              <i class="fa fa-users"></i>
+              <i class="ion ion-android-alarm-clock"></i>
             </div>
             <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
           </div>
