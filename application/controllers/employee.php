@@ -25,6 +25,11 @@ class employee extends CI_Controller {
 		$this->load->view('employee/profile');
 	}
 
+	public function view_ranges()
+	{
+		$this->load->view('employee/view_ranges');
+	}
+
 	public function ajax()
 	{
 		$table = $this->input->post('table');

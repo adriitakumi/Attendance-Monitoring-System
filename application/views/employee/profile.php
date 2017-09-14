@@ -49,89 +49,6 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="<?php echo base_url(); ?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
-          </li>
-          <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
-          <!-- Tasks: style can be found in dropdown.less -->
-          <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
-          </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -142,34 +59,18 @@
               <!-- User image -->
               <li class="user-header">
                 <img src="<?php echo base_url('images/alt_picture.jpg');?>" class="img-circle" alt="<?php echo base_url('images/alt_picture.jpg');?>">
-
                 <p>
                  <?php echo ucwords($this->session->first_name." ".$this->session->last_name." - ".$this->session->position) ?>
                   <small>Member since <?php echo $this->session->date_created ?></small>
                 </p>
               </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo site_url('employee/profile') ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo site_url('login/logout')?>" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -198,18 +99,24 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active">
+        <li>
           <a href="<?php echo site_url('employee/index'); ?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
         <li>
           <a href="<?php echo site_url('employee/attendance'); ?>">
-            <i class="fa fa-files-o"></i>
+            <i class="fa fa-calendar"></i>
             <span>Attendance</span>
           </a>
         </li>
-         <li class="header">LABELS</li>
+        <li>
+          <a href="<?php echo site_url('employee/view_ranges');?>">
+            <i class="fa fa-list"></i>
+            <span>View Ranges</span>
+          </a>
+        </li>
+        <li class="header">LABELS</li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -226,8 +133,8 @@
         <small>Everything about you</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Blank page</li>
+        <li> Home</li>
+        <li><a href="#"><i class="fa fa-user"></i>Profile</a></li>
       </ol>
     </section>
 
@@ -243,11 +150,11 @@
           <div class="box box-widget widget-user">
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-black" style="background: url('../dist/img/photo1.png') center center;">
-              <h3 class="widget-user-username">Elizabeth Pierce</h3>
-              <h5 class="widget-user-desc">Web Designer</h5>
+              <h3><?php echo ucwords($this->session->first_name." ".$this->session->last_name)?></h3>
+              <h5><?php echo ucwords($this->session->position) ?></h5>
             </div>
             <div class="widget-user-image">
-              <img class="img-circle" src="<?php echo base_url(); ?>dist/img/user3-128x128.jpg" alt="User Avatar">
+              <img class="img-circle" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="User Avatar">
             </div>
             <div class="box-footer">
               <div class="row">
@@ -289,12 +196,12 @@
               <div class="row" style="margin-left: 40px;">
 
                 <div class="col-md-4">
-                  <h4>Username:</h4>
+                  <h4>Email:</h4>
                 </div>
                 <!-- /.col -->
 
                 <div class="col-md-6">
-                  <h4>adriitakumi</h4>                  
+                  <h4><?php echo ($this->session->email)?></h4>                  
                 </div> 
                 <!-- /.col -->
 
@@ -329,7 +236,7 @@
                 <!-- /.col -->
 
                 <div class="col-md-6">
-                  <h4>Rommel Faustino</h4>                  
+                  <h4><?php echo ucwords($this->session->first_name." ".$this->session->last_name)?></h4>                  
                 </div> 
                 <!-- /.col -->
               </div>
@@ -342,7 +249,7 @@
                 <!-- /.col -->
 
                 <div class="col-md-6">
-                  <h4>Senior Manager - Technology and Infrastructure</h4>                  
+                  <h4><?php echo ucwords($this->session->position)?></h4>                  
                 </div> 
                 <!-- /.col -->
               </div>
@@ -355,20 +262,7 @@
                 <!-- /.col -->
 
                 <div class="col-md-6">
-                  <h4>09178011162</h4>                  
-                </div> 
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
-              <div class="row" style="margin-left: 40px;">              
-                <div class="col-md-4">
-                  <h4>Email:</h4>
-                </div>
-                <!-- /.col -->
-
-                <div class="col-md-6">
-                  <h4>rommel.faustino@silverlakeaxis.com</h4>                  
+                  <h4><?php echo ucwords($this->session->contact_number)?>  </h4>                  
                 </div> 
                 <!-- /.col -->
               </div>
@@ -408,17 +302,17 @@
       </div>
       <div class="modal-body modal-profile">
         <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('images/alt_picture.jpg'); ?>" alt="User profile picture">
-        <h3 id="name" class="profile-username text-center" >Hakeem Polistico</h3>
+        <h3 id="name" class="profile-username text-center" ><?php echo ucwords($this->session->first_name." ".$this->session->last_name)?></h3>
 
-        <p class="text-center" id="position" style="margin-top: -10px;">Employee</p>
+        <p class="text-center" id="position" style="margin-top: -10px;"><?php echo ucwords($this->session->position)?></p>
         <hr>
-        <p class="text-bold" style="margin-top: -15px;">Personal</p>
+        <p class="text-bold" style="margin-top: -15px;"> Personal</p>
         <div class="row" style="margin-left: 10px; margin-bottom: 15px;">
           <div class="col-md-4" style="margin-bottom: 10px;">
           Name:
           </div>
           <div class="col-md-6">
-          Rommel Faustino
+          <?php echo ucwords($this->session->first_name." ".$this->session->last_name)?>
           </div>
         </div>
         <div class="row" style="margin-left: 10px; margin-bottom: 15px;">
@@ -426,29 +320,27 @@
           Position:
           </div>
           <div class="col-md-6">
-          Senior Manager - Technology and Infrastructure
+          <?php echo ucwords($this->session->position)?>
           </div>
         </div>
         <div class="row" style="margin-left: 10px; margin-bottom: 15px;">
           <div class="col-md-4" style="margin-bottom: 10px;">
+            Email:
+          </div>
+          <div class="col-md-6">
+            <?php echo ($this->session->email)?>
+          </div>
+        </div>
+        <div class="row" style="margin-left: 10px; margin-bottom: 15px;">
+          <div class="col-md-4" style="margin-bottom: 20px;">
           Contact No:
           </div>
-          <div class="col-md-6">
-          09178011162
+          <div class="col-md-6" style="padding-bottom: : 10px;">
+            <input type="text" class="form-control" value="<?php echo $this->session->contact_number?>">
           </div>
         </div>
-        <div class="row" style="margin-left: 10px; margin-bottom: 15px;">
-          <div class="col-md-4" style="margin-bottom: 10px;">
-          Email:
-          </div>
-          <div class="col-md-6">
-          rommel.faustino@silverlakeaxis.com
-          </div>
-        </div>
-
-        <hr style="margin-top: 2px;">
-
         
+        <hr style="margin-top: 2px;">
 
       </div>
       <div class="modal-footer">
