@@ -326,7 +326,7 @@
         <!-- /.col -->
 
         <div class="col-md-8">
-          <div class="box box-default bg-gray box-solid" id="noDate">
+          <div class="box box-default boxes bg-gray box-solid" id="noDate">
             <div class="box-body" style="padding: 20px 40px 40px 40px; ">
               <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>No date selected!</h2>
               <h4>Please click on a date in the calendar to show records for that day.</h4>
@@ -335,7 +335,7 @@
           </div>
           <!-- /.box -->
 
-          <div hidden class="box box-default bg-gray box-solid">
+          <div class="box box-default bg-gray box-solid" id="noRecords" style="display: none;">
             <div class="box-body" style="padding: 20px 40px 40px 40px; ">
               <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>Sorry!</h2>
               <h4>There are no records for the selected date.</h4>
@@ -344,7 +344,7 @@
           </div>
           <!-- /.box -->
 
-          <div class="box box-primary" id="ehh" style="display: none;">
+          <div class="box boxes box-primary" id="ehh" style="display: none;">
             <div class="box-header">
               <h3 class="box-title">Time In and Time Outs</h3>
             </div>
@@ -442,14 +442,8 @@
               var leng = result.length;
               var des = $('#example1').DataTable();
 
-              if (leng=0){
-                des.destroy(remove);
-                $('#ehh').css( 'display', 'none' );
-                $('#noDate').hide();
-                $('#noRecords').show();
-                $('.dailyTimeIn').html(" ");
-                $('.dailyTimeOut').html(" ");
-              } else {
+              if (leng!=0){
+
                 $('#noDate').hide();
                 $('#noRecords').hide();
                 $('#recordTable').show();
@@ -461,9 +455,18 @@
                   $('#tbody').append('<tr class="records"><td>'+val.Date+'</td><td>'+val.Person+'</td><td> '+val.encoded_id+'</td><td> '+val.Door+'</td> </tr>');
                 });
 
-              
+              } else {
+
+                $('#noRecords').css( 'display', 'block' );
+                $('.boxes').css('display','none');
+                $('#example1').DataTable().destroy();
+                $('.dailyTimeIn').html(" ");
+                $('.dailyTimeOut').html(" ");
+             
 
             }
+
+           
 
 
 
