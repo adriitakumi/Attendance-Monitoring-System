@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Dashboard</title>
+  <title>SilverLake Axis | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -54,89 +54,6 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="<?php echo base_url(); ?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
-          </li>
-          <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
-          <!-- Tasks: style can be found in dropdown.less -->
-          <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
-          </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -149,32 +66,16 @@
                 <img src="<?php echo base_url('images/alt_picture.jpg');?>" class="img-circle" alt="<?php echo base_url('images/alt_picture.jpg');?>">
 
                 <p>
-                 <?php echo ucwords($this->session->first_name." ".$this->session->last_name." - ".$this->session->position) ?>
+                  <?php echo ucwords($this->session->first_name." ".$this->session->last_name." - ".$this->session->position) ?>
                   <small>Member since <?php echo $this->session->date_created ?></small>
                 </p>
               </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="<?php echo site_url('employee/profile') ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo site_url('login/logout')?>" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -247,7 +148,7 @@
 
       <div class="row" style="padding: 0 5px;">
         <div class="col-md-4">
-          <div class="small-box bg-green" data-toggle="modal" data-target="#stem" style="cursor: pointer;">
+          <div class="small-box bg-green">
             <div class="inner">
               <h3>154</h3>
 
@@ -256,13 +157,13 @@
             <div class="icon">
               <i class="fa fa-flask"></i>
             </div>
-            <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
+            <div class="small-box-footer" style="height: 25px"> </div>
           </div>
           <!-- /.small-box -->
         </div>
         <!-- /.col -->
         <div class="col-md-4">
-          <div class="small-box bg-maroon" data-toggle="modal" data-target="#gas" style="cursor: pointer;">
+          <div class="small-box bg-maroon">
             <div class="inner">
               <h3>45</h3>
 
@@ -271,13 +172,13 @@
             <div class="icon">
               <i class="fa fa-book"></i>
             </div>
-            <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
+            <div class="small-box-footer" style="height: 25px"> </div>
           </div>
           <!-- /.small-box -->
         </div>
         <!-- /.col -->
         <div class="col-md-4">
-          <div class="small-box bg-yellow" data-toggle="modal" data-target="#humss" style="cursor: pointer;">
+          <div class="small-box bg-yellow">
             <div class="inner">
               <h3>12</h3>
 
@@ -286,7 +187,7 @@
             <div class="icon">
               <i class="fa fa-users"></i>
             </div>
-            <a href="#" class="small-box-footer">Enroll <i class="fa fa-arrow-circle-right"></i></a>
+            <div class="small-box-footer" style="height: 25px"> </div>
           </div>
           <!-- /.small-box -->
         </div>
@@ -371,68 +272,6 @@
   $(function () {
     $('#example1').DataTable()
   })
-</script>
-
-<script>
-$(document).ready(function(){ 
-
-        $(".buttonView").click(function(){
-          var lrn = $(this).closest('tr').find('td:eq(0)').html(); 
-          $.ajax({
-            url: ajaxUrl,
-            type: 'post',
-            dataType: 'json', 
-            data: {'username' : username, 'table': 'users', 'set': 'username' }, 
-            success: function(result){
-              //alert(result);
-              $.each(result, function(index, val) {
-                $('#name').html(val.first_name +" "+ val.middle_name + " " + val.last_name);
-                $('#lrn').html(val.lrn);
-                $('#contact').html(val.contact);
-                $('#birth_date').html(val.birth_date);
-                $('#birth_place').html(val.birth_place);
-                $('#age').html(val.age);
-                $('#mother_tongue').html(val.mother_tongue);
-                $('#religion').html(val.religion);
-                $('#street').html(val.street);
-                $('#barangay').html(val.barangay+", ");
-                $('#city').html(val.city);
-                $('#province').html(val.province);
-                $('#sex').html(val.sex);
-                $('#father_name').html(val.father_name);
-                $('#father_contact').html(val.father_contact);
-                $('#mother_name').html(val.mother_name);
-                $('#mother_contact').html(val.mother_contact);
-                $('#guardian').html(val.guardian);
-                $('#relationship').html(val.relationship);
-                $('#guardian_contact').html(val.guardian_contact);  
-                $('#position').html('Grade '+val.grade+' Student');  
-                $('#modal-note').html(val.note);                   
-                $('.requirements-section').show();                     
-                $('#input-submit').show();                
-                $('#input-lrn').val(val.lrn);  
-              })
-            }
-          });
-
-          $.ajax({
-            url: ajaxReqUrl,
-            type: 'post',
-            dataType: 'json', 
-            data: {'lrn' : lrn, 'table': 'requirements', 'set': 'lrn' }, 
-            success: function(result){
-              //alert(result);
-              var requirements = [];
-              $.each(result, function(index, val) {
-               //alert(val.requirement);
-               requirements.push(val.requirement);
-
-              });
-              $('#modal-requirements').val(requirements);
-              $('#modal-requirements').val(requirements).trigger('change')       
-            }
-          });
-        });
 </script>
 
 <script type="text/javascript">

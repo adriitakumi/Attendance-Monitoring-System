@@ -9,7 +9,7 @@ class login extends CI_Controller {
 			redirect('employee/index');
 		}
 		else {
-			$this->form_validation->set_rules('username', 'Username', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
 				
 			if ($this->form_validation->run() == FALSE)
@@ -19,17 +19,18 @@ class login extends CI_Controller {
 			
 			else
 			{
-				$username = $this->input->post('username');
+				$email = $this->input->post('email');
 				$password = $this->input->post('password');
-				$result = $this->users_model->checkUserPassword($username, $password);
+				$result = $this->users_model->checkUserPassword($email, $password);
 
 				if(is_object($result)){
 					//print_r($result);
 					$userdata = array(
-					        'username'  => $result->username,
+					        'email'  => $result->email,
 					        'first_name'     =>  $result->first_name,
 					        'last_name'     =>  $result->last_name,
 					        'position'     =>  $result->position,
+					        'contact_number' => $result->contact_number,
 					        'date_created' => $result->date_created,
 					        'logged_in' => TRUE
 					);
@@ -38,7 +39,7 @@ class login extends CI_Controller {
 					redirect('employee/index');
 				}
 				else if($result==1){
-					$data['userError'] = "Username does not exist!";
+					$data['userError'] = "Email does not exist!";
 					$this->load->view('login/login', $data);
 				}
 				else if($result==2){
@@ -52,7 +53,7 @@ class login extends CI_Controller {
 
 	public function logout(){
 			session_destroy();
-			redirect(base_url(),refresh);	
+			redirect();	
 		}
 	
 
