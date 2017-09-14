@@ -6,8 +6,8 @@ class users_model extends CI_Model{
 		parent::__construct();
 	}
 
-	public function login ($username, $password){
-		$this->db->where('username',$username);
+	public function login ($email, $password){
+		$this->db->where('email',$email);
 		$result = $this->db->get('users');
 		
 		$result = $result->result_array();
@@ -23,8 +23,8 @@ class users_model extends CI_Model{
 		}	
 	}
 
-	public function checkUserPassword($username, $password){
-		$this->db->where('username',$username);
+	public function checkUserPassword($email, $password){
+		$this->db->where('email',$email);
 		$resultUsers = $this->db->get('users');
 		$countUser = $resultUsers->num_rows();
 
