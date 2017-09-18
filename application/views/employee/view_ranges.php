@@ -197,8 +197,8 @@
                       <th>Late</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
+                  <tbody id="tbody">
+                    <tr id="records">
                       <td>August 16, 2017</td>
                       <td>08:20:30</td>
                       <td>18:20:30</td>
@@ -241,6 +241,8 @@
 <!-- date-range-picker -->
 <script src="<?php echo base_url(); ?>bower_components/moment/min/moment.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -290,19 +292,82 @@ $(document).ready(function() {
 
     $('#daterange-btn').click(function(){
         console.log(startDate.format('D MMMM YYYY') + ' - ' + endDate.format('D MMMM YYYY'));
-        var lolo = startDate.format('YYYY'+'-'+'MM'+'-'+'DD'+' '+'00:00:00');
-        var lola = endDate.format('YYYY'+'-'+'MM'+'-'+'DD'+' '+'00:00:00');
-        var ajaxViewRange = "<?php echo base_url("employee/ajaxViewRange"); ?>"
-        alert(lolo);
+        var lolo = startDate.format('YYYY'+'-'+'MM'+'-'+'DD');
+        var lola = endDate.format('YYYY'+'-'+'MM'+'-'+'DD');
+        var ajaxArrObj = "<?php echo base_url("employee/ajaxArrObj"); ?>"
+        var ajaxMinUrl = "<?php echo base_url("employee/ajaxMinUrl"); ?>"
+        var ajaxMaxUrl = "<?php echo base_url("employee/ajaxMaxUrl"); ?>"
 
         $.ajax({
-            url: ajaxViewRange,
+            url: ajaxArrObj,
             type: 'post',
             dataType: 'json', 
-            data: {'value1' : lolo, 'table': 'csv', 'set': 'Date', 'value2': 'lola'}, 
+            data: {'date1' : lolo, 'date2': lola}, 
             success: function(result){
-              
-              alert(result);
+
+              $.each(result, function(index, val){
+                    var strDate = val.split("");
+                    var y1 = strDate[0];
+                    var y2 = strDate[1];
+                    var y3 = strDate[2];
+                    var y4 = strDate[3];
+                    var m1 = strDate[4];
+                    var m2 = strDate[5];
+                    var d1 = strDate[6];
+                    var d2 = strDate[7];
+                    var newStrDate = y1+y2+y3+y4+'-'+m1+m2+'-'+d1+d2;
+                    var tableDate = m1+m2+'-'+d1+d2+'-'+y1+y2+y3+y4;
+
+                    
+
+                    $.ajax({
+                        url: ajaxMinUrl,
+                        type: 'post',
+                        dataType: 'json', 
+                        data: {'value': newStrDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+                        success: function(result){
+                          
+                          var timeIn = JSON.stringify(result);
+                          var splitDate = timeIn.split(" ");
+                          var newerDate = splitDate[1];
+                          var eh = newerDate.split("");
+                          var h1 = eh[0];
+                          var h2 = eh[1];
+                          var colon = eh[2];
+                          var m1 = eh[3];
+                          var m2 = eh[4];
+                          var newestDateIn = h1+h2+colon+m1+m2;
+
+                          $.ajax({
+                              url: ajaxMaxUrl,
+                              type: 'post',
+                              dataType: 'json', 
+                              data: {'value' : newStrDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+                              success: function(result){
+                                var timeOut = JSON.stringify(result);
+                                var splitDate = timeOut.split(" ");
+                                var newerDate = splitDate[1];
+                                var eh = newerDate.split("");
+                                var h1 = eh[0];
+                                var h2 = eh[1];
+                                var colon = eh[2];
+                                var m1 = eh[3];
+                                var m2 = eh[4];
+                                var newestDateOut = h1+h2+colon+m1+m2;
+
+                                $('#records').hide();
+                                $('#example1').DataTable();
+                                
+                                $('#tbody').append('<tr class="records"><td>'+tableDate+'</td><td>'+newestDateIn+'</td><td> '+newestDateOut+'</td><td></tr>');
+                              }
+                        });
+                      }
+                    });
+                    
+
+              });
+
+
 
             }
         });
