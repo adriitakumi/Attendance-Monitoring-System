@@ -152,84 +152,35 @@
     <!-- Main content -->
     <section class="content">
       <div class="row" style="padding: 0 5px;">
-        <div class="col-md-6">
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Time in and Time out for:</h3>
-            </div>
-            <div class="box-body">
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="form-group">
-                    <label>Month:</label>
-                    <select class="form-control">
-                      <option>Select Month:</option>
-                      <option>January</option>
-                      <option>February</option>
-                      <option>March</option>
-                      <option>April</option>
-                      <option>May</option>
-                      <option>June</option>
-                      <option>July</option>
-                      <option>August</option>
-                      <option>September</option>
-                      <option>October</option>
-                      <option>November</option>
-                      <option>December</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="form-group">
-                    <label>Week:</label>
-                    <select class="form-control">
-                      <option>Select Week:</option>
-                      <option>Week 1</option>
-                      <option>Week 2</option>
-                      <option>Week 3</option>
-                      <option>Week 4</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <button class="btn btn-flat btn-primary pull-right">Go</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Time in and Time out for Specific Range:</h3>
             </div>
             <div class="box-body">
-              <div class="row">
-                <div class="col-xs-6">
-                  
-                  <!-- Date range -->
-                  <div class="form-group">
-                    <label>Date range:</label>
+              <div class="form-group">
+                <label>Date range:</label>
 
-                    <div class="input-group" style="width: 210%">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right" id="reservation">
-                    </div>
-                    <!-- /.input group -->
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
                   </div>
-                  <!-- /.form group -->
-
+                  <input type="text" class="form-control pull-right" id="reservation">
                 </div>
+                <!-- /.input group -->
               </div>
+              <!-- /.form group -->
 
-              <button class="btn btn-flat btn-primary pull-right">Go</button>
+              <button class="btn btn-flat btn-primary pull-right" id="daterange-btn">Go</button>
             </div>
+            <!-- /.box-body -->
+
           </div>
+          <!-- /. box -->
         </div>
-      </div>
-      <div class="row" style="padding: 0 5px">
-        <div class="col-md-12">
+        <!-- /.col -->
+
+        <div class="col-md-8">
           <div class="box box-primary">
               <div class="box-header">
                 <h3 class="box-title">Time In and Time Outs</h3>
@@ -238,50 +189,32 @@
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Time IN</th>
-                    <th>Time OUT</th>
-                    <th>Overtime</th>
-                    <th>Late</th>
-                  </tr>
+                    <tr>
+                      <th>Date</th>
+                      <th>Time IN</th>
+                      <th>Time OUT</th>
+                      <th>Overtime</th>
+                      <th>Late</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>August 16, 2017</td>
-                    <td>08:20:30</td>
-                    <td>18:20:30</td>
-                    <td>2</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>August 16, 2017</td>
-                    <td>08:20:30</td>
-                    <td>18:20:30</td>
-                    <td>2</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>August 16, 2017</td>
-                    <td>08:20:30</td>
-                    <td>18:20:30</td>
-                    <td>2</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>August 16, 2017</td>
-                    <td>08:20:30</td>
-                    <td>18:20:30</td>
-                    <td>2</td>
-                    <td>3</td>
-                  </tr>
+                    <tr>
+                      <td>August 16, 2017</td>
+                      <td>08:20:30</td>
+                      <td>18:20:30</td>
+                      <td>2</td>
+                      <td>3</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
               <!-- /.box-body -->
             </div>
+            <!-- /. box -->
         </div>
+        <!-- /.col -->
       </div>
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
@@ -308,8 +241,6 @@
 <!-- date-range-picker -->
 <script src="<?php echo base_url(); ?>bower_components/moment/min/moment.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -325,35 +256,60 @@
   })
 </script>
 
-<script>
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
+<script type="text/javascript">
+var startDate;
+var endDate;
 
-    //Date picker
-    $('#datepicker').datepicker({
-      autoclose: true
-    })
-</script>
+$(document).ready(function() {
+    $('#reservation').daterangepicker(
+       {
+          startDate: moment().subtract('days', 29),
+          endDate: moment(),
+          showDropdowns: true,
+          showWeekNumbers: true,
+          timePicker: false,
+          timePickerIncrement: 1,
+          timePicker12Hour: true,
+          opens: 'left',
+          buttonClasses: ['btn btn-default'],
+          applyClass: 'btn-small btn-primary',
+          cancelClass: 'btn-small',
+          format: 'DD/MM/YYYY'
+       },
+       function(start, end) {
+        console.log("Callback has been called!");
+        $('#reportrange span').html(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'));
+        startDate = start;
+         endDate = end;    
+
+       }
+    );
+
+    //Set the initial state of the picker label
+    $('#reservation span').html(moment().subtract(29, 'days').format('D MMMM YYYY') + ' - ' + moment().format('D MMMM YYYY'));
+
+    $('#daterange-btn').click(function(){
+        console.log(startDate.format('D MMMM YYYY') + ' - ' + endDate.format('D MMMM YYYY'));
+        var lolo = startDate.format('YYYY'+'-'+'MM'+'-'+'DD'+' '+'00:00:00');
+        var lola = endDate.format('YYYY'+'-'+'MM'+'-'+'DD'+' '+'00:00:00');
+        var ajaxViewRange = "<?php echo base_url("employee/ajaxViewRange"); ?>"
+        alert(lolo);
+
+        $.ajax({
+            url: ajaxViewRange,
+            type: 'post',
+            dataType: 'json', 
+            data: {'value1' : lolo, 'table': 'csv', 'set': 'Date', 'value2': 'lola'}, 
+            success: function(result){
+              
+              alert(result);
+
+            }
+        });
+
+    });
+});
+</script> 
 
 </body>
 </html>
