@@ -189,7 +189,7 @@
             <div class="row">
 
               <div class="col-md-6 text-center">
-                <div class="box box-primary box-solid">
+                <div class="box box-primary box-solid hidden-print">
                   <div class="box-header with-border">
                     <h3 class="box-title">Time In</h3>
                   </div>
@@ -204,13 +204,13 @@
               <!-- /.col -->
 
               <div class="col-md-6 text-center">
-                <div class="box box-primary box-solid">
+                <div class="box box-primary box-solid hidden-print">
                   <div class="box-header with-border">
                     <h3 class="box-title">Time Out</h3>
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
-                    <p class="dailyTimeIn"></p>
+                    <p class="dailyTimeOut"></p>
                   </div>
                   <!-- /.box-body -->
                 </div>
@@ -314,8 +314,6 @@
   var ajaxMinUrl = "<?php echo base_url("employee/ajaxMinUrl"); ?>"
 
 
-  
-
   $.ajax({
             url: ajaxUrl,
             type: 'post',
@@ -341,38 +339,11 @@
               console.log(result);
 
               $('.dailyTimeIn').append('<p>TITE</p>');
+              $('.dailyTimeOut').append('<p>TITE</p>');
             }
           });
 });
 </script>
 
-<!--<script>
-  $(function () {
-    $('#example1').DataTable();
-    $('#tr').hide();
-    var arrofobject = <?php echo $AMADOR ?>;
-
-    $.each(arrofobject, function(index, val){
-      $('#tbody').append('<tr id="hehe"><td>'+val.encoded_id+'</td><td>'+val.Date+'</td><td> '+val.Person+'</td><td> '+val.Door+'</td> </tr>');
-     });
-    })
-</script>-->
-
-<script>
-  $('.daterange').daterangepicker({
-    ranges   : {
-      'Today'       : [moment(), moment()],
-      'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-      'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-      'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-      'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    },
-    startDate: moment().subtract(29, 'days'),
-    endDate  : moment()
-  }, function (start, end) {
-    window.alert('You chose: ' + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-  });
-</script>
 </body>
 </html>
