@@ -212,7 +212,7 @@
             </div>
             <div class="box-body">
               <div class="chart">
-                <canvas id="barChart" style="height:230px"></canvas>
+                <canvas id="barChart" style="height:300px"></canvas>
               </div>
             </div>
             <!-- /.box-body -->
