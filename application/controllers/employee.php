@@ -43,11 +43,32 @@ class employee extends CI_Controller {
 	public function ajaxMinUrl()
 	{
 		$table = $this->input->post('table');
-		$data = $this->input->post('data');
-		$records = json_encode($this->global_model->getMin($table, $data));
+		$set = $this->input->post('set');
+		$value = $this->input->post('value');
+		$wildcard = $this->input->post('wildcard');
+		$records = json_encode($this->global_model->getMin($table, $set, $value, $wildcard, 'Date'));
 		echo $records;
 	}
 
+	public function ajaxMaxUrl()
+	{
+		$table = $this->input->post('table');
+		$set = $this->input->post('set');
+		$value = $this->input->post('value');
+		$wildcard = $this->input->post('wildcard');
+		$records = json_encode($this->global_model->getMax($table, $set, $value, $wildcard, 'Date'));
+		echo $records;
+	}
+
+	public function ajaxViewRange()
+	{
+		$table = $this->input->post('table');
+		$set = $this->input->post('set');
+		$value1 = $this->input->post('value1');
+		$value2 = $this->input->post('value2');
+		$records = json_encode($this->global_model->getRange($table, $set, $value1, $value2));
+		echo $records;
+	}
 	
 
 }

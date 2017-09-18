@@ -28,6 +28,11 @@ class admin extends CI_Controller {
 		$this->load->view('admin/upload');
 	}
 
+	public function upload()
+	{
+		$this->load->view('admin/upload2');
+	}
+
 	public function manage_employees()
 	{
 		$this->load->view('admin/manage_employees');
