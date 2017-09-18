@@ -60,6 +60,15 @@ class employee extends CI_Controller {
 		echo $records;
 	}
 
+	public function ajaxViewRange()
+	{
+		$table = $this->input->post('table');
+		$set = $this->input->post('set');
+		$value1 = $this->input->post('value1');
+		$value2 = $this->input->post('value2');
+		$records = json_encode($this->global_model->getRange($table, $set, $value1, $value2));
+		echo $records;
+	}
 	
 
 }

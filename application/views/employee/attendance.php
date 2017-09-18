@@ -341,7 +341,6 @@
             dataType: 'json', 
             data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
             success: function(result){
-              alert(JSON.stringify(result));
               
               var leng = result.length;
               var des = $('#example1').DataTable();
