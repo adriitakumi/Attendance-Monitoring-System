@@ -330,31 +330,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Marc Terrobias</td>
-                    <td>Manager</td>
-                    <td>08:20:30</td>
-                    <td>18:20:30</td>
-                    <td>2</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>Marc Terrobias</td>
-                    <td>Manager</td>
-                    <td>08:20:30</td>
-                    <td>18:20:30</td>
-                    <td>2</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>Marc Terrobias</td>
-                    <td>Manager</td>
-                    <td>08:20:30</td>
-                    <td>18:20:30</td>
-                    <td>2</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
+                  <tr class="list">
                     <td>Marc Terrobias</td>
                     <td>Manager</td>
                     <td>08:20:30</td>
