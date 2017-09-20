@@ -178,7 +178,7 @@
                   <td>Senior Manager</td>
                   <td></td>
                   <td></td>
-                  <td><button type="button" class="btn btn-block btn-info btn-flat btn-xs buttonView" style="max-width: 100px; display:block; margin: auto;">Edit</button></td>
+                  <td><button type="button" class="btn btn-block btn-info btn-flat btn-xs buttonView" style="max-width: 100px; display:block; margin: auto;" data-toggle="modal" data-target="#employee_modal">Edit</button></td>
                 </tr>
                 </tbody>
               </table>
@@ -201,6 +201,59 @@
   </footer>
 <!-- ./wrapper -->
 
+
+<div class="modal modal-info fade" id="employee_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Manage Schedule</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <!-- text input -->
+          <div class="form-group">
+            <label>Employee ID:</label>
+            <input type="text" class="form-control" placeholder="Enter ...">
+          </div>
+          <!-- text input -->
+          <div class="form-group">
+            <label>Name:</label>
+            <input type="text" class="form-control" placeholder="Enter ...">
+          </div>
+          <!-- text input -->
+          <div class="form-group">
+            <label>Position:</label>
+            <input type="text" class="form-control" placeholder="Enter ...">
+          </div>
+          <div class="row">
+            <div class="bootstrap-timepicker">
+              <div class="col-xs-6">
+                <label>Time IN:</label>
+                <input type="text" class="form-control timepicker">
+              </div>
+            </div>
+            <div class="bootstrap-timepicker">
+              <div class="col-xs-6">
+                <label>Time OUT:</label>
+                <input type="text" class="form-control timepicker">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 
 <!-- jQuery 3 -->
