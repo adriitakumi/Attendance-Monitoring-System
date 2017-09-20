@@ -8,6 +8,15 @@ class csv_reader {
     var $enclosure = '"';/** enclosure used to decorate each field */
     var $max_row_size = 4096;/** maximum row size to be used for decoding */
 
+    /*function csv_slice($p_Filepath, $offset = 0, $length = 0) {
+    $i = 0;
+    while (false !== ($row = fgetcsv($p_Filepath))) {
+        if ($i++ < $offset) continue;
+        if (0 < $length && $length <= ($i - $offset - 1)) break;
+        yield $row;
+    }
+    }*/
+
     function parse_file($p_Filepath) {
 
         $file = fopen($p_Filepath, 'r');
