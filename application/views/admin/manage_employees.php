@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Timepicker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -151,33 +153,71 @@
       
       <div class="row" style="padding: 0 5px;">
         <div class="col-md-5">
-          <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Time In and Time Outs</h3>
+          <!-- general form elements disabled -->
+          <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Manage Schedule</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Position</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>244</td>
-                  <td>Rommel Faustino</td>
-                  <td>Senior Manager</td>
-                </tr>
-                <tr>
-                  <td>245</td>
-                  <td>Hakeem Polistico</td>
-                  <td>Software Engineer</td>
-                </tr>
-                </tbody>
-              </table>
+              <form role="form">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Employee ID:</label>
+                  <input type="text" class="form-control" placeholder="244" readonly>
+                </div>
+              </form>
+              <form role="form">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Name:</label>
+                  <input type="text" class="form-control" placeholder="Rommel Faustino" readonly>
+                </div>
+              </form>
+              <form role="form">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Position:</label>
+                  <input type="text" class="form-control" placeholder="Senior Manager" readonly>
+                </div>
+              </form>
+              <div class="bootstrap-timepicker">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="form-group">
+                      <label>Time IN:</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control timepicker" > 
+                        <div class="input-group-addon">
+                          <i class="fa fa-clock-o"></i>
+                        </div>
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                  </div>
+                  <!-- /. col -->
+                  <div class="bootstrap-timepicker">
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                        <label>Time OUT:</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control timepicker">
+                          <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                          </div>
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                      <!-- /.form group -->
+                    </div>
+                    <!-- /. col -->
+                  </div>
+                  <!-- div timepicker -->
+                </div>
+                <!-- /. row -->
+              </div>
+              <!-- /. bootstrap timepicker -->
             </div>
             <!-- /.box-body -->
           </div>
@@ -186,28 +226,27 @@
         <div class="col-md-7">
           <div class="box box-primary">
             <div class="box-header">
-              <h3 class="box-title">Time In and Time Outs</h3>
+              <h3 class="box-title">Employees</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>Employee ID</th>
                   <th>Name</th>
                   <th>Position</th>
+                  <th>Time IN</th>
+                  <th>Time OUT</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody style="cursor:pointer;">
                 <tr>
                   <td>244</td>
                   <td>Rommel Faustino</td>
                   <td>Senior Manager</td>
-                </tr>
-                <tr>
-                  <td>245</td>
-                  <td>Hakeem Polistico</td>
-                  <td>Software Engineer</td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 </tbody>
               </table>
@@ -216,7 +255,9 @@
           </div>
           <!-- /.box -->
         </div>
+        <!-- /.col -->
       </div>
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
@@ -245,74 +286,22 @@
 <script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
+<!-- Timepicker -->
+<script src="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
 <script>
   $(function () {
-    $('#example1').DataTable()
     $('#example2').DataTable()
   })
 </script>
 
 <script>
-$(document).ready(function(){ 
-
-        $(".buttonView").click(function(){
-          var lrn = $(this).closest('tr').find('td:eq(0)').html(); 
-          $.ajax({
-            url: ajaxUrl,
-            type: 'post',
-            dataType: 'json', 
-            data: {'username' : username, 'table': 'users', 'set': 'username' }, 
-            success: function(result){
-              //alert(result);
-              $.each(result, function(index, val) {
-                $('#name').html(val.first_name +" "+ val.middle_name + " " + val.last_name);
-                $('#lrn').html(val.lrn);
-                $('#contact').html(val.contact);
-                $('#birth_date').html(val.birth_date);
-                $('#birth_place').html(val.birth_place);
-                $('#age').html(val.age);
-                $('#mother_tongue').html(val.mother_tongue);
-                $('#religion').html(val.religion);
-                $('#street').html(val.street);
-                $('#barangay').html(val.barangay+", ");
-                $('#city').html(val.city);
-                $('#province').html(val.province);
-                $('#sex').html(val.sex);
-                $('#father_name').html(val.father_name);
-                $('#father_contact').html(val.father_contact);
-                $('#mother_name').html(val.mother_name);
-                $('#mother_contact').html(val.mother_contact);
-                $('#guardian').html(val.guardian);
-                $('#relationship').html(val.relationship);
-                $('#guardian_contact').html(val.guardian_contact);  
-                $('#position').html('Grade '+val.grade+' Student');  
-                $('#modal-note').html(val.note);                   
-                $('.requirements-section').show();                     
-                $('#input-submit').show();                
-                $('#input-lrn').val(val.lrn);  
-              })
-            }
-          });
-
-          $.ajax({
-            url: ajaxReqUrl,
-            type: 'post',
-            dataType: 'json', 
-            data: {'lrn' : lrn, 'table': 'requirements', 'set': 'lrn' }, 
-            success: function(result){
-              //alert(result);
-              var requirements = [];
-              $.each(result, function(index, val) {
-               //alert(val.requirement);
-               requirements.push(val.requirement);
-
-              });
-              $('#modal-requirements').val(requirements);
-              $('#modal-requirements').val(requirements).trigger('change')       
-            }
-          });
-        });
+//Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
+    }); 
 </script>
+
 
 </body>
 </html>
