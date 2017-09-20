@@ -123,16 +123,7 @@
           </ul>
         </li>
 
-        <li class="treeview">
-          <a href="#"><i class="fa fa-users"></i><span> Employees</span>
-            <span class="pull-right-container"></span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('admin/manage_employees');?>"><i class="fa fa-circle-o"></i> Manage Employees</a></li>
-            <li><a href="<?php echo site_url('admin/leaderboard');?>"><i class="fa fa-circle-o"></i> Leaderboard</a></li>
-          </ul>
-        </li>
+        <li><a href="<?php echo site_url('admin/manage_employees');?>"><i class="fa fa-users"></i> Manage Employees</a></li>
         <li class="header">LABELS</li>
       </ul>
     </section>
@@ -166,19 +157,17 @@
                 <div class="panel-body" style="height: 200%">
                   <!-- Standard Form -->
                   <h4>Select files from your computer</h4>
-                  <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
                     <div class="form-inline">
                       <div class="form-group">
-                        <input type="file" name="files[]" id="js-upload-files" accept=".csv" multiple>
+                        <?php echo form_open_multipart('upload/do_upload');?>
+                        <?php echo "<input type='file' id='upload' name='userfile' size='20' accept='.csv'/>"; ?>
                       </div>
-                      <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+                        <?php echo "<input type='submit' class='btn btn-sm btn-primary' name='submit' value='Upload File' /> ";?>
                     </div>
-                  </form>
                   <!-- Drop Zone -->
                   <h4>Or drag and drop files below</h4>
                   <div class="upload-drop-zone" id="drop-zone">
-                    Select files from your computer &nbsp;
-                    <input type="file" name="files[]" id="js-upload-files" accept=".csv" multiple>
+                    Select files from your computer 
                   </div>
                 </div>
               </div>
@@ -221,110 +210,17 @@
   })
 </script>
 
-<script>
-$(document).ready(function(){ 
-
-        $(".buttonView").click(function(){
-          var lrn = $(this).closest('tr').find('td:eq(0)').html(); 
-          $.ajax({
-            url: ajaxUrl,
-            type: 'post',
-            dataType: 'json', 
-            data: {'username' : username, 'table': 'users', 'set': 'username' }, 
-            success: function(result){
-              //alert(result);
-              $.each(result, function(index, val) {
-                $('#name').html(val.first_name +" "+ val.middle_name + " " + val.last_name);
-                $('#lrn').html(val.lrn);
-                $('#contact').html(val.contact);
-                $('#birth_date').html(val.birth_date);
-                $('#birth_place').html(val.birth_place);
-                $('#age').html(val.age);
-                $('#mother_tongue').html(val.mother_tongue);
-                $('#religion').html(val.religion);
-                $('#street').html(val.street);
-                $('#barangay').html(val.barangay+", ");
-                $('#city').html(val.city);
-                $('#province').html(val.province);
-                $('#sex').html(val.sex);
-                $('#father_name').html(val.father_name);
-                $('#father_contact').html(val.father_contact);
-                $('#mother_name').html(val.mother_name);
-                $('#mother_contact').html(val.mother_contact);
-                $('#guardian').html(val.guardian);
-                $('#relationship').html(val.relationship);
-                $('#guardian_contact').html(val.guardian_contact);  
-                $('#position').html('Grade '+val.grade+' Student');  
-                $('#modal-note').html(val.note);                   
-                $('.requirements-section').show();                     
-                $('#input-submit').show();                
-                $('#input-lrn').val(val.lrn);  
-              })
-            }
-          });
-
-          $.ajax({
-            url: ajaxReqUrl,
-            type: 'post',
-            dataType: 'json', 
-            data: {'lrn' : lrn, 'table': 'requirements', 'set': 'lrn' }, 
-            success: function(result){
-              //alert(result);
-              var requirements = [];
-              $.each(result, function(index, val) {
-               //alert(val.requirement);
-               requirements.push(val.requirement);
-
-              });
-              $('#modal-requirements').val(requirements);
-              $('#modal-requirements').val(requirements).trigger('change')       
-            }
-          });
-        });
-</script>
 <script type="text/javascript">
-+ function($) {
-    'use strict';
-
-    // UPLOAD CLASS DEFINITION
-    // ======================
-
-    var dropZone = document.getElementById('drop-zone');
-    var uploadForm = document.getElementById('js-upload-form');
-
-    var startUpload = function(files) {
-        console.log(files)
+  var fullPath = document.getElementById('upload').value;
+if (fullPath) {
+    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+    var filename = fullPath.substring(startIndex);
+    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+        filename = filename.substring(1);
     }
-
-    uploadForm.addEventListener('submit', function(e) {
-        var uploadFiles = document.getElementById('js-upload-files').files;
-        e.preventDefault()
-
-        startUpload(uploadFiles)
-    })
-
-    dropZone.ondrop = function(e) {
-        e.preventDefault();
-        this.className = 'upload-drop-zone';
-
-        startUpload(e.dataTransfer.files)
-    }
-
-    dropZone.ondragover = function() {
-        this.className = 'upload-drop-zone drop';
-        return false;
-    }
-
-    dropZone.ondragleave = function() {
-        this.className = 'upload-drop-zone';
-        return false;
-    }
-
-}(jQuery);
+    alert(filename);
+}
 </script>
 
-<script>
-  
-</script>
 </body>
 </html>

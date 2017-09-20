@@ -122,16 +122,7 @@
           </ul>
         </li>
 
-        <li class="treeview">
-          <a href="#"><i class="fa fa-users"></i><span> Employees</span>
-            <span class="pull-right-container"></span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('admin/manage_employees');?>"><i class="fa fa-circle-o"></i> Manage Employees</a></li>
-            <li><a href="<?php echo site_url('admin/leaderboard');?>"><i class="fa fa-circle-o"></i> Leaderboard</a></li>
-          </ul>
-        </li>
+        <li><a href="<?php echo site_url('admin/manage_employees');?>"><i class="fa fa-users"></i> Manage Employees</a></li>
         <li class="header">LABELS</li>
       </ul>
     </section>

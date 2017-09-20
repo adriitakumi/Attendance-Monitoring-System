@@ -28,7 +28,7 @@ class upload extends CI_Controller {
       if($this->upload->do_upload())
       {
 
-        $file_p = $this->upload->data('full_path');
+         $file_p = $this->upload->data('full_path');
 
         $input = explode("\n", file_get_contents($file_p));
         foreach ($input as $line) {
