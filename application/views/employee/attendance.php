@@ -226,7 +226,6 @@
           <div>
             <button type="button" class="btn btn-lg btn-warning hidden-print" style="width:100%; margin-bottom: 10px;" onclick="window.print()">Print</button>
             <button type="button" class="btn btn-lg btn-success hidden-print" style="width:100%; margin-bottom: 10px;">Export to Excel</button>
-            <button type="button" class="btn btn-lg btn-danger hidden-print" style="width:100%; margin-bottom: 10px;">Export to PDF</button>
           </div>
 
           

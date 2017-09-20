@@ -343,8 +343,11 @@
               </div>
               <!-- /.box-body -->
             </div>
-          </div>  
+            <!-- /. box -->
+          </div> 
+          <!-- /. col -->
         </div>
+        <!-- /. row -->
       </div>
     </section>
     <!-- /.content -->

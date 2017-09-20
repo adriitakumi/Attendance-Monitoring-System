@@ -7,7 +7,7 @@ class upload extends CI_Controller {
    }
 
    public function upload_view(){
-      $this->load->view('admin/upload', array('error' => ' ' ));
+      $this->load->view('backend/upload_view', array('error' => ' ' ));
    }
 
    public function do_upload(){
@@ -25,7 +25,10 @@ class upload extends CI_Controller {
       if($this->upload->do_upload())
       {
          $this->load->library('csv_reader');
-         $result =   $this->csv_reader->parse_file('C:\wamp\www\slaxis\uploads');//path to csv file
+         $filee = 'C:\wamp64\www\slaxis\uploads';
+         $result = $this->csv_reader->parse_file($filee);//path to csv file
+
+         echo $result; exit;
 
          $i=0;
          foreach ($result as $row=>$res) {
@@ -47,7 +50,7 @@ class upload extends CI_Controller {
       else
       {
          $error = array('error' => $this->upload->display_errors());
-         $this->load->view('admin/upload', $error);
+         $this->load->view('backend/upload_view', $error);
       }
    }
 }
