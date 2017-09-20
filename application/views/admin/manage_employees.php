@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <!-- Timepicker -->
+  <!-- Bootstrap time Picker -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
@@ -152,78 +152,8 @@
     <section class="content">
       
       <div class="row" style="padding: 0 5px;">
-        <div class="col-md-5">
-          <!-- general form elements disabled -->
-          <div class="box box-warning">
-            <div class="box-header with-border">
-              <h3 class="box-title">Manage Schedule</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <form role="form">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Employee ID:</label>
-                  <input type="text" class="form-control" placeholder="244" readonly>
-                </div>
-              </form>
-              <form role="form">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Name:</label>
-                  <input type="text" class="form-control" placeholder="Rommel Faustino" readonly>
-                </div>
-              </form>
-              <form role="form">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Position:</label>
-                  <input type="text" class="form-control" placeholder="Senior Manager" readonly>
-                </div>
-              </form>
-              <div class="bootstrap-timepicker">
-                <div class="row">
-                  <div class="col-xs-6">
-                    <div class="form-group">
-                      <label>Time IN:</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control timepicker" > 
-                        <div class="input-group-addon">
-                          <i class="fa fa-clock-o"></i>
-                        </div>
-                      </div>
-                      <!-- /.input group -->
-                    </div>
-                    <!-- /.form group -->
-                  </div>
-                  <!-- /. col -->
-                  <div class="bootstrap-timepicker">
-                    <div class="col-xs-6">
-                      <div class="form-group">
-                        <label>Time OUT:</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control timepicker">
-                          <div class="input-group-addon">
-                            <i class="fa fa-clock-o"></i>
-                          </div>
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-                      <!-- /.form group -->
-                    </div>
-                    <!-- /. col -->
-                  </div>
-                  <!-- div timepicker -->
-                </div>
-                <!-- /. row -->
-              </div>
-              <!-- /. bootstrap timepicker -->
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <div class="col-md-7">
+        <div class="col-md-12">
+          
           <div class="box box-primary">
             <div class="box-header">
               <h3 class="box-title">Employees</h3>
@@ -238,6 +168,7 @@
                   <th>Position</th>
                   <th>Time IN</th>
                   <th>Time OUT</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody style="cursor:pointer;">
@@ -247,6 +178,7 @@
                   <td>Senior Manager</td>
                   <td></td>
                   <td></td>
+                  <td><button type="button" class="btn btn-block btn-info btn-flat btn-xs buttonView" style="max-width: 100px; display:block; margin: auto;">Edit</button></td>
                 </tr>
                 </tbody>
               </table>
@@ -282,12 +214,10 @@
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- ChartJS -->
-<script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
+<!-- bootstrap time picker -->
+<script src="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
-<!-- Timepicker -->
-<script src="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
 
 <script>
   $(function () {
@@ -296,10 +226,10 @@
 </script>
 
 <script>
-//Timepicker
+    //Timepicker
     $('.timepicker').timepicker({
       showInputs: false
-    }); 
+    })
 </script>
 
 
