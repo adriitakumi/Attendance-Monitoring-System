@@ -37,9 +37,4 @@ class admin extends CI_Controller {
 	{
 		$this->load->view('admin/manage_employees');
 	}
-
-	public function leaderboard()
-	{
-		$this->load->view('admin/leaderboard');
-	}
 }
