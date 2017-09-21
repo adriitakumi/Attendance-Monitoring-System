@@ -6,7 +6,7 @@ class login extends CI_Controller {
 	public function index()
 	{	
 		if(isset($this->session->logged_in)) {
-			redirect('employee/index');
+			redirect('employee/dashboard/index');
 		}
 		else {
 			$this->form_validation->set_rules('email', 'Email', 'required');
@@ -41,9 +41,9 @@ class login extends CI_Controller {
 					$level = $result->position;
 
 					if($level=='admin'){
-						redirect('admin/index');
+						redirect('admin/dashboard/index');
 					} else{
-						redirect('employee/index');
+						redirect('employee/dashboard/index');
 					}
 				}
 				else if($result==1){

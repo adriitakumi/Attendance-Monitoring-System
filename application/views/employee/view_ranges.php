@@ -40,7 +40,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo site_url('employee/index') ?>" class="logo">
+    <a href="<?php echo site_url('employee/dashboard') ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>SL</b>A</span>
       <!-- logo for regular state and mobile devices -->
@@ -291,9 +291,9 @@ $(document).ready(function() {
         console.log(startDate.format('D MMMM YYYY') + ' - ' + endDate.format('D MMMM YYYY'));
         var lolo = startDate.format('YYYY'+'-'+'MM'+'-'+'DD');
         var lola = endDate.format('YYYY'+'-'+'MM'+'-'+'DD');
-        var ajaxArrObj = "<?php echo base_url("employee/ajaxArrObj"); ?>"
-        var ajaxMinUrl = "<?php echo base_url("employee/ajaxMinUrl"); ?>"
-        var ajaxMaxUrl = "<?php echo base_url("employee/ajaxMaxUrl"); ?>"
+        var ajaxArrObj = "<?php echo base_url("employee/attendance/ajaxArrObj"); ?>"
+        var ajaxMinUrl = "<?php echo base_url("employee/attendance/ajaxMinUrl"); ?>"
+        var ajaxMaxUrl = "<?php echo base_url("employee/attendance/ajaxMaxUrl"); ?>"
 
 
         $.ajax({
