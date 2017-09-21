@@ -25,6 +25,8 @@ class login extends CI_Controller {
 
 				if(is_object($result)){
 					//print_r($result);
+
+
 					$userdata = array(
 					        'email'  => $result->email,
 					        'first_name'     =>  $result->first_name,
@@ -36,7 +38,13 @@ class login extends CI_Controller {
 					);
 
 					$this->session->set_userdata($userdata);
-					redirect('employee/index');
+					$level = $result->position;
+
+					if($level=='admin'){
+						redirect('admin/index');
+					} else{
+						redirect('employee/index');
+					}
 				}
 				else if($result==1){
 					$data['userError'] = "Email does not exist!";

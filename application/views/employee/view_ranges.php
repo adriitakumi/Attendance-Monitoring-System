@@ -252,12 +252,6 @@
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
 
-<script>
-  $(function () {
-    $('#example1').DataTable()
-  })
-</script>
-
 <script type="text/javascript">
 var startDate;
 var endDate;
@@ -308,12 +302,8 @@ $(document).ready(function() {
             dataType: 'json', 
             data: {'date1' : lolo, 'date2': lola}, 
             success: function(result){
-              var newestDateIn;   //MAACCESS ETO NI AJAX 3
-
-
-              
-      var tiyan = $('#example1').dataTable();
-      tiyan.destoy();
+              var newestDateIn;
+              var newestDateOut;   //MAACCESS ETO NI AJAX 3
 
             
               $.each(result, function(index, val){
@@ -328,6 +318,7 @@ $(document).ready(function() {
                     var d2 = strDate[7];
                     var newStrDate = y1+y2+y3+y4+'-'+m1+m2+'-'+d1+d2;
                     var tableDate = m1+m2+'-'+d1+d2+'-'+y1+y2+y3+y4;
+
 
                     
                     
@@ -370,17 +361,18 @@ $(document).ready(function() {
                             var colon = eh[2];
                             var m1 = eh[3];
                             var m2 = eh[4];
-                            var newestDateOut = h1+h2+colon+m1+m2;
+                            newestDateOut = h1+h2+colon+m1+m2;
+
+
 
                             $('#records').hide();
                             $('#example1').DataTable();
 
-                            $('#tbody').append('<tr id="records"><td class="first">'+tableDate+'</td><td class="second"></td><td class="third">'+newestDateOut+'</td><td></tr>');
-
-
-
+                            $('#tbody').append('<tr id="records"><td class="first">'+tableDate+'</td><td class="second">'+newestDateIn+'</td><td class="third"></td><td></tr>');
                           }
                     });
+
+
                     
 
               });
