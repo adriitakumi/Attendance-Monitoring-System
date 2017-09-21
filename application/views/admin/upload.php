@@ -166,6 +166,7 @@
                       <div class="form-group">
                           <?php echo $error;?>
                         <?php echo "</form>"?>
+                      </div>
                     </div>
                   <!-- Drop Zone -->
                   <h4>Or drag and drop files below</h4>
