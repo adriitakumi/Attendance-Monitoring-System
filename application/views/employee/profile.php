@@ -303,8 +303,8 @@
       <div class="modal-body modal-profile">
         <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('images/alt_picture.jpg'); ?>" alt="User profile picture">
         <h3 id="name" class="profile-username text-center" ><?php echo ucwords($this->session->first_name." ".$this->session->last_name)?></h3>
-
         <p class="text-center" id="position" style="margin-top: -10px;"><?php echo ucwords($this->session->position)?></p>
+        <input type ="file" name="dpfile">
         <hr>
         <p class="text-bold" style="margin-top: -15px;"> Personal</p>
         <div class="row" style="margin-left: 10px; margin-bottom: 15px;">
