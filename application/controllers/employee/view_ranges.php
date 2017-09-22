@@ -12,7 +12,6 @@ class view_ranges extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('employee/view_ranges');
-
 	}
 
 	public function ajaxMinUrl()

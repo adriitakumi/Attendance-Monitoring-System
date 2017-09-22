@@ -14,5 +14,4 @@ class manage_employees extends CI_Controller {
 		$this->load->view('admin/manage_employees');
 	}
 
-	
 }

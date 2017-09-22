@@ -43,7 +43,6 @@ class attendance extends CI_Controller {
 		$wildcard = $this->input->post('wildcard');
 		$records = json_encode($this->global_model->getMax($table, $set, $value, $wildcard, 'Date'));
 		echo $records;
-	}
-	
+	}	
 
 }
