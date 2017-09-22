@@ -12,8 +12,6 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -166,28 +164,21 @@
 
     <!-- Main content -->
     <section class="content">
+      <div class="row" style="padding-bottom: 10px;">
+        <div class="col-xs-8"></div> 
 
-
-        <div class="row" style="padding: 10px;">
-          <div class="container-fluid">
-            <center>
-            <div class="col-xs-4">
-              <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg">View Attendance as LIST</a>
-            </div>
-            <div class="col-xs-3">
-              <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg active">View Attendance as GRID</a>
-            </div>
-            </center> 
-            <div class="col-xs-5">
-              <div class="input-group" style="padding-top: 5px; margin-left: 30%">
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-btn">
+        <div class="col-xs-4">
+          <div class="input-group" style="padding-top: 5px;">
+            <input type="text" class="form-control" placeholder="Search">
+              <span class="input-group-btn">
                   <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
-                </span>
-              </div><!-- /input-group -->
-            </div>
+              </span>
           </div>
+          <!-- /input-group -->
         </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
 
         <div class="row">
           <div class="col-xs-2">
@@ -366,7 +357,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -383,79 +374,26 @@
 <script src="<?php echo base_url(); ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>bower_components/fastclick/lib/fastclick.js"></script>
-<!-- DataTables -->
-<script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- ChartJS -->
-<script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
-<script>
-  $(function () {
-    $('#example1').DataTable()
-  })
-</script>
 
 <script>
-$(document).ready(function(){ 
+  var ajaxUrl = "<?php echo base_url("employee/view_grid/ajax"); ?>"
 
-        $(".buttonView").click(function(){
-          var lrn = $(this).closest('tr').find('td:eq(0)').html(); 
-          $.ajax({
+  $.ajax({
             url: ajaxUrl,
             type: 'post',
             dataType: 'json', 
-            data: {'username' : username, 'table': 'users', 'set': 'username' }, 
+            data: {'table': 'csv'}, 
             success: function(result){
-              //alert(result);
-              $.each(result, function(index, val) {
-                $('#name').html(val.first_name +" "+ val.middle_name + " " + val.last_name);
-                $('#lrn').html(val.lrn);
-                $('#contact').html(val.contact);
-                $('#birth_date').html(val.birth_date);
-                $('#birth_place').html(val.birth_place);
-                $('#age').html(val.age);
-                $('#mother_tongue').html(val.mother_tongue);
-                $('#religion').html(val.religion);
-                $('#street').html(val.street);
-                $('#barangay').html(val.barangay+", ");
-                $('#city').html(val.city);
-                $('#province').html(val.province);
-                $('#sex').html(val.sex);
-                $('#father_name').html(val.father_name);
-                $('#father_contact').html(val.father_contact);
-                $('#mother_name').html(val.mother_name);
-                $('#mother_contact').html(val.mother_contact);
-                $('#guardian').html(val.guardian);
-                $('#relationship').html(val.relationship);
-                $('#guardian_contact').html(val.guardian_contact);  
-                $('#position').html('Grade '+val.grade+' Student');  
-                $('#modal-note').html(val.note);                   
-                $('.requirements-section').show();                     
-                $('#input-submit').show();                
-                $('#input-lrn').val(val.lrn);  
-              })
+              alert(result);
+              
+
             }
           });
 
-          $.ajax({
-            url: ajaxReqUrl,
-            type: 'post',
-            dataType: 'json', 
-            data: {'lrn' : lrn, 'table': 'requirements', 'set': 'lrn' }, 
-            success: function(result){
-              //alert(result);
-              var requirements = [];
-              $.each(result, function(index, val) {
-               //alert(val.requirement);
-               requirements.push(val.requirement);
 
-              });
-              $('#modal-requirements').val(requirements);
-              $('#modal-requirements').val(requirements).trigger('change')       
-            }
-          });
-        });
+
 </script>
 
 </body>

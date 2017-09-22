@@ -8,4 +8,9 @@ class view_grid extends CI_Controller {
 		$this->load->view('admin/view_grid');
 	}
 
+	public function ajax()
+	{
+		
+	}
+
 }

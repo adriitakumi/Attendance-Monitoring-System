@@ -152,99 +152,138 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
-
-      <div class="row" style="padding: 10px;">
-        <div class="container-fluid">
-          <center>
-            <div class="col-md-6">
-              <a href="<?php echo site_url('admin/view_list');?>" role="button" class="btn btn-primary btn-lg active">View Attendance as LIST</a>
-            </div>
-            <div class="col-md-6">
-              <a href="<?php echo site_url('admin/view_grid');?>" role="button" class="btn btn-primary btn-lg">View Attendance as GRID</a>
-            </div>
-          </center>
-        </div>
-      </div>
-      
-      <div class="row" style="padding: 0 5px;">
-        <div class="col-md-5">
+    <section class="content">      
+      <div class="row">
+        <div class="col-md-4">
           <!-- Calendar -->
           <div class="box box-primary hidden-print">
             <div class="box-header bg-light-blue-active" style="color: white;">
               <i class="fa fa-calendar"></i>
 
               <h3 class="box-title">Calendar</h3>
-                <!-- tools box -->
-                <div class="pull-right box-tools">
-                  <!-- button with a dropdown -->
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                      <i class="fa fa-bars"></i></button>
-                    <ul class="dropdown-menu pull-right" role="menu">
-                      <li><a href="#">Add new event</a></li>
-                      <li><a href="#">Clear events</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">View calendar</a></li>
-                    </ul>
-                  </div>
-                  <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                  <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+              <!-- tools box -->
+              <div class="pull-right box-tools">
+                <!-- button with a dropdown -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-bars"></i></button>
+                  <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="#">Add new event</a></li>
+                    <li><a href="#">Clear events</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">View calendar</a></li>
+                  </ul>
                 </div>
-                <!-- /. tools -->
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body no-padding">
-                <!--The calendar -->
-                <div id="calendar" style="width: 100%"></div>
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
 
-          <div class="col-md-7">
-            <div class="box box-primary">
-              <div class="box-header">
-                <h3 class="box-title">Time In and Time Outs</h3>
+                <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Time IN</th>
-                    <th>Time OUT</th>
-                    <th>Overtime</th>
-                    <th>Late</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr class="list">
-                    <td>Marc Terrobias</td>
-                    <td>Manager</td>
-                    <td>08:20:30</td>
-                    <td>18:20:30</td>
-                    <td>2</td>
-                    <td>3</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.box-body -->
+              <!-- /. tools -->
             </div>
-            <!-- /. box -->
-          </div> 
-          <!-- /. col -->
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+
+              <!--The calendar -->
+              <div id="calendar" style="width: 100%"></div>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <div class="row">
+
+            <div class="col-md-6 text-center">
+              <div class="box box-primary box-solid hidden-print">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Time In</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body timeIn">
+                  <p class="dailyTimeIn"></p>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-6 text-center">
+              <div class="box box-primary box-solid hidden-print">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Time Out</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body timeOut">
+                  <p class="dailyTimeOut"></p>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
         </div>
-        <!-- /. row -->
+        <!-- /.col -->
+
+        <div class="col-md-8">
+          <div class="box box-default boxes bg-gray box-solid" id="noDate">
+            <div class="box-body" style="padding: 20px 40px 40px 40px; ">
+              <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>No date selected!</h2>
+              <h4>Please click on a date in the calendar to show records for that day.</h4>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <div class="box box-default bg-gray box-solid" id="noRecords" style="display: none;">
+            <div class="box-body" style="padding: 20px 40px 40px 40px; ">
+              <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>Sorry!</h2>
+              <h4>There are no records for the selected date.</h4>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <div class="box boxes box-primary" id="ehh" style="display: none;">
+            <div class="box-header">
+              <h3 class="box-title">Time In and Time Outs</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Time IN</th>
+                  <th>Time OUT</th>
+                  <th>Overtime</th>
+                  <th>Late</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                <tr class="records">
+                  <td>qwert</td>
+                  <td>qwert</td>
+                  <td>qwer</td>
+                  <td>srty</td>
+                  <td>qwer</td>
+                  <td>srty</td>
+                </tr> 
+              </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
       </div>
+      <!-- /.row -->
     </section>
     <!-- /.content -->
-
+  </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
@@ -278,13 +317,19 @@
 
 <script>
   // The Calender
-  $('#calendar').datepicker();
-</script>
+  $('#calendar').datepicker().on('changeDate', function(event) {
+  // `e` here contains the extra attributes
+  var date = event.format();
+  var arr = date.split("/");
+  var m = arr[0]; 
+  var d = arr[1]; 
+  var y = arr[2];
+  var newDate = y+'-'+m+'-'+d; 
+  var ajaxUrl = "<?php echo base_url("employee/view_data/ajax"); ?>"
 
-<script>
-  $(function () {
-    $('#example1').DataTable()
-  })
+  
+
+});
 </script>
 
 </body>
