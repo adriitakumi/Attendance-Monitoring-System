@@ -40,7 +40,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo site_url('employee/index') ?>" class="logo">
+    <a href="<?php echo site_url('employee/dashboard') ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>SL</b>A</span>
       <!-- logo for regular state and mobile devices -->
@@ -110,7 +110,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="<?php echo site_url('employee/index'); ?>">
+          <a href="<?php echo site_url('employee/dashboard'); ?>">
             <i class="fa fa-dashboard"></i> 
             <span>Dashboard</span>
           </a>
@@ -328,9 +328,9 @@
   var d = arr[1]; 
   var y = arr[2];
   var newDate = y+'-'+m+'-'+d; 
-  var ajaxUrl = "<?php echo base_url("employee/ajax"); ?>"
-  var ajaxMinUrl = "<?php echo base_url("employee/ajaxMinUrl"); ?>"
-  var ajaxMaxUrl = "<?php echo base_url("employee/ajaxMaxUrl"); ?>"
+  var ajaxUrl = "<?php echo base_url("employee/attendance/ajax"); ?>"
+  var ajaxMinUrl = "<?php echo base_url("employee/attendance/ajaxMinUrl"); ?>"
+  var ajaxMaxUrl = "<?php echo base_url("employee/attendance/ajaxMaxUrl"); ?>"
 
 
   $.ajax({

@@ -3,7 +3,7 @@
     <title>Success Message</title>
 </head>
 <body>
-<h3>Congragulation You Have Successfuly Uploaded</h3>
+<h3>You Have Successfuly Uploaded</h3>
 <!-- Uploaded file specification will show up here -->
 <table cellpadding="0" cellspacing="0" width="100%">
     <tr>

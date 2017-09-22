@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class employee extends CI_Controller {
+class attendance extends CI_Controller {
 
 	public function __construct()
 	{
@@ -11,24 +11,8 @@ class employee extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('employee/dashboard');
-
-	}
-
-	public function attendance()
-	{
 		$data['AMADOR']  = json_encode($this->global_model->getRow('csv','encoded_id','747'));
 		$this->load->view('employee/attendance', $data);
-	}
-
-	public function profile()
-	{
-		$this->load->view('employee/profile');
-	}
-
-	public function view_ranges()
-	{
-		$this->load->view('employee/view_ranges');
 	}
 
 	public function ajax()
@@ -78,6 +62,4 @@ class employee extends CI_Controller {
 		$records = json_encode($this->global_model->please($date1, $date2));
 		echo $records;
 	}
-	
-
 }

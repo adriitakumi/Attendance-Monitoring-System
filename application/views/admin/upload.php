@@ -37,7 +37,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo site_url('admin/index') ?>" class="logo">
+    <a href="<?php echo site_url('admin/dashboard') ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>SL</b>A</span>
       <!-- logo for regular state and mobile devices -->
@@ -107,7 +107,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="<?php echo site_url('admin/index'); ?>">
+          <a href="<?php echo site_url('admin/dashboard'); ?>">
             <i class="fa fa-dashboard"></i><span> Dashboard</span>
           </a>
         </li>
@@ -118,7 +118,7 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo site_url('admin/upload_file');?> "><i class="fa fa-circle-o"></i> Upload File</a></li>
+            <li class="active"><a href="<?php echo site_url('admin/upload');?> "><i class="fa fa-circle-o"></i> Upload File</a></li>
             <li><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
           </ul>
         </li>
@@ -153,16 +153,20 @@
         <div class="row">
           <div class="col-md-12">
             <div class="panel panel-default">
-              <div class="panel-heading">Upload <strong>.CSV</strong> Files</div>
+              <div class="panel-heading">Upload <strong>.CSV</strong> Files</div> 
                 <div class="panel-body" style="height: 200%">
                   <!-- Standard Form -->
                   <h4>Select files from your computer</h4>
                     <div class="form-inline">
                       <div class="form-group">
-                        <?php echo form_open_multipart('upload/do_upload');?>
-                        <?php echo "<input type='file' id='upload' name='userfile' size='20' accept='.csv'/>"; ?>
+                        <?php echo form_open_multipart('admin/upload/do_upload');?>
+                          <?php echo "<input type='file' id='upload' name='userfile' size='20' accept='.csv'/>"; ?>
                       </div>
-                        <?php echo "<input type='submit' class='btn btn-sm btn-primary' name='submit' value='Upload File' /> ";?>
+                          <?php echo "<input type='submit' class='btn btn-sm btn-primary' name='submit' value='Upload File' /> ";?>
+                      <div class="form-group">
+                          <?php echo $error;?>
+                        <?php echo "</form>"?>
+                      </div>
                     </div>
                   <!-- Drop Zone -->
                   <h4>Or drag and drop files below</h4>
