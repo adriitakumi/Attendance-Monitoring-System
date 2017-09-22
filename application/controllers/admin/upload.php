@@ -68,7 +68,7 @@ class upload extends CI_Controller {
 
          $this->global_model->insert_batch('csv', $result);
          $data['csvData'] =  $result;
-         $this->load->view('admin/upload_success', $data);
+         $this->load->view('admin/upload_success', $data); 
       }
       else
       {

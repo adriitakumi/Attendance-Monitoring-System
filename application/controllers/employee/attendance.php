@@ -43,23 +43,6 @@ class attendance extends CI_Controller {
 		$wildcard = $this->input->post('wildcard');
 		$records = json_encode($this->global_model->getMax($table, $set, $value, $wildcard, 'Date'));
 		echo $records;
-	}
+	}	
 
-	public function ajaxViewRange()
-	{
-		$table = $this->input->post('table');
-		$set = $this->input->post('set');
-		$value1 = $this->input->post('value1');
-		$value2 = $this->input->post('value2');
-		$records = json_encode($this->global_model->getRange($table, $value1, $value2));
-		echo $records;
-	}
-
-	public function ajaxArrObj()
-	{
-		$date1 = $this->input->post('date1');
-		$date2 = $this->input->post('date2');
-		$records = json_encode($this->global_model->please($date1, $date2));
-		echo $records;
-	}
 }

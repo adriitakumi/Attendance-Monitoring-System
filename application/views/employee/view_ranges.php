@@ -110,7 +110,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="<?php echo site_url('employee/index'); ?>">
+          <a href="<?php echo site_url('employee/dashboard'); ?>">
             <i class="fa fa-dashboard"></i>
             <span>Dashboard</span>
           </a>
@@ -291,9 +291,9 @@ $(document).ready(function() {
         console.log(startDate.format('D MMMM YYYY') + ' - ' + endDate.format('D MMMM YYYY'));
         var lolo = startDate.format('YYYY'+'-'+'MM'+'-'+'DD');
         var lola = endDate.format('YYYY'+'-'+'MM'+'-'+'DD');
-        var ajaxArrObj = "<?php echo base_url("employee/attendance/ajaxArrObj"); ?>"
-        var ajaxMinUrl = "<?php echo base_url("employee/attendance/ajaxMinUrl"); ?>"
-        var ajaxMaxUrl = "<?php echo base_url("employee/attendance/ajaxMaxUrl"); ?>"
+        var ajaxArrObj = "<?php echo base_url("employee/view_ranges/ajaxArrObj"); ?>"
+        var ajaxMinUrl = "<?php echo base_url("employee/view_ranges/ajaxMinUrl"); ?>"
+        var ajaxMaxUrl = "<?php echo base_url("employee/view_ranges/ajaxMaxUrl"); ?>"
 
 
         $.ajax({

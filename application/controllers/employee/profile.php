@@ -13,4 +13,5 @@ class profile extends CI_Controller {
 	{
 		$this->load->view('employee/profile');
 	}
+  
 }

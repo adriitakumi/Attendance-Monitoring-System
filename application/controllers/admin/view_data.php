@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class manage_employees extends CI_Controller {
+class view_data extends CI_Controller {
 
 	public function __construct()
 	{
@@ -11,7 +11,8 @@ class manage_employees extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('admin/manage_employees');
+		$this->load->view('admin/view_grid');
 	}
 
+	
 }

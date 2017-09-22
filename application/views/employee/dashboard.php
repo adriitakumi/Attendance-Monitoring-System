@@ -101,14 +101,18 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
+
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+
         <li class="active">
           <a href="<?php echo site_url('employee/dashboard'); ?>">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> 
+            <span>Dashboard</span>
           </a>
         </li>
+
         <li>
           <a href="<?php echo site_url('employee/attendance'); ?>">
             <i class="fa fa-calendar"></i>
