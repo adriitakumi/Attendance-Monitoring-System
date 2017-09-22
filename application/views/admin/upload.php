@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
+  <!-- Upload style -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/admin/Upload/upload.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/skins/_all-skins.min.css">
@@ -103,11 +105,13 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
+
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+
         <li>
-          <a href="<?php echo site_url('admin/index'); ?>">
+          <a href="<?php echo site_url('admin/dashboard'); ?>">
             <i class="fa fa-dashboard"></i><span> Dashboard</span>
           </a>
         </li>
@@ -118,13 +122,29 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo site_url('admin/upload_file');?> "><i class="fa fa-circle-o"></i> Upload File</a></li>
-            <li><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
+            <li class="active">
+              <a href="<?php echo site_url('admin/upload');?>">
+                <i class="fa fa-circle-o"></i> Upload File
+              </a>
+            </li>
+
+            <li>
+              <a href="<?php echo site_url('admin/view_data');?>">
+                <i class="fa fa-circle-o"></i> View Data
+              </a>
+            </li>
+
           </ul>
         </li>
 
-        <li><a href="<?php echo site_url('admin/manage_employees');?>"><i class="fa fa-users"></i> Manage Employees</a></li>
+        <li>
+          <a href="<?php echo site_url('admin/manage_employees');?>">
+            <i class="fa fa-users"></i> Manage Employees
+          </a>
+        </li>
+
         <li class="header">LABELS</li>
+
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -137,7 +157,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Attendance
+        Upload File
         <small>Upload time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
@@ -151,34 +171,52 @@
     <section class="content">
       <div class="container-fluid"> 
         <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">Upload <strong>.CSV</strong> Files</div>
-                <div class="panel-body" style="height: 200%">
-                  <!-- Standard Form -->
-                  <h4>Select files from your computer</h4>
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <?php echo form_open_multipart('upload/do_upload');?>
-                        <?php echo "<input type='file' id='upload' name='userfile' size='20' accept='.csv'/>"; ?>
+          <div class="col-md-12" style="margin-top:20vh;">
+            <!-- Standard Form -->
+            <form method="post" action="<?php echo site_url('upload/do_upload');?>" enctype="multipart/form-data">
+              <div class="row">
+                <div class="col-md-1 col-1"></div>
+
+                <div class="col-md-10 col-10">
+                  <div class="panel panel-primary" style="padding-bottom: 5px;">
+                    <div class="panel-body">
+                      <h4>Select a file from your computer</h4>
+                      <div class="input-group" style="margin-bottom: 5px;">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                Browse&hellip; <input type="file" id='upload' name='userfile' accept=".csv" style="display: none;" multiple>
+                            </span>
+                        </label>
+                        <input type="text" class="form-control" readonly>
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                Upload File <input type="submit" name="submit" style="display: none;">
+                            </span>
+                        </label>
                       </div>
-                        <?php echo "<input type='submit' class='btn btn-sm btn-primary' name='submit' value='Upload File' /> ";?>
+                      <!-- /.input-group -->
+                      <span class="text-red"><?php echo $error;?></span> 
                     </div>
-                  <!-- Drop Zone -->
-                  <h4>Or drag and drop files below</h4>
-                  <div class="upload-drop-zone" id="drop-zone">
-                    Select files from your computer 
                   </div>
                 </div>
+                <!-- /.col -->
+                
+                <div class="col-md-1 col-1"></div>
+                
               </div>
-            </div>
+              <!-- /.row -->
+            </form>
           </div>
+          <!-- /.col -->
         </div>
+        <!-- /.row -->
       </div>
-      <!-- /container --> 
+      <!-- /.container-fluid -->
     </section>
   <!-- /.content-wrapper -->
 
+  </div>
+  <!-- WAG TANGGALIN KASE MASISIRA FOOTER???? DI KO ALAM BAKET --> 
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
@@ -208,6 +246,28 @@
   $(function () {
     $('#example1').DataTable()
   })
+
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+
+  $(document).ready( function() {
+      $(':file').on('fileselect', function(event, numFiles, label) {
+
+          var input = $(this).parents('.input-group').find(':text'),
+              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+          if( input.length ) {
+              input.val(log);
+          } else {
+              if( log ) alert(log);
+          }
+
+      });
+  });
 </script>
 
 <script type="text/javascript">

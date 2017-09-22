@@ -6,8 +6,8 @@ class upload extends CI_Controller {
       parent::__construct();
    }
 
-   public function upload_view(){
-      $this->load->view('backend/upload_view', array('error' => ' ' ));
+   public function index(){
+      $this->load->view('admin/upload', array('error' => ' ' ));
    }
 
    public function do_upload(){
@@ -68,12 +68,12 @@ class upload extends CI_Controller {
 
          $this->global_model->insert_batch('csv', $result);
          $data['csvData'] =  $result;
-         $this->load->view('backend/upload_success', $data); 
+         $this->load->view('admin/upload_success', $data); 
       }
       else
       {
          $error = array('error' => $this->upload->display_errors());
-         $this->load->view('backend/upload_view', $error);
+         $this->load->view('admin/upload', $error);
       }
    }
 }

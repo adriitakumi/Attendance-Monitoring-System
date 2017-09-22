@@ -102,11 +102,13 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
+
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+
         <li>
-          <a href="<?php echo site_url('admin/index'); ?>">
+          <a href="<?php echo site_url('admin/dashboard'); ?>">
             <i class="fa fa-dashboard"></i><span> Dashboard</span>
           </a>
         </li>
@@ -117,13 +119,29 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('admin/upload_file');?>"><i class="fa fa-circle-o"></i> Upload File</a></li>
-            <li class="active"><a href="<?php echo site_url('admin/view_list');?>"><i class="fa fa-circle-o"></i> View Data</a></li>
+            <li>
+              <a href="<?php echo site_url('admin/upload');?>">
+                <i class="fa fa-circle-o"></i> Upload File
+              </a>
+            </li>
+
+            <li class="active">
+              <a href="<?php echo site_url('admin/view_data');?>">
+                <i class="fa fa-circle-o"></i> View Data
+              </a>
+            </li>
+
           </ul>
         </li>
 
-        <li><a href="<?php echo site_url('admin/manage_employees');?>"><i class="fa fa-users"></i> Manage Employees</a></li>
+        <li>
+          <a href="<?php echo site_url('admin/manage_employees');?>">
+            <i class="fa fa-users"></i> Manage Employees
+          </a>
+        </li>
+
         <li class="header">LABELS</li>
+
       </ul>
     </section>
     <!-- /.sidebar -->

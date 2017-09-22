@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Dashboard</title>
+  <title>SilverLake Axis  | Attendance</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -16,9 +16,12 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
+  <!-- Upload style -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/admin/Upload/upload.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/upload.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -102,24 +105,24 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      
+
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
 
-        <li class="active">
+        <li>
           <a href="<?php echo site_url('admin/dashboard'); ?>">
             <i class="fa fa-dashboard"></i><span> Dashboard</span>
           </a>
         </li>
 
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#"><i class="fa fa-calendar"></i><span> Attendance</span>
             <span class="pull-right-container"></span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li>
+            <li class="active">
               <a href="<?php echo site_url('admin/upload');?>">
                 <i class="fa fa-circle-o"></i> Upload File
               </a>
@@ -154,115 +157,60 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Time ins and time outs of Employees</small>
+        Upload File
+        <small>Upload time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
-        <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        <li> Attendance</a></li>
+        <li class="active"><a href="#"><i class="fa fa-file"></i>Upload File</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
+      <div class="callout callout-success">
+        <h4>Upload Successful!</h4>
 
-      <div class="row" style="padding: 0 5px;">
-        <div class="col-md-4">
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>154</h3>
-
-              <h4>Total Number of Employees <br> Late For This Month</h4>
-            </div>
-            <div class="icon">
-              <i class="ion ion-clock"></i>
-            </div>
-            <div class="small-box-footer" style="height: 25px"></div>
-          </div>
-          <!-- /.small-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-4">
-          <div class="small-box bg-maroon">
-            <div class="inner">
-              <h3>45</h3>
-
-              <h4>Total Number of Employees <br> Overtimed For This Month</h4>
-            </div>
-            <div class="icon">
-              <i class="ion ion-ios-time"></i>
-            </div>
-            <div class="small-box-footer" style="height: 25px"></div>
-          </div>
-          <!-- /.small-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-4">
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>12</h3>
-
-              <h4>Total Number of Employees<br>On-time For This Month</h4>
-            </div>
-            <div class="icon">
-              <i class="ion ion-android-alarm-clock"></i>
-            </div>
-            <div class="small-box-footer" style="height: 25px"></div>
-          </div>
-          <!-- /.small-box -->
-        </div>
-        <!-- /.col -->
+        <p>You have successfully inserted the following to the database:</p>
       </div>
-      <!-- /.row -->
 
-      <div class="row" style="padding: 0 5px;">
-        <div class="col-md-12">
-
-          <!-- BAR CHART -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Bar Chart</h3>
-                <small> &nbsp; &middot; No. of lates and overtime this year</small>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="barChart1" style="height:350px"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-              <div class="row" style="padding: 0 10px;">
-                <div class="col-md-1">
-                  <div class="pull-left">
-                    <i class="fa fa-square fa-2x" style="color:rgba(210, 214, 222, 1);" aria-hidden="true"></i>
-                  </div>
-                </div>
-                <div class="col-md-5" style="padding-top: 3px; margin-left: -10px;">Late</div>
-            
-                <div class="col-md-1">
-                  <div>
-                    <i class="fa fa-square fa-2x" style="color: darkred;" aria-hidden="true"></i>
-                  </div>
-                </div>
-                <div class="col-md-5" style="padding-top: 3px; margin-left: -10px;">Over Time</div>
-              </div>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Bordered Table</h3>
         </div>
+        <!-- /.box-header -->
+
+        <div class="box-body">
+              
+          <table class="table table-bordered">
+            <tr>
+              <th>Date</th>
+              <th>Transaction</th>
+              <th>Person</th>
+              <th>Encoded_id</th>
+              <th>Door</th>
+            </tr>
+
+            <?php foreach($csvData as $field){?>
+            <tr>
+              <td><?php echo $field['Date']?></td>
+              <td><?php echo $field['Transaction']?></td>
+              <td><?php echo $field['Person']?></td>
+              <td><?php echo $field['encoded_id']?></td>
+              <td><?php echo $field['Door']?></td>
+            </tr>
+            <?php }?>
+          </table>
+        </div>
+        <!-- /.box-body -->
       </div>
+      <!-- /.box -->
     </section>
-    <!-- /.content -->
-  </div>
   <!-- /.content-wrapper -->
 
+  </div>
+  <!-- WAG TANGGALIN KASE MASISIRA FOOTER???? DI KO ALAM BAKET --> 
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
@@ -270,7 +218,6 @@
 
  </div>
 <!-- ./wrapper -->
-
 
 
 <!-- jQuery 3 -->
@@ -288,81 +235,45 @@
 <script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
+
 <script>
   $(function () {
     $('#example1').DataTable()
   })
+
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+
+  $(document).ready( function() {
+      $(':file').on('fileselect', function(event, numFiles, label) {
+
+          var input = $(this).parents('.input-group').find(':text'),
+              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+          if( input.length ) {
+              input.val(log);
+          } else {
+              if( log ) alert(log);
+          }
+
+      });
+  });
 </script>
+
 <script type="text/javascript">
-  $(function () {
-    //-------------
-    //- BAR CHART -
-    //-------------
-    var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      datasets: [
-        {
-          label               : 'Late',
-          fillColor           : 'rgba(210, 214, 222, 1)',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [400, 500, 600, 700, 200, 1000, 800, 100, 250, 300, 150]
-        },
-        {
-          label               : 'Overtime',
-          fillColor           : 'rgba(60,141,188,0.9)',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : 'darkgrey',
-          pointStrokeColor    : 'rgba',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [300, 400, 500, 600, 600, 700, 200, 1000, 800, 100, 250]
-        }
-      ]
+  var fullPath = document.getElementById('upload').value;
+if (fullPath) {
+    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+    var filename = fullPath.substring(startIndex);
+    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+        filename = filename.substring(1);
     }
-
-    var barChartCanvas                   = $('#barChart1').get(0).getContext('2d')
-    var barChart                         = new Chart(barChartCanvas)
-    var barChartData                     = areaChartData
-    barChartData.datasets[1].fillColor   = 'darkred'
-    barChartData.datasets[1].strokeColor = 'darkred'
-    barChartData.datasets[1].pointColor  = 'darkred'
-    var barChartOptions                  = {
-      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-      scaleBeginAtZero        : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : true,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,0)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - If there is a stroke on each bar
-      barShowStroke           : true,
-      //Number - Pixel width of the bar stroke
-      barStrokeWidth          : 2,
-      //Number - Spacing between each of the X value sets
-      barValueSpacing         : 5,
-      //Number - Spacing between data sets within X values
-      barDatasetSpacing       : 1,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to make the chart responsive
-      responsive              : true,
-      maintainAspectRatio     : true
-    }
-
-    barChartOptions.datasetFill = false
-    barChart.Bar(barChartData, barChartOptions)
-
-    
-  })
+    alert(filename);
+}
 </script>
 
 </body>
