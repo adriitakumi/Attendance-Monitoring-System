@@ -368,7 +368,7 @@ $(document).ready(function() {
                             $('#records').hide();
                             $('#example1').DataTable();
 
-                            $('#tbody').append('<tr id="records"><td class="first">'+tableDate+'</td><td class="second">'+newestDateIn+'</td><td class="third"></td><td></tr>');
+                            $('#tbody').append('<tr id="records"><td class="first">'+tableDate+'</td><td class="second">'+newestDateIn+'</td><td class="third">'+newestDateOut+'</td><td></tr>');
                           }
                     });
 
