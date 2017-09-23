@@ -128,8 +128,14 @@
             </li>
 
             <li>
-              <a href="<?php echo site_url('admin/view_data');?>">
-                <i class="fa fa-circle-o"></i> View Data
+              <a href="<?php echo site_url('admin/view_list');?>">
+                <i class="fa fa-circle-o"></i> View List
+              </a>
+            </li>
+
+            <li>
+              <a href="<?php echo site_url('admin/view_ranges');?>">
+                <i class="fa fa-circle-o"></i> View Ranges
               </a>
             </li>
 
