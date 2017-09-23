@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class view_grid extends CI_Controller {
+class view_ranges extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('admin/view_grid');
+		$this->load->view('admin/view_ranges');
 	}
 
 }

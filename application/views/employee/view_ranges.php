@@ -380,7 +380,6 @@ $(document).ready(function() {
 
                               $('#tbody').append('<tr class="records"><td class="first">'+tableDate+'</td><td class="second">'+newestTimeIn+'</td><td class="third">'+newestTimeOut+'</td><td></tr>');
                             }
-                            
                           }
                     });
 
