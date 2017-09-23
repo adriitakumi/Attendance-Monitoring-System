@@ -165,7 +165,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control pull-right" id="reservation">
+                  <input type="text" class="form-control pull-right" name="dateRange" id="dateRange">
                 </div>
                 <!-- /.input group -->
               </div>
@@ -187,7 +187,7 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="recordsTable" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>Date</th>
@@ -197,15 +197,15 @@
                       <th>Late</th>
                     </tr>
                   </thead>
-                  <tbody id="tbody">
-                    <tr id="records">
-                      <td id="first">August 16, 2017</td>
-                      <td id="second">08:20:30</td>
-                      <td id="third">18:20:30</td>
-                      <td>2</td>
-                      <td>3</td>
+                  <tfoot>
+                    <tr>
+                      <th>Date</th>
+                      <th>Time IN</th>
+                      <th>Time OUT</th>
+                      <th>Overtime</th>
+                      <th>Late</th>
                     </tr>
-                  </tbody>
+                  </tfoot>
                 </table>
               </div>
               <!-- /.box-body -->
@@ -257,7 +257,7 @@ var startDate;
 var endDate;
 
 $(document).ready(function() {
-    $('#reservation').daterangepicker(
+    $('#dateRange').daterangepicker(
        {
           startDate: moment().subtract('days', 29),
           endDate: moment(),
@@ -282,119 +282,44 @@ $(document).ready(function() {
     );
 
     //Set the initial state of the picker label
-    $('#reservation span').html(moment().subtract(29, 'days').format('D MMMM YYYY') + ' - ' + moment().format('D MMMM YYYY'));
+    $('#dateRange span').html(moment().subtract(29, 'days').format('D MMMM YYYY') + ' - ' + moment().format('D MMMM YYYY'));
 
 
     $('#daterange-btn').click(function(){
 
-        $('.records').remove();
-
-        //console.log(startDate.format('D MMMM YYYY') + ' - ' + endDate.format('D MMMM YYYY'));
-        var lolo = startDate.format('YYYY'+'-'+'MM'+'-'+'DD');
-        var lola = endDate.format('YYYY'+'-'+'MM'+'-'+'DD');
-        //console.log("date1: "+lolo);
-        //console.log("date2: "+lola);
-        var ajaxArrObj = "<?php echo base_url("employee/view_ranges/ajaxArrObj"); ?>"
-        var ajaxMinUrl = "<?php echo base_url("employee/view_ranges/ajaxMinUrl"); ?>"
-        var ajaxMaxUrl = "<?php echo base_url("employee/view_ranges/ajaxMaxUrl"); ?>"
-
-        
-
+        var getRecordsTable = "<?php echo base_url("employee/view_ranges/populateTable"); ?>";
+        var dateRange = $('#dateRange').val();
+        //console.log(dateRange);
 
         $.ajax({
-            url: ajaxArrObj,
-            type: 'post',
-            dataType: 'json', 
-            data: {'date1' : lolo, 'date2': lola}, 
-            success: function(result){
-              var newestTimeIn;
-              var newestTimeOut;   //MAACCESS ETO NI AJAX 3
-
-              //console.log("ajax 1 result: "+result);
-              //console.log("newestDateIn result: "+newestDateIn);
-              //console.log("newestDateOut result: "+newestDateOut);
-
-            
-              $.each(result, function(index, val){
-                    var strDate = val.split("");
-                    var y1 = strDate[0];
-                    var y2 = strDate[1];
-                    var y3 = strDate[2];
-                    var y4 = strDate[3];
-                    var m1 = strDate[4];
-                    var m2 = strDate[5];
-                    var d1 = strDate[6];
-                    var d2 = strDate[7];
-                    var newStrDate = y1+y2+y3+y4+'-'+m1+m2+'-'+d1+d2;
-                    var tableDate = m1+m2+'-'+d1+d2+'-'+y1+y2+y3+y4;
-
-                    $.ajax({
-                        url: ajaxMinUrl,
+                        url: getRecordsTable,
                         type: 'post',
                         dataType: 'json', 
-                        data: {'value': newStrDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
-                        success: function(result2){
-                          
-                          var dateTime = JSON.stringify(result2);
-                            console.log(dateTime);
+                        data: {'dateRange': dateRange}, 
+                        success: function(result){
+                          //alert(JSON.stringify(result));
+                          $('#recordsTable').DataTable().destroy();
 
-                            if(dateTime != '[{"Date":null}]'){
-                              var splitDate = dateTime.split(" ");
-                                //console.log(splitDate[1]);
-                              var newerTime = splitDate[1].replace('"}]',' ');
-                                //console.log(newerTime);
-
-                              var newestTime = newerTime.split(":");
-                              var timeIn = newestTime[0]+':'+newestTime[1];
-
-                              newestTimeIn = timeIn; //ASSIGN MO SA VARIABLE newestDateIn
-                                //console.log(newestDateIn);                              
-                            }
+                          $('#recordsTable').DataTable( {
+                              data: result,
+                              columns: [
+                                  { "width": "20%" },
+                                  { "width": "20%" },
+                                  { "width": "20%" },
+                                  { "width": "20%" },
+                                  { "width": "20%" }
+                              ]
+                          });
                           
 
                       }
-                    });
-
-                    $.ajax({
-                          url: ajaxMaxUrl,
-                          type: 'post',
-                          dataType: 'json', 
-                          data: {'value' : newStrDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
-                          success: function(result3){
-                            var dateTime = JSON.stringify(result3);
-                            if(dateTime != '[{"Date":null}]'){
-                              var splitDate = dateTime.split(" ");
-                              //console.log(splitDate[1]);
-                              var newerTime = splitDate[1].replace('"}]',' ');
-                              var newestTime = newerTime.split(":");
-                              var timeOut = newestTime[0]+':'+newestTime[1];
-                              newestTimeOut = timeOut;
-
-                              //console.log(newestDateIn);
-                              //console.log(newestDateOut);
-
-
-
-                              $('#records').hide();
-                              $('#example1').DataTable();
-
-                              $('#tbody').append('<tr class="records"><td class="first">'+tableDate+'</td><td class="second">'+newestTimeIn+'</td><td class="third">'+newestTimeOut+'</td><td></tr>');
-                            }
-                          }
-                    });
-
-
-                    
-
-              });
-
-
-
-
-            }
         });
 
-    });
+       
+      });
+
+
+       
 });
 </script> 
 
