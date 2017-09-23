@@ -175,7 +175,7 @@
       <div class="container-fluid">
         <div class="row" style="padding: 0 5px;">
           <div class="col-xs-2">
-            <a href="<?php echo site_url('admin/view_grid') ?>" class="btn btn-primary btn-md">
+            <a href="<?php echo site_url('admin/view_ranges') ?>" class="btn btn-primary btn-md">
               <span class="glyphicon glyphicon-menu-left"></span> Go Back 
             </a>
           </div>

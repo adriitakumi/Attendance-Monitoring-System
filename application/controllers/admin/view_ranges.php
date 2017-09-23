@@ -8,4 +8,9 @@ class view_ranges extends CI_Controller {
 		$this->load->view('admin/view_ranges');
 	}
 
+	public function show_range()
+	{
+		$this->load->view('admin/show_range');
+	}
+
 }

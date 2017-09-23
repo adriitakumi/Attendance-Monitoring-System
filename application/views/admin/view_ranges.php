@@ -189,7 +189,7 @@
         <div class="row">
           <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
                 <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
@@ -203,39 +203,11 @@
 
           <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
-                <img src="<?php echo base_url('images/alt_picture.jpg');?>" style="width:100%;">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Adrielle Kristine Nicolette Escaro</p>
-                    <p>Software Engineer</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
-                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Fjords" style="width:100%">
-                <div class="caption">
-                  <center>
-                    <p>Hakeem Polistico</p>
-                    <p>Software Engineer</p> 
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
-                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p>Rommel V. Faustino</p>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
                     <p>Manager</p>
                   </center>
                 </div>
@@ -245,11 +217,11 @@
 
           <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
-                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Rommel V. Faustino</p>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
                     <p>Manager</p>
                   </center>
                 </div>
@@ -259,11 +231,39 @@
 
           <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
-                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Rommel V. Faustino</p>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
+                    <p>Manager</p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-xs-2">
+            <div class="thumbnail">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
+                <div class="caption">
+                  <center>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
+                    <p>Manager</p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-xs-2">
+            <div class="thumbnail">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
+                <div class="caption">
+                  <center>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
                     <p>Manager</p>
                   </center>
                 </div>
@@ -275,11 +275,11 @@
         <div class="row">
           <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
                 <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Rommel V. Faustino</p>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
                     <p>Manager</p>
                   </center>
                 </div>
@@ -289,39 +289,11 @@
 
           <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
-                <img src="<?php echo base_url('images/alt_picture.jpg');?>" style="width:100%;">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Adrielle Kristine Nicolette Escaro</p>
-                    <p>Software Engineer</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
-                <img src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Fjords" style="width:100%">
-                <div class="caption">
-                  <center>
-                    <p>Hakeem Polistico</p>
-                    <p>Software Engineer</p> 
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
-                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p>Rommel V. Faustino</p>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
                     <p>Manager</p>
                   </center>
                 </div>
@@ -331,11 +303,11 @@
 
           <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
-                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Rommel V. Faustino</p>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
                     <p>Manager</p>
                   </center>
                 </div>
@@ -345,11 +317,39 @@
 
           <div class="col-xs-2">
             <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_profile')?>">
-                <img class="img-responsive" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="Lights" style="width:100%;">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
                 <div class="caption">
                   <center>
-                    <p>Rommel V. Faustino</p>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
+                    <p>Manager</p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-xs-2">
+            <div class="thumbnail">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
+                <div class="caption">
+                  <center>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
+                    <p>Manager</p>
+                  </center>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-xs-2">
+            <div class="thumbnail">
+              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
+                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
+                <div class="caption">
+                  <center>
+                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
                     <p>Manager</p>
                   </center>
                 </div>
@@ -357,6 +357,7 @@
             </div>
           </div>
         </div>
+
     </section>
     <!-- /.content -->
   </div>
