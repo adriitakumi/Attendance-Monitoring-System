@@ -11,18 +11,34 @@ class attendance extends CI_Controller {
 
 	public function index()
 	{
-		$data['AMADOR']  = json_encode($this->global_model->getRow('csv','encoded_id','747'));
-		$this->load->view('employee/attendance', $data);
+		$this->load->view('employee/attendance');
 	}
 
-	public function ajax()
+	public function populateTable()
 	{
-		$table = $this->input->post('table');
-		$set = $this->input->post('set');
-		$value = $this->input->post('value');
-		$wildcard = $this->input->post('wildcard');
-		$records = json_encode($this->global_model->getLike($table, $set, $value, $wildcard));
-		echo $records;
+		$dbDate = $this->input->post('dbDate');  //GALING SA JS, DATE NA NAKA Y-M-D FORMAT
+		$person = $this->input->post('person');
+
+		$records = $this->global_model->getLike('csv', 'Date', $dbDate, 'after', $person);
+
+
+		$data = [];
+		foreach ($records as $records) 
+		{
+			$arr = array(
+		        $records->Date,
+		        $records->encoded_id,
+		        $records->Person,
+		        $records->Door
+		    );
+
+            $data[] = $arr;
+		}
+
+		echo json_encode($data);
+
+
+		
 	}
 
 	public function ajaxMinUrl()
@@ -31,7 +47,8 @@ class attendance extends CI_Controller {
 		$set = $this->input->post('set');
 		$value = $this->input->post('value');
 		$wildcard = $this->input->post('wildcard');
-		$records = json_encode($this->global_model->getMin($table, $set, $value, $wildcard, 'Date'));
+		$person = $this->input->post('person');
+		$records = json_encode($this->global_model->getMin($table, $set, $value, $wildcard, 'Date', $person));
 		echo $records;
 	}
 
@@ -41,7 +58,8 @@ class attendance extends CI_Controller {
 		$set = $this->input->post('set');
 		$value = $this->input->post('value');
 		$wildcard = $this->input->post('wildcard');
-		$records = json_encode($this->global_model->getMax($table, $set, $value, $wildcard, 'Date'));
+		$person = $this->input->post('person');
+		$records = json_encode($this->global_model->getMax($table, $set, $value, $wildcard, 'Date', $person));
 		echo $records;
 	}	
 

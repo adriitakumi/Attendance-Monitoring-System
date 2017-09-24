@@ -179,7 +179,7 @@
         <div class="row">
           <div class="col-md-12" style="margin-top:20vh;">
             <!-- Standard Form -->
-            <form method="post" action="<?php echo site_url('upload/do_upload');?>" enctype="multipart/form-data">
+            <form method="post" action="<?php echo site_url('admin/upload/do_upload');?>" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-1 col-1"></div>
 

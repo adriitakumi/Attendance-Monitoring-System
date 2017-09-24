@@ -328,33 +328,41 @@
   var d = arr[1]; 
   var y = arr[2];
   var newDate = y+'-'+m+'-'+d; 
-  var ajaxUrl = "<?php echo base_url("employee/attendance/ajax"); ?>"
+  var person = "<?php echo $this->session->last_name.", ".$this->session->first_name ?>";
+  console.log(person);
+  var ajaxPopulateTable = "<?php echo base_url("employee/attendance/populateTable"); ?>"
   var ajaxMinUrl = "<?php echo base_url("employee/attendance/ajaxMinUrl"); ?>"
   var ajaxMaxUrl = "<?php echo base_url("employee/attendance/ajaxMaxUrl"); ?>"
 
 
   $.ajax({
-            url: ajaxUrl,
+            url: ajaxPopulateTable,
             type: 'post',
             dataType: 'json', 
-            data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+            data: {'dbDate': newDate, 'person': person}, 
             success: function(result){
+              //alert(JSON.stringify(result));
               
               var leng = result.length;
-              var des = $('#example1').DataTable();
-
-              if (leng!=0){
-
+              
+              if (leng!=0)
+                {
                 $('#noDate').hide();
                 $('#noRecords').hide();
-                $('#recordTable').show();
                 $('.records').hide();
-                $('#example1').DataTable();
                 $('#ehh').css( 'display', 'block' );
 
-                $.each(result, function(index, val){
-                  $('#tbody').append('<tr class="records"><td>'+val.Date+'</td><td>'+val.Person+'</td><td> '+val.encoded_id+'</td><td> '+val.Door+'</td> </tr>');
-                });
+                $('#example1').DataTable().destroy();
+
+                $('#example1').DataTable( {
+                              data: result,
+                              columns: [
+                                  { "width": "25%" },
+                                  { "width": "25%" },
+                                  { "width": "25%" },
+                                  { "width": "25%" }
+                              ]
+                          });
 
               } else {
 
@@ -367,15 +375,11 @@
 
             }
 
-           
-
-
-
               $.ajax({
                         url: ajaxMinUrl,
                         type: 'post',
                         dataType: 'json', 
-                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after', 'person': person}, 
                         success: function(result){
                           var timeIn = JSON.stringify(result);
                           var splitDate = timeIn.split(" ");
@@ -398,7 +402,7 @@
                         url: ajaxMaxUrl,
                         type: 'post',
                         dataType: 'json', 
-                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after', 'person': person}, 
                         success: function(result){
                           var timeOut = JSON.stringify(result);
                           var splitDate = timeOut.split(" ");
@@ -416,26 +420,6 @@
                           
                         }
               });
-
-              /*var timeIn = $daily;
-              alert(timeIn);
-
-              $('.daily').hide();
-              $('.dailyTimeIn').append('<p class="daily">'+val.timeIn+'</p>');*/
-
-
-
-              //$.ajax({
-                       // url: ajaxMinUrl,
-                       // type: 'post',
-                        //dataType: 'json', 
-                        //data: {RESULT NUNG NAUNANG AJAX DAPAT DITO}, 
-                        //success: function(result){
-                          //tapos bale hahanapin niya yung first column, tas dun siya mag eexecute ng query na $this->db->select_min
-                         // $('.daily').hide();
-                         // $('.dailyTimeIn').append('<p class="daily">TITE</p>');
-                       // }
-              //});
 
             }
           });

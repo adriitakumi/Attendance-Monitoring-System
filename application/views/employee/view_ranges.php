@@ -165,7 +165,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control pull-right" name="dateRange" id="dateRange">
+                  <input type="text" class="form-control pull-right" id="dateRange">
                 </div>
                 <!-- /.input group -->
               </div>
@@ -181,7 +181,16 @@
         <!-- /.col -->
 
         <div class="col-md-8">
-          <div class="box box-primary">
+          <div class="box box-default boxes bg-gray box-solid" id="noDate">
+            <div class="box-body" style="padding: 20px 40px 20px 40px; ">
+              <h2><i class="fa fa-exclamation-triangle" style="margin: 0 10px 10px 0;"></i>No date range selected!</h2>
+              <h4>Please choose a date range in the calendar to show records for those days.</h4>
+              <h4>You cannot choose a range backwards. (Ex.  August 30, 2017 - Aug 20, 2017)
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+          <div class="box box-primary" id="recordsBox" style="display: none;">
               <div class="box-header">
                 <h3 class="box-title">Time In and Time Outs</h3>
               </div>
@@ -259,8 +268,6 @@ var endDate;
 $(document).ready(function() {
     $('#dateRange').daterangepicker(
        {
-          startDate: moment().subtract('days', 29),
-          endDate: moment(),
           showDropdowns: true,
           showWeekNumbers: true,
           timePicker: false,
@@ -271,18 +278,8 @@ $(document).ready(function() {
           applyClass: 'btn-small btn-primary',
           cancelClass: 'btn-small',
           format: 'DD/MM/YYYY'
-       },
-       function(start, end) {
-        console.log("Callback has been called!");
-        $('#reportrange span').html(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'));
-        startDate = start;
-         endDate = end;    
-
-       }
-    );
-
-    //Set the initial state of the picker label
-    $('#dateRange span').html(moment().subtract(29, 'days').format('D MMMM YYYY') + ' - ' + moment().format('D MMMM YYYY'));
+       });
+    $('#dateRange').val('Pick a Range')
 
 
     $('#daterange-btn').click(function(){
@@ -298,6 +295,9 @@ $(document).ready(function() {
                         data: {'dateRange': dateRange}, 
                         success: function(result){
                           //alert(JSON.stringify(result));
+                          $('#noDate').hide();
+                          $('#recordsBox').css( 'display', 'block' );
+
                           $('#recordsTable').DataTable().destroy();
 
                           $('#recordsTable').DataTable( {
