@@ -57,25 +57,18 @@ class global_model extends CI_Model{
 		return $query;
 	}
 
-	public function getRange($table, $value1, $value2){
-		$this->db->where('Date >=', $value1);
-		$this->db->where('Date <=', $value2);
-		$query = $this->db->get_where($table, array('Person' => 'AMADOR, JON-GERARD'))->result();
-		return $query;
-	}
-
-	public function please($date1, $date2){
+	public function getRange($date1, $date2){
 		$begin = new DateTime( $date1 );
 		$end = new DateTime( $date2 );
 		$end = $end->modify( '+1 day' ); 
 
 		$interval = new DateInterval('P1D');
 		$daterange = new DatePeriod($begin, $interval ,$end);
-		$ugh = array();
+		$data = array();
 		foreach($daterange as $date){
-	    	$ugh[] = $date->format("Ymd");
+	    	$data[] = $date->format("Ymd");
 		}
-		return $ugh;
+		return $data;
 	}
 	
 

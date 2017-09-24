@@ -285,6 +285,7 @@ $(document).ready(function() {
     $('#daterange-btn').click(function(){
 
         var getRecordsTable = "<?php echo base_url("employee/view_ranges/populateTable"); ?>";
+        var person = "<?php echo $this->session->last_name.", ".$this->session->first_name ?>";
         var dateRange = $('#dateRange').val();
         //console.log(dateRange);
 
@@ -292,7 +293,7 @@ $(document).ready(function() {
                         url: getRecordsTable,
                         type: 'post',
                         dataType: 'json', 
-                        data: {'dateRange': dateRange}, 
+                        data: {'dateRange': dateRange, 'person': person}, 
                         success: function(result){
                           //alert(JSON.stringify(result));
                           $('#noDate').hide();
