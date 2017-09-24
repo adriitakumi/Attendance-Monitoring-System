@@ -328,6 +328,8 @@
   var d = arr[1]; 
   var y = arr[2];
   var newDate = y+'-'+m+'-'+d; 
+  var person = "<?php echo $this->session->last_name.", ".$this->session->first_name ?>";
+  console.log(person);
   var ajaxPopulateTable = "<?php echo base_url("employee/attendance/populateTable"); ?>"
   var ajaxMinUrl = "<?php echo base_url("employee/attendance/ajaxMinUrl"); ?>"
   var ajaxMaxUrl = "<?php echo base_url("employee/attendance/ajaxMaxUrl"); ?>"
@@ -337,8 +339,9 @@
             url: ajaxPopulateTable,
             type: 'post',
             dataType: 'json', 
-            data: {'dbDate': newDate}, 
+            data: {'dbDate': newDate, 'person': person}, 
             success: function(result){
+              //alert(JSON.stringify(result));
               
               var leng = result.length;
               
@@ -376,7 +379,7 @@
                         url: ajaxMinUrl,
                         type: 'post',
                         dataType: 'json', 
-                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after', 'person': person}, 
                         success: function(result){
                           var timeIn = JSON.stringify(result);
                           var splitDate = timeIn.split(" ");
@@ -399,7 +402,7 @@
                         url: ajaxMaxUrl,
                         type: 'post',
                         dataType: 'json', 
-                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after', 'person': person}, 
                         success: function(result){
                           var timeOut = JSON.stringify(result);
                           var splitDate = timeOut.split(" ");

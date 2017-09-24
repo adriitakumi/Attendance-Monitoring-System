@@ -28,23 +28,23 @@ class global_model extends CI_Model{
 		return $query;
 	}
 
-	public function getLike($table, $set, $value, $wildcard){
+	public function getLike($table, $set, $value, $wildcard, $person){
 		$this->db->like($set, $value, $wildcard);
-		$query = $this->db->get_where($table, array('Person' => 'AMADOR, JON-GERARD'))->result();
+		$query = $this->db->get_where($table, array('Person' => $person))->result();
 		return $query;
 	}
 
-	public function getMin($table,  $set, $value, $wildcard, $colName){
+	public function getMin($table,  $set, $value, $wildcard, $colName, $person){
 		$this->db->select_min($colName);
 		$this->db->like($set, $value, $wildcard);
-		$query = $this->db->get_where($table, array('Person' => 'AMADOR, JON-GERARD'))->result();
+		$query = $this->db->get_where($table, array('Person' => $person))->result();
 		return $query;
 	}
 
-	public function getMax($table,  $set, $value, $wildcard, $colName){
+	public function getMax($table,  $set, $value, $wildcard, $colName, $person){
 		$this->db->select_max($colName);
 		$this->db->like($set, $value, $wildcard);
-		$query = $this->db->get_where($table, array('Person' => 'AMADOR, JON-GERARD'))->result();
+		$query = $this->db->get_where($table, array('Person' => $person))->result();
 		return $query;
 	}
 
