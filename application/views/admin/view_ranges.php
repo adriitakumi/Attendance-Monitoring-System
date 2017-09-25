@@ -186,176 +186,7 @@
       </div>
       <!-- /.row -->
 
-        <div class="row">
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-xs-2">
-            <div class="thumbnail">
-              <a href="<?php echo site_url('admin/view_ranges/show_range')?>">
-                <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-                <div class="caption">
-                  <center>
-                    <p><b>BARTOLOME</b><br>Maria Imelda </p>
-                    <p>Manager</p>
-                  </center>
-                </div>
-              </a>
-            </div>
-          </div>
+        <div class="row" id="people">
         </div>
 
     </section>
@@ -385,15 +216,19 @@
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
 <script>
-  var ajaxUrl = "<?php echo base_url("employee/view_grid/ajax"); ?>"
+  var ajaxUrl = "<?php echo base_url("admin/view_ranges/ajax"); ?>"
 
   $.ajax({
             url: ajaxUrl,
             type: 'post',
             dataType: 'json', 
-            data: {'table': 'csv'}, 
+            data: {'table': 'users'}, 
             success: function(result){
-              alert(result);
+              //alert(JSON.stringify(result));
+
+              $.each(result, function(index, val) {
+                $('#people').append('<div class="col-xs-2"><div class="thumbnail"><a href="<?php echo site_url('admin/view_ranges/show_range')?>"><img src="<?php echo base_url('images/alt_picture.jpg');?>" style="width:100%;"><div class="caption text-center"><p><b>'+val.last_name+'</b><br>'+val.first_name+'</p><p>'+val.position+'</p></div></a></div></div>')
+              })
               
 
             }

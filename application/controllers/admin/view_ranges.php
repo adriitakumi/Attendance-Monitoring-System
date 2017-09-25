@@ -13,4 +13,12 @@ class view_ranges extends CI_Controller {
 		$this->load->view('admin/show_range');
 	}
 
+	public function ajax()
+	{
+		$table = $this->input->post('table');
+		$records = json_encode($this->global_model->getRecords($table));
+
+		echo $records;
+	}
+
 }
