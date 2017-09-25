@@ -17,7 +17,7 @@ class view_ranges extends CI_Controller {
 	public function populateTable()
 	{
 		$range = $this->input->post('dateRange');  //DATE RANGE
-        $person = $this->input->post('person');  //PERSON
+        $encoded_id = $this->input->post('encoded_id');  //PERSON
 		$explodedRange = explode(" ", $range);
 		$startDate = $explodedRange[0];  //START DATE
 		$endDate = $explodedRange[2];  //END DATE
@@ -41,7 +41,7 @@ class view_ranges extends CI_Controller {
             	$timeIn = '';
             	$timeOut = '';
 
-            	$DateTimeIn = json_encode($this->global_model->getMin('csv', 'Date', $newDate, 'after', 'Date', $person));  //GETS TIME IN FROM NEWDATE
+            	$DateTimeIn = json_encode($this->global_model->getMin('csv', 'Date', $newDate, 'after', 'Date', $encoded_id));  //GETS TIME IN FROM NEWDATE
 
             	if($DateTimeIn != '[{"Date":null}]'){
                     $explodedDateTimeIn = explode(" ", $DateTimeIn);
@@ -53,7 +53,7 @@ class view_ranges extends CI_Controller {
                     
                 }
 
-                $DateTimeOut = json_encode($this->global_model->getMax('csv', 'Date', $newDate, 'after', 'Date', $person));  //GETS TIME OUT FROM NEWDATE
+                $DateTimeOut = json_encode($this->global_model->getMax('csv', 'Date', $newDate, 'after', 'Date', $encoded_id));  //GETS TIME OUT FROM NEWDATE
 
             	if($DateTimeOut != '[{"Date":null}]'){
                     $explodedDateTimeOut = explode(" ", $DateTimeOut);

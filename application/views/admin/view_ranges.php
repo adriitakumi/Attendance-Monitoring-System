@@ -175,7 +175,7 @@
 
         <div class="col-xs-4">
           <div class="input-group" style="padding-top: 5px;">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" id="searchEmployee" class="form-control" placeholder="Search">
               <span class="input-group-btn">
                   <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
               </span>
@@ -187,6 +187,8 @@
       <!-- /.row -->
 
         <div class="row" id="people">
+          <ul class="navList">
+          </ul>
         </div>
 
     </section>
@@ -215,6 +217,26 @@
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
+
+
+
+<script>
+  $('#searchEmployee').keyup(function(){
+   var valThis = $(this).val().toLowerCase();
+    if(valThis == ""){
+        $('.navList > li').show();
+    } else {
+        $('.navList > li').each(function(){
+            var text = $(this).text().toLowerCase();
+            (text.indexOf(valThis) >= 0) ? $(this).show() : $(this).hide();
+        });
+   };
+});
+</script>
+
+
+
+
 <script>
   var ajaxUrl = "<?php echo base_url("admin/view_ranges/ajax"); ?>"
 
@@ -227,8 +249,9 @@
               //alert(JSON.stringify(result));
 
               $.each(result, function(index, val) {
-                $('#people').append('<div class="col-xs-2"><div class="thumbnail"><a href="<?php echo site_url('admin/view_ranges/show_range')?>"><img src="<?php echo base_url('images/alt_picture.jpg');?>" style="width:100%;"><div class="caption text-center"><p><b>'+val.last_name+'</b><br>'+val.first_name+'</p><p>'+val.position+'</p></div></a></div></div>')
-              })
+              $('.navList').append('<li style="list-style-type: none;"><div class="col-xs-2"><div id="'+val.encoded_id+'" class="thumbnail"><form id="showRange" method="post" action="/slaxis/admin/view_ranges/show_range"><input type="hidden" name="encoded_id" value="'+val.encoded_id+'"><img src="<?php echo base_url('images/alt_picture.jpg');?>" style="width:100%;"><div class="caption text-center"><p><b>'+val.last_name+'</b><br>'+val.first_name+'</p><button type="submit" class="btn btn-block btn-info btn-flat buttonView" style="display:block;margin: auto;">View</button></div></form></div></div></li>')
+
+            })
               
 
             }

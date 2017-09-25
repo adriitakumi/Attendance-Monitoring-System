@@ -2,9 +2,11 @@
 
 class upload extends CI_Controller {
 
-   public function __construct() {
+   public function __construct()
+  {
       parent::__construct();
-   }
+      $this->sla_session->checkSession();
+  }
 
    public function index(){
       $this->load->view('admin/upload', array('error' => ' ' ));
@@ -28,28 +30,29 @@ class upload extends CI_Controller {
       if($this->upload->do_upload())
       {
 
-         $file_p = $this->upload->data('full_path');
+        $file_p = $this->upload->data('full_path');
 
         $input = explode("\n", file_get_contents($file_p));
         foreach ($input as $line) {
         // process all lines.
         }
 
-        // This function removes first 100 elements.
+        // This function removes first 3 elements.
         // More info:
         // http://php.net/manual/en/function.array-slice.php
         $output = array_slice($input, 3);
         file_put_contents($file_p, implode("\n", $output));
 
         $file = file_get_contents($file_p);
-        $file = str_replace("\"\",\"Transaction\",\"Person\",\"Encoded ID\",\"Door\"", "Date,Transaction,Person,encoded_id,Door", $file);
-        $file = str_replace("\"\",\"ALL ACCESS ATTEMPTS HISTORY REPORT\"", " ", $file);
+        $file = str_replace(",Transaction,Person,Encoded ID,Door", "Date,Transaction,Person,encoded_id,Door", $file);
 
 
         file_put_contents($file_p, $file);
 
+
         $this->load->library('csv_reader');
         $result =   $this->csv_reader->parse_file($file_p);//path to csv file
+
 
         $i=0;
         foreach ($result as $row=>$res) {
@@ -59,11 +62,12 @@ class upload extends CI_Controller {
           $date = $arr[0];
           $time = $arr[1];
           $dateExploded = explode("/",$date); 
-          /*$m = $dateExploded[0]; $d = $dateExploded[1]; $y = $dateExploded[2];
+          $m = $dateExploded[0]; $d = $dateExploded[1]; $y = $dateExploded[2];
           $db_date = $y.'/'.$m.'/'.$d.' '.$time;
-          $result[$i]['Date'] = $db_date;*/
-          //DI KO TALAGA ALAM PANO NAGING Y-M-D YUNG FORMAT EH
+          $result[$i]['Date'] = $db_date;
         }
+
+
 
 
          $this->global_model->insert_batch('csv', $result);

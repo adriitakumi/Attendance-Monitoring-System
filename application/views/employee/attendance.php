@@ -328,8 +328,8 @@
   var d = arr[1]; 
   var y = arr[2];
   var newDate = y+'-'+m+'-'+d; 
-  var person = "<?php echo $this->session->last_name.", ".$this->session->first_name ?>";
-  console.log(person);
+  var encoded_id = "<?php echo $this->session->encoded_id ?>";
+  console.log(encoded_id);
   var ajaxPopulateTable = "<?php echo base_url("employee/attendance/populateTable"); ?>"
   var ajaxMinUrl = "<?php echo base_url("employee/attendance/ajaxMinUrl"); ?>"
   var ajaxMaxUrl = "<?php echo base_url("employee/attendance/ajaxMaxUrl"); ?>"
@@ -339,7 +339,7 @@
             url: ajaxPopulateTable,
             type: 'post',
             dataType: 'json', 
-            data: {'dbDate': newDate, 'person': person}, 
+            data: {'dbDate': newDate, 'encoded_id': encoded_id}, 
             success: function(result){
               //alert(JSON.stringify(result));
               
@@ -379,7 +379,7 @@
                         url: ajaxMinUrl,
                         type: 'post',
                         dataType: 'json', 
-                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after', 'person': person}, 
+                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after', 'encoded_id': encoded_id}, 
                         success: function(result){
                           var timeIn = JSON.stringify(result);
                           var splitDate = timeIn.split(" ");
@@ -402,7 +402,7 @@
                         url: ajaxMaxUrl,
                         type: 'post',
                         dataType: 'json', 
-                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after', 'person': person}, 
+                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after', 'encoded_id': encoded_id}, 
                         success: function(result){
                           var timeOut = JSON.stringify(result);
                           var splitDate = timeOut.split(" ");

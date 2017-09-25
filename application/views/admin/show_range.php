@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
@@ -160,7 +162,7 @@
     <section class="content-header">
       <h1>
         Attendance
-        <small>View Time ins and time outs of Employees</small>
+        <small>View Time ins and time outs of Employees <?php echo $encoded_id ?></small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
@@ -172,39 +174,91 @@
     <!-- Main content -->
     <section class="content">
 
-      <div class="container-fluid">
-        <div class="row" style="padding: 0 5px;">
-          <div class="col-xs-2">
-            <a href="<?php echo site_url('admin/view_ranges') ?>" class="btn btn-primary btn-md">
-              <span class="glyphicon glyphicon-menu-left"></span> Go Back 
-            </a>
-          </div>
-        </div>
-      </div>
-      <br>
       <div class="row" style="padding: 0 5px;">
-        <div class="col-xs-2">
-          <div class="thumbnail" style="width: 110%">
-            <a href="#">
-              <img src="<?php echo base_url('images/1.jpg');?>" style="width:100%;">
-              <div class="caption">
-                <center>
-                  <p>Name: Adrielle Kristine Nicolette Escaro</p>
-                  <p>Position: Software Engineer</p>
-                </center>
+        <div class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-yellow">
+              <div class="widget-user-image">
+                <img class="img-circle" src="<?php echo base_url('images/1.jpg');?>" alt="User Avatar">
               </div>
-            </a>
+              <!-- /.widget-user-image -->
+              <h3 class="widget-user-username"><?php echo $first_name.' '.$last_name ?></h3>
+              <h5 class="widget-user-desc"><?php echo ucwords($position).' '.$encoded_id; ?></h5>
+            </div>
+            <div class="box-footer">
+              <div class="form-group">
+                <label>Date range:</label>
+
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="dateRange">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+              <button class="btn btn-flat btn-primary pull-right" id="daterange-btn">Go</button>
+            </div>
+          </div>
+          <!-- /.widget-user -->
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="fa fa-envelope-o"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Overtime</span>
+                  <span class="info-box-number">1,410</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+
+            <div class="col-md-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="fa fa-envelope-o"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Late</span>
+                  <span class="info-box-number">1,410</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.col -->
+
+
+        <div class="col-md-8">
+          <div class="box box-default boxes bg-gray box-solid" id="noDate">
+            <div class="box-body" style="padding: 20px 40px 20px 40px; ">
+              <h2><i class="fa fa-exclamation-triangle" style="margin: 0 10px 10px 0;"></i>No date range selected!</h2>
+              <h4>Please choose a date range in the calendar to show records for those days.</h4>
+              <h4>You cannot choose a range backwards. (Ex.  August 30, 2017 - Aug 20, 2017)</h4>
+            </div>
+            <!-- /.box-body -->
           </div>
         </div>
 
-        <div class="col-xs-10">
-          <div class="box box-primary">
+        <div class="col-md-8">
+          <div class="box box-primary" id="tableBox" style="display: none;">
             <div class="box-header">
-              <h3 class="box-title">Escaro's Time Ins and Time Outs for this Month</h3>
+              <h3 class="box-title"><?php echo $last_name ?>'s time ins and time outs for the selected range</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="recordsTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Date</th>
@@ -214,57 +268,15 @@
                   <th>Late</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tfoot>
                 <tr>
-                  <td>8/29/2017</td>
-                  <td>8:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>8</td>
-                  <td>5</td>
+                  <th>Date</th>
+                  <th>Time IN</th>
+                  <th>Time OUT</th>
+                  <th>Overtime</th>
+                  <th>Late</th>
                 </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>8:40 AM</td>
-                  <td>7:20 PM</td>
-                  <td>10</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>8:20 AM</td>
-                  <td>8:20 PM</td>
-                  <td>11</td>
-                  <td>9</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>7:38 AM</td>
-                  <td>7:38 PM</td>
-                  <td>8</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>11</td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>11</td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                  <td>8/29/2017</td>
-                  <td>9:38 AM</td>
-                  <td>7:30 PM</td>
-                  <td>11</td>
-                  <td>10</td>
-                </tr>
-                </tbody>
+                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->
@@ -295,20 +307,79 @@
 <script src="<?php echo base_url(); ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>bower_components/fastclick/lib/fastclick.js"></script>
+<!-- date-range-picker -->
+<script src="<?php echo base_url(); ?>bower_components/moment/min/moment.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- ChartJS -->
-<script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
-<script>
-  $(function () {
-    $('#example1').DataTable()
-  })
-</script>
 
-<script>
+<script type="text/javascript">
+var startDate;
+var endDate;
+
+$(document).ready(function() {
+    $('#dateRange').daterangepicker(
+       {
+          showDropdowns: true,
+          showWeekNumbers: true,
+          timePicker: false,
+          timePickerIncrement: 1,
+          timePicker12Hour: true,
+          opens: 'left',
+          buttonClasses: ['btn btn-default'],
+          applyClass: 'btn-small btn-primary',
+          cancelClass: 'btn-small',
+          format: 'DD/MM/YYYY'
+       });
+    $('#dateRange').val('Pick a Range')
+
+
+    $('#daterange-btn').click(function(){
+
+        var getRecordsTable = "<?php echo base_url("admin/view_ranges/populateTable"); ?>";
+        var encodedId = "<?php echo $encoded_id ?>";
+        var dateRange = $('#dateRange').val();
+        //console.log(dateRange);
+
+        $.ajax({
+                        url: getRecordsTable,
+                        type: 'post',
+                        dataType: 'json', 
+                        data: {'dateRange': dateRange, 'encodedId': encodedId}, 
+                        success: function(result){
+                          //alert(JSON.stringify(result));
+                          $('#noDate').hide();
+                          $('#tableBox').css( 'display', 'block' );
+
+                          $('#recordsTable').DataTable().destroy();
+
+                          $('#recordsTable').DataTable( {
+                              data: result,
+                              columns: [
+                                  { "width": "20%" },
+                                  { "width": "20%" },
+                                  { "width": "20%" },
+                                  { "width": "20%" },
+                                  { "width": "20%" }
+                              ]
+                          });
+                          
+
+                      }
+        });
+
+       
+      });
+
+
+       
+});
+</script> 
+
+<!--<script>
 $(document).ready(function(){ 
 
         $(".buttonView").click(function(){
@@ -368,7 +439,7 @@ $(document).ready(function(){
             }
           });
         });
-</script>
+</script>-->
 
 </body>
 </html>

@@ -17,9 +17,9 @@ class attendance extends CI_Controller {
 	public function populateTable()
 	{
 		$dbDate = $this->input->post('dbDate');  //GALING SA JS, DATE NA NAKA Y-M-D FORMAT
-		$person = $this->input->post('person');
+		$encoded_id = $this->input->post('encoded_id');
 
-		$records = $this->global_model->getLike('csv', 'Date', $dbDate, 'after', $person);
+		$records = $this->global_model->getLike('csv', 'Date', $dbDate, 'after', $encoded_id);
 
 
 		$data = [];
@@ -47,8 +47,8 @@ class attendance extends CI_Controller {
 		$set = $this->input->post('set');
 		$value = $this->input->post('value');
 		$wildcard = $this->input->post('wildcard');
-		$person = $this->input->post('person');
-		$records = json_encode($this->global_model->getMin($table, $set, $value, $wildcard, 'Date', $person));
+		$encoded_id = $this->input->post('encoded_id');
+		$records = json_encode($this->global_model->getMin($table, $set, $value, $wildcard, 'Date', $encoded_id));
 		echo $records;
 	}
 
@@ -58,8 +58,8 @@ class attendance extends CI_Controller {
 		$set = $this->input->post('set');
 		$value = $this->input->post('value');
 		$wildcard = $this->input->post('wildcard');
-		$person = $this->input->post('person');
-		$records = json_encode($this->global_model->getMax($table, $set, $value, $wildcard, 'Date', $person));
+		$encoded_id = $this->input->post('encoded_id');
+		$records = json_encode($this->global_model->getMax($table, $set, $value, $wildcard, 'Date', $encoded_id));
 		echo $records;
 	}	
 
