@@ -215,43 +215,12 @@
           </div>
           <!-- /.box -->
 
-          <div class="row">
-
-            <div class="col-md-6 text-center">
-              <div class="box box-primary box-solid hidden-print">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Time In</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body timeIn">
-                  <p class="dailyTimeIn"></p>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /.box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-6 text-center">
-              <div class="box box-primary box-solid hidden-print">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Time Out</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body timeOut">
-                  <p class="dailyTimeOut"></p>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /.box -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
+          
         </div>
         <!-- /.col -->
 
         <div class="col-md-8">
-          <div class="box box-default boxes bg-gray box-solid" id="noDate" style="display: none;">
+          <div class="box box-default boxes bg-gray box-solid" id="noDate" >
             <div class="box-body" style="padding: 20px 40px 40px 40px; ">
               <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>No date selected!</h2>
               <h4>Please click on a date in the calendar to show records for that day.</h4>
@@ -269,7 +238,7 @@
           </div>
           <!-- /.box -->
 
-          <div class="box boxes box-primary" id="divTable">
+          <div class="box boxes box-primary" id="boxTable" style="display: none;">
             <div class="box-header">
               <h3 class="box-title">Time In and Time Outs</h3>
             </div>
@@ -277,25 +246,25 @@
             <div class="box-body">
               <table id="recordsTable" class="table table-bordered table-striped">
                 <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Time IN</th>
-                  <th>Time OUT</th>
-                  <th>Overtime</th>
-                  <th>Late</th>
-                </tr>
+                  <tr>
+                    <th>Name</th>
+                    <th>Encoded ID</th>
+                    <th>Time IN</th>
+                    <th>Time OUT</th>
+                    <th>Overtime</th>
+                    <th>Late</th>
+                  </tr>
                 </thead>
-                <tbody id="tbody">
-                <tr class="records">
-                  <td>qwert</td>
-                  <td>qwert</td>
-                  <td>qwer</td>
-                  <td>srty</td>
-                  <td>qwer</td>
-                  <td>srty</td>
-                </tr> 
-              </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Name</th>
+                    <th>Encoded ID</th>
+                    <th>Time IN</th>
+                    <th>Time OUT</th>
+                    <th>Overtime</th>
+                    <th>Late</th>
+                  </tr>
+                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->
@@ -349,33 +318,42 @@
   var d = arr[1]; 
   var y = arr[2];
   var newDate = y+'-'+m+'-'+d; 
-  var ajaxUrl = "<?php echo base_url("admin/view_list/ajax"); ?>"
-  var ajaxMinUrl = "<?php echo base_url("admin/view_list/ajaxMinUrl"); ?>"
-  var ajaxMaxUrl = "<?php echo base_url("admin/view_list/ajaxMaxUrl"); ?>"
+  var encoded_id = "<?php echo $this->session->encoded_id ?>";
+  console.log(encoded_id);
+  var ajaxPopulateTable = "<?php echo base_url("admin/view_list/populateTable"); ?>"
+  var ajaxMinUrl = "<?php echo base_url("employee/attendance/ajaxMinUrl"); ?>"
+  var ajaxMaxUrl = "<?php echo base_url("employee/attendance/ajaxMaxUrl"); ?>"
 
 
   $.ajax({
-            url: ajaxUrl,
+            url: ajaxPopulateTable,
             type: 'post',
             dataType: 'json', 
-            data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
+            data: {'dbDate': newDate}, 
             success: function(result){
+              alert(JSON.stringify(result));
               
               var leng = result.length;
-              var des = $('#recordsTable').DataTable();
-
-              if (leng!=0){
-
+              
+              if (leng!=0)
+                {
                 $('#noDate').hide();
                 $('#noRecords').hide();
-                $('#recordTable').show();
-                $('.records').hide();
-                $('#example1').DataTable();
-                $('#ehh').css( 'display', 'block' );
+                $('#boxTable').css( 'display', 'block' );
 
-                $.each(result, function(index, val){
-                  $('#tbody').append('<tr class="records"><td>'+val.Date+'</td><td>'+val.Person+'</td><td> '+val.encoded_id+'</td><td> '+val.Door+'</td> </tr>');
-                });
+                $('#recordsTable').DataTable().destroy();
+
+                $('#recordsTable').DataTable( {
+                              data: result,
+                              columns: [
+                                  { "width": "25%" },
+                                  { "width": "15%" },
+                                  { "width": "15%" },
+                                  { "width": "15%" },
+                                  { "width": "15%" },
+                                  { "width": "15%" }
+                              ]
+                          });
 
               } else {
 
@@ -388,55 +366,6 @@
 
             }
 
-           
-
-
-
-              $.ajax({
-                        url: ajaxMinUrl,
-                        type: 'post',
-                        dataType: 'json', 
-                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
-                        success: function(result){
-                          var timeIn = JSON.stringify(result);
-                          var splitDate = timeIn.split(" ");
-                          var newerDate = splitDate[1];
-                          var eh = newerDate.split("");
-                          var h1 = eh[0];
-                          var h2 = eh[1];
-                          var colon = eh[2];
-                          var m1 = eh[3];
-                          var m2 = eh[4];
-                          var newestDate = h1+h2+colon+m1+m2;
-
-                          $('.dailyTimeIn').hide();
-                          $('.timeIn').append('<p class="dailyTimeIn">'+newestDate+'</p>');
-                          
-                        }
-              });
-
-              $.ajax({
-                        url: ajaxMaxUrl,
-                        type: 'post',
-                        dataType: 'json', 
-                        data: {'value' : newDate, 'table': 'csv', 'set': 'Date', 'wildcard': 'after'}, 
-                        success: function(result){
-                          var timeOut = JSON.stringify(result);
-                          var splitDate = timeOut.split(" ");
-                          var newerDate = splitDate[1];
-                          var eh = newerDate.split("");
-                          var h1 = eh[0];
-                          var h2 = eh[1];
-                          var colon = eh[2];
-                          var m1 = eh[3];
-                          var m2 = eh[4];
-                          var newestDate = h1+h2+colon+m1+m2;
-
-                          $('.dailyTimeOut').hide();
-                          $('.timeOut').append('<p class="dailyTimeOut">'+newestDate+'</p>');
-                          
-                        }
-              });
             }
           });
 

@@ -32,6 +32,9 @@ class login extends CI_Controller {
 					        'first_name'     =>  $result->first_name,
 					        'last_name'     =>  $result->last_name,
 					        'position'     =>  $result->position,
+					        'encoded_id'     =>  $result->encoded_id,
+					        'time_in'     =>  $result->time_in,
+					        'time_out'     =>  $result->time_out,
 					        'contact_number' => $result->contact_number,
 					        'date_created' => $result->date_created,
 					        'logged_in' => TRUE
