@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | View Ranges</title>
+  <title>SilverLake Axis  | Generate Report</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -14,8 +14,8 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
   <!-- daterange picker -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
-  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/iCheck/all.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
@@ -121,10 +121,16 @@
             <span>Attendance</span>
           </a>
         </li>
-        <li class="active">
+        <li>
           <a href="<?php echo site_url('employee/view_ranges');?>">
             <i class="fa fa-list"></i>
             <span>View Ranges</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="<?php echo site_url('employee/generate_report');?>">
+            <i class="fa fa-list"></i>
+            <span>Generate Report</span>
           </a>
         </li>
         <li class="header">LABELS</li>
@@ -140,8 +146,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        View Ranges
-        <small>Time ins and time outs</small>
+        Generate Report
+        <small>Select Employees and Date Range</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
@@ -152,26 +158,57 @@
     <!-- Main content -->
     <section class="content">
       <div class="row" style="padding: 0 5px;">
-        <div class="col-md-4">
+        <div class="col-md-12">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Time in and Time out for Specific Range:</h3>
+              <h3 class="box-title">Select employees and date range:</h3>
             </div>
             <div class="box-body">
-              <div class="form-group">
-                <label>Date range:</label>
+              <div class="row">
+                <div class="col-md-8">
+                  <table id="recordsTable" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th><input type="checkbox" class="minimal-red checkAll"></th>
+                        <th>Encoded ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th></th>
+                        <th>Encoded ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                      </tr>
+                    </tfoot>
+                  </table>
 
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="dateRange">
                 </div>
-                <!-- /.input group -->
-              </div>
-              <!-- /.form group -->
+                <!-- /.col -->
 
-              <button class="btn btn-flat btn-primary pull-right" id="daterange-btn">Go</button>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Date range:</label>
+
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" id="dateRange">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  <!-- /.form group -->
+
+                  <button class="btn btn-flat btn-primary pull-right" id="daterange-btn">Go</button>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              
             </div>
             <!-- /.box-body -->
 
@@ -180,48 +217,7 @@
         </div>
         <!-- /.col -->
 
-        <div class="col-md-8">
-          <div class="box box-default boxes bg-gray box-solid" id="noDate">
-            <div class="box-body" style="padding: 20px 40px 20px 40px; ">
-              <h2><i class="fa fa-exclamation-triangle" style="margin: 0 10px 10px 0;"></i>No date range selected!</h2>
-              <h4>Please choose a date range in the calendar to show records for those days.</h4>
-              <h4>You cannot choose a range backwards. (Ex.  August 30, 2017 - Aug 20, 2017)
-            </div>
-            <!-- /.box-body -->
-          </div>
-
-          <div class="box box-primary" id="recordsBox" style="display: none;">
-              <div class="box-header">
-                <h3 class="box-title">Time In and Time Outs</h3>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <table id="recordsTable" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Time IN</th>
-                      <th>Time OUT</th>
-                      <th>Late</th>
-                      <th>Overtime</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Date</th>
-                      <th>Time IN</th>
-                      <th>Time OUT</th>
-                      <th>Late</th>
-                      <th>Overtime</th>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /. box -->
-        </div>
-        <!-- /.col -->
+        
       </div>
       <!-- /.row -->
     </section>
@@ -250,81 +246,192 @@
 <!-- date-range-picker -->
 <script src="<?php echo base_url(); ?>bower_components/moment/min/moment.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="<?php echo base_url(); ?>plugins/iCheck/icheck.min.js"></script>
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- ChartJS -->
-<script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
 
 <script type="text/javascript">
-var startDate;
-var endDate;
 
-$(document).ready(function() {
-    $('#dateRange').daterangepicker(
-       {
-          showDropdowns: true,
-          showWeekNumbers: true,
-          timePicker: false,
-          timePickerIncrement: 1,
-          timePicker12Hour: true,
-          opens: 'left',
-          buttonClasses: ['btn btn-default'],
-          applyClass: 'btn-small btn-primary',
-          cancelClass: 'btn-small',
-          format: 'DD/MM/YYYY'
-       });
-    $('#dateRange').val('Pick a Range')
+  //Red color scheme for iCheck
+  $('input[type="checkbox"].minimal-red').iCheck({
+    checkboxClass: 'icheckbox_minimal-red'
+  })
 
+  var getRecordsTable = "<?php echo base_url("admin/generate_report/populateTable"); ?>";
 
-    $('#daterange-btn').click(function(){
+ 
+ //
+// Updates "Select all" control in a data table
+//
+function updateDataTableSelectAllCtrl(table){
+   var $table             = table.table().node();
+   var $chkbox_all        = $('tbody input[type="checkbox"]', $table);
+   var $chkbox_checked    = $('tbody input[type="checkbox"]:checked', $table);
+   var chkbox_select_all  = $('thead input[name="select_all"]', $table).get(0);
 
-        var getRecordsTable = "<?php echo base_url("employee/view_ranges/populateTable"); ?>";
-        var encoded_id = "<?php echo $this->session->encoded_id ?>";
-        var DBtime_in = "<?php echo $this->session->time_in ?>";
-        var DBtime_out = "<?php echo $this->session->time_out ?>";
-        console.log(DBtime_in);
-        var dateRange = $('#dateRange').val();
-        //console.log(dateRange);
+   // If none of the checkboxes are checked
+   if($chkbox_checked.length === 0){
+      chkbox_select_all.checked = false;
+      if('indeterminate' in chkbox_select_all){
+         chkbox_select_all.indeterminate = false;
+      }
 
-        $.ajax({
-                        url: getRecordsTable,
-                        type: 'post',
-                        dataType: 'json', 
-                        data: {'dateRange': dateRange, 'encoded_id': encoded_id, 'DBtime_in': DBtime_in, 'DBtime_out': DBtime_out}, 
-                        success: function(result){
-                          //alert(JSON.stringify(result));
-                          $('#noDate').hide();
-                          $('#recordsBox').css( 'display', 'block' );
+   // If all of the checkboxes are checked
+   } else if ($chkbox_checked.length === $chkbox_all.length){
+      chkbox_select_all.checked = true;
+      if('indeterminate' in chkbox_select_all){
+         chkbox_select_all.indeterminate = false;
+      }
 
-                          $('#recordsTable').DataTable().destroy();
+   // If some of the checkboxes are checked
+   } else {
+      chkbox_select_all.checked = true;
+      if('indeterminate' in chkbox_select_all){
+         chkbox_select_all.indeterminate = true;
+      }
+   }
+}
 
-                          $('#recordsTable').DataTable( {
-                              data: result,
-                              columns: [
-                                  { "width": "20%" },
-                                  { "width": "20%" },
-                                  { "width": "20%" },
-                                  { "width": "20%" },
-                                  { "width": "20%" }
-                              ]
-                          });
-                          
+$(document).ready(function (){
+   // Array holding selected row IDs
+   var rows_selected = [];
+   var table = $('#recordsTable').DataTable({
+      'ajax': getRecordsTable,
+      'columnDefs': [{
+         'targets': 0,
+         'searchable': false,
+         'orderable': false,
+         'width': '1%',
+         'className': 'dt-body-center',
+         'render': function (data, type, full, meta){
+             return '<input type="checkbox">';
+         }
+      }],
+      'order': [[1, 'asc']],
+      'rowCallback': function(row, data, dataIndex){
+         // Get row ID
+         var rowId = data[0];
 
-                      }
-        });
+         // If row ID is in the list of selected row IDs
+         if($.inArray(rowId, rows_selected) !== -1){
+            $(row).find('input[type="checkbox"]').prop('checked', true);
+            $(row).addClass('selected');
+         }
+      }
+   });
 
-       
+   // Handle click on checkbox
+   $('#recordsTable tbody').on('click', 'input[type="checkbox"]', function(e){
+      var $row = $(this).closest('tr');
+
+      // Get row data
+      var data = table.row($row).data();
+
+      // Get row ID
+      var rowId = data[0];
+
+      // Determine whether row ID is in the list of selected row IDs
+      var index = $.inArray(rowId, rows_selected);
+
+      // If checkbox is checked and row ID is not in list of selected row IDs
+      if(this.checked && index === -1){
+         rows_selected.push(rowId);
+
+      // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
+      } else if (!this.checked && index !== -1){
+         rows_selected.splice(index, 1);
+      }
+
+      if(this.checked){
+         $row.addClass('selected');
+      } else {
+         $row.removeClass('selected');
+      }
+
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(table);
+
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle click on table cells with checkboxes
+   $('#recordsTable').on('click', 'tbody td, thead th:first-child', function(e){
+      $(this).parent().find('input[type="checkbox"]').trigger('click');
+   });
+
+   // Handle click on "Select all" control
+   $('thead input[name="select_all"]', table.table().container()).on('click', function(e){
+      if(this.checked){
+         $('#recordsTable tbody input[type="checkbox"]:not(:checked)').trigger('click');
+      } else {
+         $('#recordsTable tbody input[type="checkbox"]:checked').trigger('click');
+      }
+
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle table draw event
+   table.on('draw', function(){
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(table);
+   });
+
+   // Handle form submission event
+   $('#frm-example').on('submit', function(e){
+      var form = this;
+
+      // Iterate over all selected checkboxes
+      $.each(rows_selected, function(index, rowId){
+         // Create a hidden element
+         $(form).append(
+             $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', 'id[]')
+                .val(rowId)
+         );
       });
+   });
+
+});
+
+
+// var startDate;
+// var endDate;
+
+// $(document).ready(function() {
+//     $('#dateRange').daterangepicker(
+//        {
+//           showDropdowns: true,
+//           showWeekNumbers: true,
+//           timePicker: false,
+//           timePickerIncrement: 1,
+//           timePicker12Hour: true,
+//           opens: 'left',
+//           buttonClasses: ['btn btn-default'],
+//           applyClass: 'btn-small btn-primary',
+//           cancelClass: 'btn-small',
+//           format: 'DD/MM/YYYY'
+//        });
+//     $('#dateRange').val('Pick a Range')
+
+
+//     $('#daterange-btn').click(function(){
+
+        
+
+       
+//       });
 
 
        
-});
+//});
 </script> 
 
 </body>

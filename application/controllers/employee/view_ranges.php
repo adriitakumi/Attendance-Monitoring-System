@@ -18,6 +18,10 @@ class view_ranges extends CI_Controller {
 	{
 		$range = $this->input->post('dateRange');  //DATE RANGE
         $encoded_id = $this->input->post('encoded_id');  //PERSON
+        $time_in = $this->input->post('DBtime_in');
+        $time_out = $this->input->post('DBtime_out');
+
+
 		$explodedRange = explode(" ", $range);
 		$startDate = $explodedRange[0];  //START DATE
 		$endDate = $explodedRange[2];  //END DATE
@@ -64,6 +68,23 @@ class view_ranges extends CI_Controller {
                      
                 }
 
+
+                $late = strtotime($timeIn) - strtotime($time_in);
+                $late = $late/60;
+
+                if ($late < 0)
+                {
+                    $late = abs($late).' mins early';
+                }
+
+                $overtime = strtotime($timeOut) - strtotime($time_out);
+                $overtime = $overtime/60;
+
+                if ($overtime < 0)
+                {
+                    $overtime = 'Left '.abs($late).' mins early';
+                }
+
                 if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
                 	{
 
@@ -71,8 +92,8 @@ class view_ranges extends CI_Controller {
 		                    $tableDate,
 		                    $timeIn,
 		                    $timeOut,
-		                    'WALA PANG OT',
-		                    'WALA PANG LATE'
+		                    $late.' mins.',
+		                    $overtime.' mins.'
 		                );
 
                     	$data[] = $arr;

@@ -331,7 +331,7 @@
             dataType: 'json', 
             data: {'dbDate': newDate}, 
             success: function(result){
-              alert(JSON.stringify(result));
+              //alert(JSON.stringify(result));
               
               var leng = result.length;
               
