@@ -12,6 +12,13 @@ class global_model extends CI_Model{
 		return $query;
 	}
 
+	public function getWhereIn($table, $colName, $data)
+	{
+		$query = $this->db->where_in($colName, $data);
+		$query = $this->db->get($table)->result();
+		return $query;
+	}
+
 	public function getRecords($table, $order_by=null, $set=null)
 	{
 		if($order_by != null && $set != null)
