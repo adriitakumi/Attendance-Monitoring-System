@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Attendance</title>
+  <title>SilverLake Axis  | View Ranges</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -133,7 +133,7 @@
               </a>
             </li>
 
-            <li>
+            <li class="active">
               <a href="<?php echo site_url('admin/view_ranges');?>">
                 <i class="fa fa-circle-o"></i> View Ranges
               </a>
@@ -147,6 +147,14 @@
             <i class="fa fa-users"></i> Manage Employees
           </a>
         </li>
+
+        <li>
+          <a href="<?php echo site_url('admin/generate_report');?>">
+            <i class="fa fa-file"></i> Generate Report
+          </a>
+        </li>
+
+
         <li class="header">LABELS</li>
 
       </ul>
@@ -167,7 +175,7 @@
       <ol class="breadcrumb">
         <li> Home</a></li>
         <li> Attendance</a></li>
-        <li class="active"><a href="#"><i class="fa fa-file"></i>View Data</a></li>
+        <li class="active"><a href="#"><i class="fa fa-list"></i>View Ranges</a></li>
       </ol>
     </section>
 
@@ -181,7 +189,7 @@
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-yellow">
               <div class="widget-user-image">
-                <img class="img-circle" src="<?php echo base_url('images/1.jpg');?>" alt="User Avatar">
+                <img class="img-circle" src="<?php echo base_url('images/alt_picture.jpg');?>" alt="User Avatar">
               </div>
               <!-- /.widget-user-image -->
               <h3 class="widget-user-username"><?php echo $first_name.' '.$last_name ?></h3>

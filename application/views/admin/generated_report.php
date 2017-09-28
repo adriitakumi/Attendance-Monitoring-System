@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Attendance</title>
+  <title>SilverLake Axis  | Generate Report</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -151,6 +151,12 @@
           </a>
         </li>
 
+        <li>
+          <a href="<?php echo site_url('admin/generate_report');?>">
+            <i class="fa fa-file"></i> Generate Report
+          </a>
+        </li>
+
         <li class="header">LABELS</li>
 
       </ul>
@@ -165,13 +171,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Attendance
-        <small>View Time ins and time outs of Employees</small>
+        Generate Report
+        <small>Select Employees and Date Range</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
-        <li> Attendance</a></li>
-        <li class="active"><a href="#"><i class="fa fa-file"></i>View Data</a></li>
+        <li class="active"><a href="#"><i class="fa fa-file"></i>Generate Report</a></li>
       </ol>
     </section>
 
