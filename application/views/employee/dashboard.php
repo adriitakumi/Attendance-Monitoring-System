@@ -125,6 +125,12 @@
             <span>View Ranges</span>
           </a>
         </li>
+        <li>
+          <a href="<?php echo site_url('employee/generate_report');?>">
+            <i class="fa fa-list"></i>
+            <span>Generate Report</span>
+          </a>
+        </li>
         <li class="header">LABELS</li>
       </ul>
     </section>

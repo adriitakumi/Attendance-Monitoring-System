@@ -12,6 +12,21 @@ class global_model extends CI_Model{
 		return $query;
 	}
 
+	public function getWhereIn($table, $colName, $data)
+	{
+		$this->db->where_in($colName, $data);
+		$query = $this->db->get($table)->result();
+		return $query;
+	}
+
+	public function generateReport($table, $set, $value, $wildcard, $colName, $data)
+	{	
+		$this->db->like($set, $value, $wildcard);  //SELECT * FROM 'csv' WHERE 'Date' LIKE '2017-08-02%'
+		$this->db->where_in($colName, $data);  //SLECT * FROM 'csv' WHERE 'encoded_id' IN ('747','743')
+		$query = $this->db->get($table)->result();
+		return $query;
+	}
+
 	public function getRecords($table, $order_by=null, $set=null)
 	{
 		if($order_by != null && $set != null)
@@ -38,6 +53,14 @@ class global_model extends CI_Model{
 		$this->db->select_min($colName);
 		$this->db->like($set, $value, $wildcard);
 		$query = $this->db->get_where($table, array('encoded_id' => $encoded_id))->result();
+		return $query;
+	}
+
+	public function getRangeMin($table, $set, $value, $wildcard, $colName, $where, $encoded_id){
+		$this->db->select_min($colName);
+		$this->db->like($set, $value, $wildcard);
+		$this->db->where_in($where, $encoded_id);
+		$query = $this->db->get($table)->result();
 		return $query;
 	}
 

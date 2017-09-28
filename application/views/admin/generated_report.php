@@ -3,17 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Employees</title>
+  <title>SilverLake Axis  | Attendance</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
@@ -21,6 +23,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/skins/_all-skins.min.css">
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -115,7 +118,7 @@
           </a>
         </li>
 
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#"><i class="fa fa-calendar"></i><span> Attendance</span>
             <span class="pull-right-container"></span>
             <i class="fa fa-angle-left pull-right"></i>
@@ -127,7 +130,7 @@
               </a>
             </li>
 
-            <li>
+            <li class="active">
               <a href="<?php echo site_url('admin/view_list');?>">
                 <i class="fa fa-circle-o"></i> View List
               </a>
@@ -142,7 +145,7 @@
           </ul>
         </li>
 
-        <li class="active">
+        <li>
           <a href="<?php echo site_url('admin/manage_employees');?>">
             <i class="fa fa-users"></i> Manage Employees
           </a>
@@ -162,47 +165,48 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Employees
-        <small>Manage employee's schedule</small>
+        Attendance
+        <small>View Time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
-        <li> Employees</a></li>
-        <li class="active"><a href="#"><i class="fa fa-users"></i>Manage Employees</a></li>
+        <li> Attendance</a></li>
+        <li class="active"><a href="#"><i class="fa fa-file"></i>View Data</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content">
-      
-      <div class="row" style="padding: 0 5px;">
+    <section class="content">      
+      <div class="row">
         <div class="col-md-12">
-          
-          <div class="box box-primary">
+
+          <div class="box boxes box-primary" id="boxTable">
             <div class="box-header">
-              <h3 class="box-title">Employees</h3>
+              <h3 class="box-title">Time In and Time Outs</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="employeeTable" class="table table-bordered table-striped">
+              <table id="recordsTable" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>Encoded ID</th>
+                    <th>Date</th>
                     <th>Name</th>
-                    <th>Position</th>
+                    <th>Encoded ID</th>
                     <th>Time IN</th>
                     <th>Time OUT</th>
-                    <th>Action</th>
+                    <th>Overtime</th>
+                    <th>Late</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>Encoded ID</th>
+                    <th>Date</th>
                     <th>Name</th>
-                    <th>Position</th>
+                    <th>Encoded ID</th>
                     <th>Time IN</th>
                     <th>Time OUT</th>
-                    <th>Action</th>
+                    <th>Overtime</th>
+                    <th>Late</th>
                   </tr>
                 </tfoot>
               </table>
@@ -223,107 +227,10 @@
     <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
+
+ </div>
 <!-- ./wrapper -->
 
-
-<div class="modal modal-primary fade" id="employee_modal">
-  <div class="modal-dialog" style="max-width: 400px;">
-    <div class="modal-content">
-      <form>
-
-      <div class="modal-header">
-        <h4 class="modal-title">Manage Schedule</h4>
-      </div>
-
-      <div class="inner" style="padding: 20px;">
-          <div class="form-group">
-            <label>Encoded ID:</label>
-            <input type="text" id="edit-id" class="form-control">
-          </div>
-
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label>First Name</label>
-                <input type="text" id="edit-firstname" class="form-control">
-              </div>
-            </div>
-
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label>Last Name:</label>
-                <input type="text" id="edit-lastname" class="form-control">
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Position:</label>
-            <input type="text" id="edit-position" class="form-control">
-          </div>
-
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="bootstrap-timepicker">
-                <div class="form-group">
-                  <label>Time IN:</label>
-
-                  <div class="input-group">
-                    <input type="text" id="edit-timein" class="form-control timepicker" style="color: black;">
-
-                    <div class="input-group-addon">
-                      <i class="fa fa-clock-o"></i>
-                    </div>
-                  </div>
-                  <!-- /.input group -->
-
-                </div>
-                <!-- /.form group -->
-              </div>
-              <!-- /.bootstrap-timepicker -->
-            </div>
-            <!-- /.col -->
-
-            <div class="col-xs-6">
-              <div class="bootstrap-timepicker">
-                <div class="form-group">
-                  <label>Time OUT:</label>
-
-                  <div class="input-group">
-                    <input type="text" id="edit-timeout" class="form-control timepicker" style="color: black;">
-
-                    <div class="input-group-addon">
-                      <i class="fa fa-clock-o"></i>
-                    </div>
-                  </div>
-                  <!-- /.input group -->
-
-                </div>
-                <!-- /.form group -->
-              </div>
-              <!-- /.bootstrap-timepicker -->
-            </div>
-            <!-- /.col -->
-            
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.modal-body -->
-
-        <div class="modal-footer">
-          <a href="#" class="btn btn-sm btn-danger pull-left" data-dismiss="modal" style="width: 100px">Close</a>
-          <button id="edit-update" type="button" style="width: 100px" class="btn btn-sm btn-block btn-success pull-right">Update</button>
-        </div>
-        <!-- /.modal-footer -->
-
-      </form>
-      
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
 
 
 <!-- jQuery 3 -->
@@ -337,141 +244,26 @@
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
 <script>
-    var encoded_id;
-    var new_encoded_id;
-    var first_name;
-    var last_name;
-    var position;
-    var timeIn;
-    var timeOut;
+  var ajaxPopulateTable = "<?php echo base_url("admin/generate_report/submit"); ?>"
+  var dtData = <?php echo $dtData ?>
 
-
-    var ajaxPopulateTable = "<?php echo base_url("admin/manage_employees/populateTable"); ?>";
-    var getRowUrl = "<?php echo base_url("admin/manage_employees/ajaxGetRow"); ?>";
-    var countUrl = "<?php echo base_url("admin/manage_employees/ajaxCountRow"); ?>";
-    var updateUrl = "<?php echo base_url("admin/manage_employees/ajaxUpdate"); ?>";
-
-    $(function () {
-   populateTable();
-    })
-
-    function populateTable(){
-  
-    $('#employeeTable').DataTable().destroy();
-
-    $('#employeeTable').DataTable({
-      "columns": [
-          { "width": "15%" },
-          { "width": "25%" },
-          { "width": "15%" },
-          { "width": "15%" },
-          { "width": "15%" },
-          { "width": "15%" }
-          ],
-          "order": [] ,
-          "ajax": ajaxPopulateTable
-    });
-
-    $("#employeeTable").on("click", "tr td .edit-btn", function(){
-
-    encoded_id = $(this).parents('tr').find('td:first').html();
-    console.log(encoded_id);
-
-    $.ajax({
-            url: getRowUrl,
-            type: 'post',
-            dataType: 'json', 
-            data: {'table' : 'users', 'set': 'encoded_id', 'value': encoded_id}, 
-            success: function(result){   
-
-              $.each(result, function(index, val) {
-
-                encoded_id = val.encoded_id;
-                //console.log(val.encoded_id);
-                $( "#edit-id" ).val(val.encoded_id);
-                $( "#edit-firstname" ).val(val.first_name);
-                $( "#edit-lastname" ).val(val.last_name);
-                $( "#edit-position" ).val(val.position);
-                $( "#edit-timein" ).val(val.time_in);
-                $( "#edit-timeout" ).val(val.time_out);
-            })
-     
-              
-            }
-          });   
-    });
-
-  }
-
-    //EDIT MODAL
-
-    $('#edit-update').click(function(){
-      new_encoded_id = $( "#edit-id" ).val();
-      first_name = $( "#edit-firstname" ).val();
-      last_name = $( "#edit-lastname" ).val();
-      position = $( "#edit-position" ).val();
-      timeIn = $( "#edit-timein" ).val();
-      timeOut = $( "#edit-timeout" ).val();
-      updateRow();
-    })
-
-
-    function updateRow(){ 
-
-      $.ajax({
-                url: countUrl,
-                type: 'post',
-                dataType: 'json', 
-                data: {'table' : 'users', 'set' : 'encoded_id', 'value' : new_encoded_id  }, 
-                success: function(result){
-                  var employeeCount = result;    
-                  if (new_encoded_id == null || new_encoded_id.trim() === ''){
-                    alert('Encoded ID cannot be empty');
-                  }
-                  else if(employeeCount > 0 && encoded_id != new_encoded_id){
-                    alert('Encoded ID already exist');
-                  }
-                  else{
-                    $.ajax({
-                      url: updateUrl,
-                      type: 'post',
-                      dataType: 'json', 
-                      data: {
-                      'table' : 'users',
-                      'encoded_id' : new_encoded_id, 
-                      'first_name': first_name, 
-                      'last_name': last_name,  
-                      'position': position, 
-                      'time_in': timeIn,
-                      'time_out': timeOut, 
-                      'set': encoded_id }, 
-                      success: function(result){
-                        console.log(result);
-                        populateTable();
-                        $('#employee_modal').modal('hide');
-                      }
-                    }); 
-                  }
-
-
-                }
-      }); 
-
-    }
-
-    //Timepicker
-    $('#timepicker1').timepicker({
-      showInputs: false
+    $('#recordsTable').DataTable( {
+          data: dtData,
+          columns: [
+              { "width": "10%" },
+              { "width": "20%" },
+              { "width": "10%" },
+              { "width": "15%" },
+              { "width": "15%" },
+              { "width": "15%" },
+              { "width": "15%" }
+          ]
     });
 </script>
 
-
 </body>
 </html>
-  

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Attendance</title>
+  <title>SilverLake Axis  | Generate Report</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -12,10 +12,10 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <!-- Daterange picker -->
+  <!-- daterange picker -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/iCheck/all.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
@@ -23,7 +23,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/skins/_all-skins.min.css">
-
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,7 +40,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo site_url('admin/dashboard') ?>" class="logo">
+    <a href="<?php echo site_url('employee/dashboard') ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>SL</b>A</span>
       <!-- logo for regular state and mobile devices -->
@@ -107,52 +106,34 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-
         <li>
-          <a href="<?php echo site_url('admin/dashboard'); ?>">
-            <i class="fa fa-dashboard"></i><span> Dashboard</span>
+          <a href="<?php echo site_url('employee/dashboard'); ?>">
+            <i class="fa fa-dashboard"></i>
+            <span>Dashboard</span>
           </a>
         </li>
-
-        <li class="treeview active">
-          <a href="#"><i class="fa fa-calendar"></i><span> Attendance</span>
-            <span class="pull-right-container"></span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li>
-              <a href="<?php echo site_url('admin/upload');?>">
-                <i class="fa fa-circle-o"></i> Upload File
-              </a>
-            </li>
-
-            <li class="active">
-              <a href="<?php echo site_url('admin/view_list');?>">
-                <i class="fa fa-circle-o"></i> View List
-              </a>
-            </li>
-
-            <li>
-              <a href="<?php echo site_url('admin/view_ranges');?>">
-                <i class="fa fa-circle-o"></i> View Ranges
-              </a>
-            </li>
-
-          </ul>
-        </li>
-
         <li>
-          <a href="<?php echo site_url('admin/manage_employees');?>">
-            <i class="fa fa-users"></i> Manage Employees
+          <a href="<?php echo site_url('employee/attendance'); ?>">
+            <i class="fa fa-calendar"></i>
+            <span>Attendance</span>
           </a>
         </li>
-
+        <li>
+          <a href="<?php echo site_url('employee/view_ranges');?>">
+            <i class="fa fa-list"></i>
+            <span>View Ranges</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="<?php echo site_url('employee/generate_report');?>">
+            <i class="fa fa-list"></i>
+            <span>Generate Report</span>
+          </a>
+        </li>
         <li class="header">LABELS</li>
-
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -165,115 +146,88 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Attendance
-        <small>View Time ins and time outs of Employees</small>
+        Generate Report
+        <small>Select Employees and Date Range</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
-        <li> Attendance</a></li>
-        <li class="active"><a href="#"><i class="fa fa-file"></i>View Data</a></li>
+        <li class="active"><a href="#"><i class="fa fa-list"></i>View Ranges</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content">      
+    <section class="content">
       <div class="row">
-        <div class="col-md-4">
-          <!-- Calendar -->
-          <div class="box box-primary hidden-print">
-            <div class="box-header bg-light-blue-active" style="color: white;">
-              <i class="fa fa-calendar"></i>
-
-              <h3 class="box-title">Calendar</h3>
-              <!-- tools box -->
-              <div class="pull-right box-tools">
-                <!-- button with a dropdown -->
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bars"></i></button>
-                  <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="#">Add new event</a></li>
-                    <li><a href="#">Clear events</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">View calendar</a></li>
-                  </ul>
-                </div>
-
-                <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-              <!-- /. tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-
-              <!--The calendar -->
-              <div id="calendar" style="width: 100%"></div>
-
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          
-        </div>
-        <!-- /.col -->
-
-        <div class="col-md-8">
-          <div class="box box-default boxes bg-gray box-solid" id="noDate" >
-            <div class="box-body" style="padding: 20px 40px 40px 40px; ">
-              <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>No date selected!</h2>
-              <h4>Please click on a date in the calendar to show records for that day.</h4>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <div class="box box-default bg-gray box-solid" id="noRecords" style="display: none;">
-            <div class="box-body" style="padding: 20px 40px 40px 40px; ">
-              <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>Sorry!</h2>
-              <h4>There are no records for the selected date.</h4>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <div class="box boxes box-primary" id="boxTable" style="display: none;">
-            <div class="box-header">
-              <h3 class="box-title">Time In and Time Outs</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="recordsTable" class="table table-bordered table-striped">
+        <div class="col-md-6">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+        <h4>Select Employee(s):</h4>
+      </div>
+      <div class="box-body" style="max-height: 65vh; overflow-x:hidden; overflow-y: auto;">
+        <table id="recordsTable" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>Name</th>
+                    <th><input type="checkbox" class="flat-blue checkAll11"></th>
                     <th>Encoded ID</th>
-                    <th>Time IN</th>
-                    <th>Time OUT</th>
-                    <th>Overtime</th>
-                    <th>Late</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>Name</th>
+                    <th></th>
                     <th>Encoded ID</th>
-                    <th>Time IN</th>
-                    <th>Time OUT</th>
-                    <th>Overtime</th>
-                    <th>Late</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
                   </tr>
                 </tfoot>
               </table>
-            </div>
-            <!-- /.box-body -->
+                <br />
+                <button class="btn btn-primary" id="get-checked-data">Get Checked Data</button>
+            
           </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
+          <!-- /.box-body -->
+
       </div>
-      <!-- /.row -->
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h4>Select Date Range</h4>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="form-group">
+            <label>Date range:</label>
+
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="text" class="form-control pull-right" id="dateRange">
+            </div>
+            <!-- /.input group -->
+          </div>
+          <!-- /.form group -->
+          <button class="btn btn-flat btn-primary pull-right" id="daterange-btn">Go</button>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+      <pre id="display-json" style="display: none; max-height: 200px; overflow: auto;">You want to search for records between<span class="date"></span>for employees:<p id="names"></p></pre>
+      <form method="post" action="/slaxis/admin/generate_report/submit">
+        <input type="hidden" name="encoded" id="encoded">
+        <input type="hidden" name="date" id="date">
+      <button type="submit" class="btn btn-flat btn-primary pull-right" id="generateReport" style="display: none;">Generate Report</button>   
+      </form>   
+
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /. row -->
     </section>
     <!-- /.content -->
   </div>
@@ -297,80 +251,150 @@
 <script src="<?php echo base_url(); ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>bower_components/fastclick/lib/fastclick.js"></script>
-<!-- daterangepicker -->
+<!-- date-range-picker -->
 <script src="<?php echo base_url(); ?>bower_components/moment/min/moment.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="<?php echo base_url(); ?>plugins/iCheck/icheck.min.js"></script>
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
-<script>
-  // The Calender
-  $('#calendar').datepicker().on('changeDate', function(event) {
-  // `e` here contains the extra attributes
-  var date = event.format();
-  var arr = date.split("/");
-  var m = arr[0]; 
-  var d = arr[1]; 
-  var y = arr[2];
-  var newDate = y+'-'+m+'-'+d; 
-  var encoded_id = "<?php echo $this->session->encoded_id ?>";
-  console.log(encoded_id);
-  var ajaxPopulateTable = "<?php echo base_url("admin/view_list/populateTable"); ?>"
-  var ajaxMinUrl = "<?php echo base_url("employee/attendance/ajaxMinUrl"); ?>"
-  var ajaxMaxUrl = "<?php echo base_url("employee/attendance/ajaxMaxUrl"); ?>"
+
+<script type="text/javascript">
+
+  var getUsersTable = "<?php echo base_url("admin/generate_report/populateTable"); ?>"
+  var confirmSelection = "<?php echo base_url("admin/generate_report/confirmSelection"); ?>"
+
+  $('#recordsTable').DataTable( {
+      'ajax': getUsersTable,
+      'drawCallback': function(){
+         $('input[type="checkbox"].check11').iCheck({
+            checkboxClass: 'icheckbox_flat-blue'
+         });
+      },
+      "lengthMenu": [[-1], ["All"]],
+      columns: [
+      { "width": "10%" },
+      { "width": "20%" },
+      { "width": "35%" },
+      { "width": "35%" }
+       ]
+  });
 
 
-  $.ajax({
-            url: ajaxPopulateTable,
-            type: 'post',
-            dataType: 'json', 
-            data: {'dbDate': newDate}, 
-            success: function(result){
-              //alert(JSON.stringify(result));
-              
-              var leng = result.length;
-              
-              if (leng!=0)
-                {
-                $('#noDate').hide();
-                $('#noRecords').hide();
-                $('#boxTable').css( 'display', 'block' );
+//Red color scheme for iCheck
+  $('input[type="checkbox"].flat-blue').iCheck({
+    checkboxClass: 'icheckbox_flat-blue'
+  })
 
-                $('#recordsTable').DataTable().destroy();
 
-                $('#recordsTable').DataTable( {
-                              data: result,
-                              columns: [
-                                  { "width": "25%" },
-                                  { "width": "15%" },
-                                  { "width": "15%" },
-                                  { "width": "15%" },
-                                  { "width": "15%" },
-                                  { "width": "15%" }
-                              ]
-                          });
+  $('.checkAll11').on('ifChecked', function (event) {
+      $('.check11').iCheck('check');
+      triggeredByChild = false;
+  });
 
-              } else {
+  $('.checkAll11').on('ifUnchecked', function (event) {
+      if (!triggeredByChild) {
+          $('.check11').iCheck('uncheck');
+      }
+      triggeredByChild = false;
+  });
 
-                $('#noRecords').css( 'display', 'block' );
-                $('.boxes').css('display','none');
-                $('#example1').DataTable().destroy();
-                $('.dailyTimeIn').html(" ");
-                $('.dailyTimeOut').html(" ");
-             
+  $('.check11').on('ifUnchecked', function (event) {
+      triggeredByChild = true;
+      $('.checkAll11').iCheck('uncheck');
+  });
 
-            }
+  $('.check11').on('ifChecked', function(event){
+      if ($('.check11').filter(':checked').length == $('.check11').length) {
+        $('.checkAll11').iCheck('check');
 
-            }
+      }
+  });    
+    $('#get-checked-data').on('click', function(event) {
+         event.preventDefault(); 
+        // var checkedItems = {}, counter = 0;
+        // $("#check-list-box li.active").each(function(idx, li) {
+        //     checkedItems[counter] = $(li).text();
+        //     counter++;
+        // });
+        // $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+        checkboxes = document.getElementsByName('check[]');
+        $($('.check11').filter(':checked')).each(function(index, val){
+        alert(val.value);
+      });
+    });
+
+var startDate;
+var endDate;
+
+$(document).ready(function() {
+    $('#dateRange').daterangepicker(
+       {
+          showDropdowns: true,
+          showWeekNumbers: true,
+          timePicker: false,
+          timePickerIncrement: 1,
+          timePicker12Hour: true,
+          opens: 'left',
+          buttonClasses: ['btn btn-default'],
+          applyClass: 'btn-small btn-primary',
+          cancelClass: 'btn-small',
+          format: 'DD/MM/YYYY'
+       });
+    $('#dateRange').val('Pick a Range')
+
+
+    $('#daterange-btn').click(function(){
+
+        var dateRange = $('#dateRange').val();
+        console.log(dateRange);
+
+        if ($('.check11').filter(':checked').length<=0 || dateRange == 'Pick a Range')
+        {
+          alert('Please select employees and date range first!');
+        }
+        else
+        {
+          var $encoded_ids = [];
+          $($('.check11').filter(':checked')).each(function(index, val){
+              $encoded_ids.push(val.value);
           });
 
+          $.ajax({
+              url: confirmSelection,
+              type: 'post',
+              dataType: 'json', 
+              data: {'encoded_ids': $encoded_ids}, 
+              success: function(result){
+                // alert(JSON.stringify(result));
+                $('.names').hide();
+                $('#display-json').css('display', 'block');
+                $('.date').html(' '+dateRange+' ')
+                $('#generateReport').css('display', 'block');
+                $('#encoded').val($encoded_ids);
+                $('#date').val(dateRange);
+                //console.log($('#date').val());
+                
+
+                $.each(result, function(index, val){
+                  $('#names').append('<p class="names">Encoded ID: '+val.encoded_id+'<br>Name: '+val.last_name+' '+val.first_name+'</p>')
+                });
+
+              }
+          });
+
+        }
+
+       
+      });
+       
 });
-</script>
+    
+</script> 
 
 </body>
 </html>

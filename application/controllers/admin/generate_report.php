@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class view_ranges extends CI_Controller {
+class generate_report extends CI_Controller {
 
 	public function __construct()
 	{
@@ -11,16 +11,57 @@ class view_ranges extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('employee/view_ranges');
+		$this->load->view('admin/generate_report');
 	}
 
 	public function populateTable()
 	{
-		$range = $this->input->post('dateRange');  //DATE RANGE
-        $encoded_id = $this->input->post('encoded_id');  //PERSON
-        $time_in = $this->input->post('DBtime_in');
-        $time_out = $this->input->post('DBtime_out');
+		$records = $this->global_model->getRecords('users');
+		//$check = '<input type="checkbox" class="minimal-red check">';
 
+
+
+		$data = [];
+		foreach ($records as $records) 
+		{
+			$first_name = $records->first_name;
+			$last_name = $records->last_name;
+			$encoded_id = $records->encoded_id;
+			$checkbox = '<input type="checkbox" class="minimal-red check11" name="check[]" value="'.$encoded_id.'">';
+
+			
+
+			$arr = array(
+			    $checkbox,
+			    $encoded_id,
+			    $last_name,
+			    $first_name
+			    );
+
+            	$data['data'][] = $arr;
+		}
+
+		echo json_encode($data);
+
+		
+	}
+
+	public function confirmSelection()
+	{
+		$encoded_ids = $this->input->post('encoded_ids');
+		$data = $this->global_model->getWhereIn('users', 'encoded_id', $encoded_ids);
+
+		echo json_encode($data);
+
+		
+	}
+
+	public function submit()
+	{
+		$range = $this->input->post('date');  //DATE RANGE
+        $encoded_ids = $this->input->post('encoded');  //ENCODED ID NAKA STRING
+
+        $split_id = explode(",", $encoded_ids); //ENCODED ID NA NAKA ARRAY NA
 
 		$explodedRange = explode(" ", $range);
 		$startDate = $explodedRange[0];  //START DATE
@@ -29,6 +70,14 @@ class view_ranges extends CI_Controller {
 		$arrOfDates = $this->global_model->getRange($startDate, $endDate);  //RETURNS ARRAY OF DATES FROM START DATE TO END DATE
 
 		$data = [];
+		foreach ($split_id as $id) {
+			$users = $this->global_model->getRow('users', 'encoded_id', $id);
+			foreach ($users as $users) {
+				$time_in = $users->time_in;
+				$time_out = $users->time_out;
+				$first_name = $users->first_name;
+				$last_name = $users->last_name;
+			}
 		foreach ($arrOfDates as $date)
             {	
             	$explodedDate = str_split($date);
@@ -45,7 +94,7 @@ class view_ranges extends CI_Controller {
             	$timeIn = '';
             	$timeOut = '';
 
-            	$DateTimeIn = json_encode($this->global_model->getMin('csv', 'Date', $newDate, 'after', 'Date', $encoded_id));  //GETS TIME IN FROM NEWDATE
+            	$DateTimeIn = json_encode($this->global_model->getMin('csv', 'Date', $newDate, 'after', 'Date', $id));  //GETS TIME IN FROM NEWDATE
 
             	if($DateTimeIn != '[{"Date":null}]'){
                     $explodedDateTimeIn = explode(" ", $DateTimeIn);
@@ -57,7 +106,7 @@ class view_ranges extends CI_Controller {
                     
                 }
 
-                $DateTimeOut = json_encode($this->global_model->getMax('csv', 'Date', $newDate, 'after', 'Date', $encoded_id));  //GETS TIME OUT FROM NEWDATE
+                $DateTimeOut = json_encode($this->global_model->getMax('csv', 'Date', $newDate, 'after', 'Date', $id));  //GETS TIME OUT FROM NEWDATE
 
             	if($DateTimeOut != '[{"Date":null}]'){
                     $explodedDateTimeOut = explode(" ", $DateTimeOut);
@@ -67,6 +116,8 @@ class view_ranges extends CI_Controller {
                     $timeOut = $splitTimeOut[0].':'.$splitTimeOut[1];  //ETO NA YUNG TIME OUT
                      
                 }
+
+
 
 
                 $late = strtotime($timeIn) - strtotime($time_in);
@@ -90,6 +141,8 @@ class view_ranges extends CI_Controller {
 
 		                $arr = array(
 		                    $tableDate,
+		                    $first_name.' '.$last_name,
+		                    $id,
 		                    $timeIn,
 		                    $timeOut,
 		                    $late.' mins.',
@@ -100,10 +153,10 @@ class view_ranges extends CI_Controller {
                    }
             	
 
-            }
-
-			echo json_encode($data);
+            }		
+		}
+			$data['dtData'] = json_encode($data);
+			$this->load->view('admin/generated_report', $data);
 	}
-	
 
 }

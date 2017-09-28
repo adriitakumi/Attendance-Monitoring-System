@@ -49,6 +49,24 @@ class view_list extends CI_Controller {
                      
             }
 
+
+            $late = strtotime($timeIn) - strtotime($time_in);
+            $late = $late/60;
+
+            if ($late < 0)
+            {
+            	$late = abs($late).' mins early';
+            }
+
+            $overtime = strtotime($timeOut) - strtotime($time_out);
+            $overtime = $overtime/60;
+
+            if ($overtime < 0)
+            {
+            	$overtime = 'Left '.abs($late).' mins early';
+            }
+
+
             if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]') {
 
 				$arr = array(
@@ -56,8 +74,8 @@ class view_list extends CI_Controller {
 			        $encoded_id,
 			        $timeIn,
 			        $timeOut,
-			        'WALA PANG OVERTIME',
-			        'WALA PANG LATE'
+			        $overtime.' mins.',
+			        $late.' mins.'
 			    );
 
             	$data[] = $arr;

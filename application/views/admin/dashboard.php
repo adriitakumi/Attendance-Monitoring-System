@@ -137,6 +137,12 @@
               </a>
             </li>
 
+            <li>
+              <a href="<?php echo site_url('admin/generate_report');?>">
+                <i class="fa fa-circle-o"></i> Generate Report
+              </a>
+            </li>
+
           </ul>
         </li>
 
