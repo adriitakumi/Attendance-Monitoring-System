@@ -256,13 +256,13 @@
             <div class="bootstrap-timepicker">
               <div class="col-xs-6">
                 <label>Time IN:</label>
-                <input type="text" class="form-control timepicker">
+                <input type="text" class="form-control timepicker" id="timepicker1">
               </div>
             </div>
             <div class="bootstrap-timepicker">
               <div class="col-xs-6">
                 <label>Time OUT:</label>
-                <input type="text" class="form-control timepicker">
+                <input type="text" class="form-control timepicker" id="timepicker2">
               </div>
             </div>
           </div>
@@ -304,9 +304,12 @@
 
 <script>
     //Timepicker
-    $('.timepicker').timepicker({
+    $('#timepicker1').timepicker({
       showInputs: false
-    })
+    });
+    $('#timepicker2').timepicker({
+      showInputs: false
+    });
 </script>
 
 
