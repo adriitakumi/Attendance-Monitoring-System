@@ -469,7 +469,8 @@
 
     //Timepicker
     $('.timepicker').timepicker({
-      showInputs: false
+      showInputs: false,
+      showMeridian: false
     })
   
 </script>

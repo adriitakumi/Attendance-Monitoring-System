@@ -202,8 +202,8 @@
                       <th>Date</th>
                       <th>Time IN</th>
                       <th>Time OUT</th>
-                      <th>Overtime</th>
                       <th>Late</th>
+                      <th>Overtime</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -211,8 +211,8 @@
                       <th>Date</th>
                       <th>Time IN</th>
                       <th>Time OUT</th>
-                      <th>Overtime</th>
                       <th>Late</th>
+                      <th>Overtime</th>
                     </tr>
                   </tfoot>
                 </table>
@@ -286,7 +286,9 @@ $(document).ready(function() {
 
         var getRecordsTable = "<?php echo base_url("employee/view_ranges/populateTable"); ?>";
         var encoded_id = "<?php echo $this->session->encoded_id ?>";
-        console.log(encoded_id);
+        var DBtime_in = "<?php echo $this->session->time_in ?>";
+        var DBtime_out = "<?php echo $this->session->time_out ?>";
+        console.log(DBtime_in);
         var dateRange = $('#dateRange').val();
         //console.log(dateRange);
 
@@ -294,7 +296,7 @@ $(document).ready(function() {
                         url: getRecordsTable,
                         type: 'post',
                         dataType: 'json', 
-                        data: {'dateRange': dateRange, 'encoded_id': encoded_id}, 
+                        data: {'dateRange': dateRange, 'encoded_id': encoded_id, 'DBtime_in': DBtime_in, 'DBtime_out': DBtime_out}, 
                         success: function(result){
                           //alert(JSON.stringify(result));
                           $('#noDate').hide();

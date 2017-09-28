@@ -178,67 +178,9 @@
     <!-- Main content -->
     <section class="content">      
       <div class="row">
-        <div class="col-md-4">
-          <!-- Calendar -->
-          <div class="box box-primary hidden-print">
-            <div class="box-header bg-light-blue-active" style="color: white;">
-              <i class="fa fa-calendar"></i>
+        <div class="col-md-12">
 
-              <h3 class="box-title">Calendar</h3>
-              <!-- tools box -->
-              <div class="pull-right box-tools">
-                <!-- button with a dropdown -->
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bars"></i></button>
-                  <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="#">Add new event</a></li>
-                    <li><a href="#">Clear events</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">View calendar</a></li>
-                  </ul>
-                </div>
-
-                <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-              <!-- /. tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-
-              <!--The calendar -->
-              <div id="calendar" style="width: 100%"></div>
-
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          
-        </div>
-        <!-- /.col -->
-
-        <div class="col-md-8">
-          <div class="box box-default boxes bg-gray box-solid" id="noDate" >
-            <div class="box-body" style="padding: 20px 40px 40px 40px; ">
-              <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>No date selected!</h2>
-              <h4>Please click on a date in the calendar to show records for that day.</h4>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <div class="box box-default bg-gray box-solid" id="noRecords" style="display: none;">
-            <div class="box-body" style="padding: 20px 40px 40px 40px; ">
-              <h2><i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i>Sorry!</h2>
-              <h4>There are no records for the selected date.</h4>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <div class="box boxes box-primary" id="boxTable" style="display: none;">
+          <div class="box boxes box-primary" id="boxTable">
             <div class="box-header">
               <h3 class="box-title">Time In and Time Outs</h3>
             </div>
@@ -247,6 +189,7 @@
               <table id="recordsTable" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th>Date</th>
                     <th>Name</th>
                     <th>Encoded ID</th>
                     <th>Time IN</th>
@@ -257,6 +200,7 @@
                 </thead>
                 <tfoot>
                   <tr>
+                    <th>Date</th>
                     <th>Name</th>
                     <th>Encoded ID</th>
                     <th>Time IN</th>
@@ -297,11 +241,6 @@
 <script src="<?php echo base_url(); ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>bower_components/fastclick/lib/fastclick.js"></script>
-<!-- daterangepicker -->
-<script src="<?php echo base_url(); ?>bower_components/moment/min/moment.min.js"></script>
-<script src="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -309,67 +248,21 @@
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
 <script>
-  // The Calender
-  $('#calendar').datepicker().on('changeDate', function(event) {
-  // `e` here contains the extra attributes
-  var date = event.format();
-  var arr = date.split("/");
-  var m = arr[0]; 
-  var d = arr[1]; 
-  var y = arr[2];
-  var newDate = y+'-'+m+'-'+d; 
-  var encoded_id = "<?php echo $this->session->encoded_id ?>";
-  console.log(encoded_id);
-  var ajaxPopulateTable = "<?php echo base_url("admin/view_list/populateTable"); ?>"
-  var ajaxMinUrl = "<?php echo base_url("employee/attendance/ajaxMinUrl"); ?>"
-  var ajaxMaxUrl = "<?php echo base_url("employee/attendance/ajaxMaxUrl"); ?>"
+  var ajaxPopulateTable = "<?php echo base_url("admin/generate_report/submit"); ?>"
+  var dtData = <?php echo $dtData ?>
 
-
-  $.ajax({
-            url: ajaxPopulateTable,
-            type: 'post',
-            dataType: 'json', 
-            data: {'dbDate': newDate}, 
-            success: function(result){
-              //alert(JSON.stringify(result));
-              
-              var leng = result.length;
-              
-              if (leng!=0)
-                {
-                $('#noDate').hide();
-                $('#noRecords').hide();
-                $('#boxTable').css( 'display', 'block' );
-
-                $('#recordsTable').DataTable().destroy();
-
-                $('#recordsTable').DataTable( {
-                              data: result,
-                              columns: [
-                                  { "width": "25%" },
-                                  { "width": "15%" },
-                                  { "width": "15%" },
-                                  { "width": "15%" },
-                                  { "width": "15%" },
-                                  { "width": "15%" }
-                              ]
-                          });
-
-              } else {
-
-                $('#noRecords').css( 'display', 'block' );
-                $('.boxes').css('display','none');
-                $('#example1').DataTable().destroy();
-                $('.dailyTimeIn').html(" ");
-                $('.dailyTimeOut').html(" ");
-             
-
-            }
-
-            }
-          });
-
-});
+    $('#recordsTable').DataTable( {
+          data: dtData,
+          columns: [
+              { "width": "10%" },
+              { "width": "20%" },
+              { "width": "10%" },
+              { "width": "15%" },
+              { "width": "15%" },
+              { "width": "15%" },
+              { "width": "15%" }
+          ]
+    });
 </script>
 
 </body>
