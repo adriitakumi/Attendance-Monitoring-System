@@ -10,12 +10,12 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -184,27 +184,27 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-striped">
+              <table id="employeeTable" class="table table-bordered table-striped">
                 <thead>
-                <tr>
-                  <th>Employee ID</th>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Time IN</th>
-                  <th>Time OUT</th>
-                  <th>Action</th>
-                </tr>
+                  <tr>
+                    <th>Encoded ID</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Time IN</th>
+                    <th>Time OUT</th>
+                    <th>Action</th>
+                  </tr>
                 </thead>
-                <tbody style="cursor:pointer;">
-                <tr>
-                  <td>244</td>
-                  <td>Rommel Faustino</td>
-                  <td>Senior Manager</td>
-                  <td></td>
-                  <td></td>
-                  <td><button type="button" class="btn btn-block btn-info btn-flat btn-xs buttonView" style="max-width: 100px; display:block; margin: auto;" data-toggle="modal" data-target="#employee_modal">Edit</button></td>
-                </tr>
-                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Encoded ID</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Time IN</th>
+                    <th>Time OUT</th>
+                    <th>Action</th>
+                  </tr>
+                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->
@@ -226,52 +226,98 @@
 <!-- ./wrapper -->
 
 
-<div class="modal modal-info fade" id="employee_modal">
-  <div class="modal-dialog">
+<div class="modal modal-primary fade" id="employee_modal">
+  <div class="modal-dialog" style="max-width: 400px;">
     <div class="modal-content">
+      <form>
+
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
         <h4 class="modal-title">Manage Schedule</h4>
       </div>
-      <div class="modal-body">
-        <form role="form">
-          <!-- text input -->
+
+      <div class="inner" style="padding: 20px;">
           <div class="form-group">
-            <label>Employee ID:</label>
-            <input type="text" class="form-control" placeholder="Enter ...">
+            <label>Encoded ID:</label>
+            <input type="text" id="edit-id" class="form-control">
           </div>
-          <!-- text input -->
-          <div class="form-group">
-            <label>Name:</label>
-            <input type="text" class="form-control" placeholder="Enter ...">
+
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="edit-firstname" class="form-control">
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label>Last Name:</label>
+                <input type="text" id="edit-lastname" class="form-control">
+              </div>
+            </div>
           </div>
-          <!-- text input -->
+
           <div class="form-group">
             <label>Position:</label>
-            <input type="text" class="form-control" placeholder="Enter ...">
+            <input type="text" id="edit-position" class="form-control">
           </div>
+
           <div class="row">
-            <div class="bootstrap-timepicker">
-              <div class="col-xs-6">
-                <label>Time IN:</label>
-                <input type="text" class="form-control timepicker" id="timepicker1">
+            <div class="col-xs-6">
+              <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>Time IN:</label>
+
+                  <div class="input-group">
+                    <input type="text" id="edit-timein" class="form-control timepicker" style="color: black;">
+
+                    <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+
+                </div>
+                <!-- /.form group -->
               </div>
+              <!-- /.bootstrap-timepicker -->
             </div>
-            <div class="bootstrap-timepicker">
-              <div class="col-xs-6">
-                <label>Time OUT:</label>
-                <input type="text" class="form-control timepicker" id="timepicker2">
+            <!-- /.col -->
+
+            <div class="col-xs-6">
+              <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>Time OUT:</label>
+
+                  <div class="input-group">
+                    <input type="text" id="edit-timeout" class="form-control timepicker" style="color: black;">
+
+                    <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+
+                </div>
+                <!-- /.form group -->
               </div>
+              <!-- /.bootstrap-timepicker -->
             </div>
+            <!-- /.col -->
+            
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-outline">Save changes</button>
-      </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.modal-body -->
+
+        <div class="modal-footer">
+          <a href="#" class="btn btn-sm btn-danger pull-left" data-dismiss="modal" style="width: 100px">Close</a>
+          <button id="edit-update" type="button" style="width: 100px" class="btn btn-sm btn-block btn-success pull-right">Update</button>
+        </div>
+        <!-- /.modal-footer -->
+
+      </form>
+      
     </div>
     <!-- /.modal-content -->
   </div>
@@ -297,17 +343,130 @@
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
 <script>
-  $(function () {
-    $('#example2').DataTable()
-  })
-</script>
+    var encoded_id;
+    var new_encoded_id;
+    var first_name;
+    var last_name;
+    var position;
+    var timeIn;
+    var timeOut;
 
-<script>
+
+    var ajaxPopulateTable = "<?php echo base_url("admin/manage_employees/populateTable"); ?>";
+    var getRowUrl = "<?php echo base_url("admin/manage_employees/ajaxGetRow"); ?>";
+    var countUrl = "<?php echo base_url("admin/manage_employees/ajaxCountRow"); ?>";
+    var updateUrl = "<?php echo base_url("admin/manage_employees/ajaxUpdate"); ?>";
+
+    $(function () {
+   populateTable();
+    })
+
+    function populateTable(){
+  
+    $('#employeeTable').DataTable().destroy();
+
+    $('#employeeTable').DataTable({
+      "columns": [
+          { "width": "15%" },
+          { "width": "25%" },
+          { "width": "15%" },
+          { "width": "15%" },
+          { "width": "15%" },
+          { "width": "15%" }
+          ],
+          "order": [] ,
+          "ajax": ajaxPopulateTable
+    });
+
+    $("#employeeTable").on("click", "tr td .edit-btn", function(){
+
+    encoded_id = $(this).parents('tr').find('td:first').html();
+    console.log(encoded_id);
+
+    $.ajax({
+            url: getRowUrl,
+            type: 'post',
+            dataType: 'json', 
+            data: {'table' : 'users', 'set': 'encoded_id', 'value': encoded_id}, 
+            success: function(result){   
+
+              $.each(result, function(index, val) {
+
+                encoded_id = val.encoded_id;
+                //console.log(val.encoded_id);
+                $( "#edit-id" ).val(val.encoded_id);
+                $( "#edit-firstname" ).val(val.first_name);
+                $( "#edit-lastname" ).val(val.last_name);
+                $( "#edit-position" ).val(val.position);
+                $( "#edit-timein" ).val(val.time_in);
+                $( "#edit-timeout" ).val(val.time_out);
+            })
+     
+              
+            }
+          });   
+    });
+
+  }
+
+    //EDIT MODAL
+
+    $('#edit-update').click(function(){
+      new_encoded_id = $( "#edit-id" ).val();
+      first_name = $( "#edit-firstname" ).val();
+      last_name = $( "#edit-lastname" ).val();
+      position = $( "#edit-position" ).val();
+      timeIn = $( "#edit-timein" ).val();
+      timeOut = $( "#edit-timeout" ).val();
+      updateRow();
+    })
+
+
+    function updateRow(){ 
+
+      $.ajax({
+                url: countUrl,
+                type: 'post',
+                dataType: 'json', 
+                data: {'table' : 'users', 'set' : 'encoded_id', 'value' : new_encoded_id  }, 
+                success: function(result){
+                  var employeeCount = result;    
+                  if (new_encoded_id == null || new_encoded_id.trim() === ''){
+                    alert('Encoded ID cannot be empty');
+                  }
+                  else if(employeeCount > 0 && encoded_id != new_encoded_id){
+                    alert('Encoded ID already exist');
+                  }
+                  else{
+                    $.ajax({
+                      url: updateUrl,
+                      type: 'post',
+                      dataType: 'json', 
+                      data: {
+                      'table' : 'users',
+                      'encoded_id' : new_encoded_id, 
+                      'first_name': first_name, 
+                      'last_name': last_name,  
+                      'position': position, 
+                      'time_in': timeIn,
+                      'time_out': timeOut, 
+                      'set': encoded_id }, 
+                      success: function(result){
+                        console.log(result);
+                        populateTable();
+                        $('#employee_modal').modal('hide');
+                      }
+                    }); 
+                  }
+
+
+                }
+      }); 
+
+    }
+
     //Timepicker
     $('#timepicker1').timepicker({
-      showInputs: false
-    });
-    $('#timepicker2').timepicker({
       showInputs: false
     });
 </script>
