@@ -163,7 +163,7 @@
         <div class="box-header with-border">
         <h4>Select Employee(s):</h4>
       </div>
-      <div class="box-body" style="max-height: 65vh;overflow: auto;">
+      <div class="box-body" style="max-height: 65vh; overflow-x:hidden; overflow-y: auto;">
         <table id="recordsTable" class="table table-bordered table-striped">
                 <thead>
                   <tr>
@@ -217,7 +217,12 @@
         <!-- /.box-body -->
       </div>
       <!-- /.box -->
-      <pre id="display-json" style="display: none; max-height: 200px; overflow: auto;">You want to search for records between<span class="date"></span>for employees:<br><p class="names"></p><br></pre>
+      <pre id="display-json" style="display: none; max-height: 200px; overflow: auto;">You want to search for records between<span class="date"></span>for employees:<p id="names"></p></pre>
+      <form method="post" action="/slaxis/admin/generate_report/submit">
+        <input type="hidden" name="encoded" id="encoded">
+        <input type="hidden" name="date" id="date">
+      <button type="submit" class="btn btn-flat btn-primary pull-right" id="generateReport" style="display: none;">Generate Report</button>   
+      </form>   
 
     </div>
     <!-- /.col -->
@@ -354,36 +359,38 @@ $(document).ready(function() {
         }
         else
         {
-          var $names = [];
+          var $encoded_ids = [];
           $($('.check11').filter(':checked')).each(function(index, val){
-              $names.push(val.value);
+              $encoded_ids.push(val.value);
           });
 
           $.ajax({
-                        url: confirmSelection,
-                        type: 'post',
-                        dataType: 'json', 
-                        data: {'names': $names}, 
-                        success: function(result){
-                          // alert(JSON.stringify(result));
+              url: confirmSelection,
+              type: 'post',
+              dataType: 'json', 
+              data: {'encoded_ids': $encoded_ids}, 
+              success: function(result){
+                // alert(JSON.stringify(result));
+                $('.names').hide();
+                $('#display-json').css('display', 'block');
+                $('.date').html(' '+dateRange+' ')
+                $('#generateReport').css('display', 'block');
+                $('#encoded').val($encoded_ids);
+                $('#date').val(dateRange);
+                //console.log($('#date').val());
+                
 
-                          $('#display-json').css('display', 'block');
-                          $('.date').html(' '+dateRange+' ')
-                          //$('.names').remove();
+                $.each(result, function(index, val){
+                  $('#names').append('<p class="names">Encoded ID: '+val.encoded_id+'<br>Name: '+val.last_name+' '+val.first_name+'</p>')
+                });
 
-                          $.each(result, function(index, val){
-                            $('.names').append('Encoded ID: '+val.encoded_id+'<br>Name: '+val.last_name+' '+val.first_name+'<br><br>')
-                          });
-                          
-                          
+              }
+          });
 
-                      }
-        });        }
+        }
 
        
       });
-
-
        
 });
     
