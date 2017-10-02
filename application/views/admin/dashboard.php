@@ -73,7 +73,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php echo site_url('employee/profile') ?>" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo site_url('admin/view_profile')?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="<?php echo site_url('login/logout')?>" class="btn btn-default btn-flat">Sign out</a>
@@ -137,18 +137,18 @@
               </a>
             </li>
 
-            <li>
-              <a href="<?php echo site_url('admin/generate_report');?>">
-                <i class="fa fa-circle-o"></i> Generate Report
-              </a>
-            </li>
-
           </ul>
         </li>
 
         <li>
           <a href="<?php echo site_url('admin/manage_employees');?>">
             <i class="fa fa-users"></i> Manage Employees
+          </a>
+        </li>
+
+        <li>
+          <a href="<?php echo site_url('admin/generate_report');?>">
+            <i class="fa fa-file"></i> Generate Report
           </a>
         </li>
 
@@ -276,7 +276,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('admin/dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
 

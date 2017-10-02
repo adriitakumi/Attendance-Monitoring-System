@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Attendance</title>
+  <title>SilverLake Axis  | Upload File</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -76,7 +76,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php echo site_url('employee/profile') ?>" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo site_url('admin/view_profile') ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="<?php echo site_url('login/logout')?>" class="btn btn-default btn-flat">Sign out</a>
@@ -149,6 +149,12 @@
           </a>
         </li>
 
+        <li>
+          <a href="<?php echo site_url('admin/generate_report');?>">
+            <i class="fa fa-file"></i> Generate Report
+          </a>
+        </li>
+
         <li class="header">LABELS</li>
 
       </ul>
@@ -163,7 +169,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Upload File
+        Attendance
         <small>Upload time ins and time outs of Employees</small>
       </h1>
       <ol class="breadcrumb">
@@ -224,7 +230,7 @@
   </div>
   <!-- WAG TANGGALIN KASE MASISIRA FOOTER???? DI KO ALAM BAKET --> 
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('admin/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
 

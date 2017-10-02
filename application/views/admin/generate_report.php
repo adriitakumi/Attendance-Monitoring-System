@@ -40,7 +40,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo site_url('employee/dashboard') ?>" class="logo">
+    <a href="<?php echo site_url('admin/dashboard') ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>SL</b>A</span>
       <!-- logo for regular state and mobile devices -->
@@ -77,7 +77,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php echo site_url('employee/profile') ?>" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo site_url('admin/view_profile') ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="<?php echo site_url('login/logout')?>" class="btn btn-default btn-flat">Sign out</a>
@@ -109,27 +109,50 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+
         <li>
-          <a href="<?php echo site_url('employee/dashboard'); ?>">
+          <a href="<?php echo site_url('admin/dashboard'); ?>">
             <i class="fa fa-dashboard"></i>
             <span>Dashboard</span>
           </a>
         </li>
+
+        <li class="treeview">
+          <a href="#"><i class="fa fa-calendar"></i><span> Attendance</span>
+            <span class="pull-right-container"></span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li>
+              <a href="<?php echo site_url('admin/upload');?>">
+                <i class="fa fa-circle-o"></i> Upload File
+              </a>
+            </li>
+
+            <li>
+              <a href="<?php echo site_url('admin/view_list');?>">
+                <i class="fa fa-circle-o"></i> View List
+              </a>
+            </li>
+
+            <li>
+              <a href="<?php echo site_url('admin/view_ranges');?>">
+                <i class="fa fa-circle-o"></i> View Ranges
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
         <li>
-          <a href="<?php echo site_url('employee/attendance'); ?>">
-            <i class="fa fa-calendar"></i>
-            <span>Attendance</span>
+          <a href="<?php echo site_url('admin/manage_employees');?>">
+            <i class="fa fa-users"></i> Manage Employees
           </a>
         </li>
-        <li>
-          <a href="<?php echo site_url('employee/view_ranges');?>">
-            <i class="fa fa-list"></i>
-            <span>View Ranges</span>
-          </a>
-        </li>
+
         <li class="active">
           <a href="<?php echo site_url('employee/generate_report');?>">
-            <i class="fa fa-list"></i>
+            <i class="fa fa-file"></i>
             <span>Generate Report</span>
           </a>
         </li>
@@ -151,7 +174,7 @@
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
-        <li class="active"><a href="#"><i class="fa fa-list"></i>View Ranges</a></li>
+        <li class="active"><a href="#"><i class="fa fa-file"></i>Generate Report</a></li>
       </ol>
     </section>
 
@@ -234,7 +257,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('employee/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('admin/dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
 
