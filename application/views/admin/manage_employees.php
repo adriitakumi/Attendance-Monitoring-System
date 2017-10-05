@@ -142,10 +142,26 @@
           </ul>
         </li>
 
-        <li class="active">
-          <a href="<?php echo site_url('admin/manage_employees');?>">
-            <i class="fa fa-users"></i> Manage Employees
+        <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-users"></i> <span>Manage Employees</span>
+            <span class="pull-right-container"></span>
+            <i class="fa fa-angle-left pull-right"></i>
           </a>
+          <ul class="treeview-menu">
+            <li class="active">
+              <a href="<?php echo site_url('admin/manage_employees');?>">
+                <i class="fa fa-circle-o"></i> Specific Employee
+              </a>
+            </li>
+
+            <li>
+              <a href="<?php echo site_url('admin/all_employee')?>">
+                <i class="fa fa-circle-o"></i> All Employee
+              </a>
+            </li>
+
+          </ul>
         </li>
 
         <li>

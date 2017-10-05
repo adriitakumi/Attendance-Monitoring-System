@@ -3,25 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Upload</title>
+  <title>SilverLake Axis  | Manage Employees</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/iCheck/all.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
-  <!-- Upload style -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/admin/Upload/upload.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/upload.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -116,13 +117,13 @@
           </a>
         </li>
 
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#"><i class="fa fa-calendar"></i><span> Attendance</span>
             <span class="pull-right-container"></span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active">
+            <li>
               <a href="<?php echo site_url('admin/upload');?>">
                 <i class="fa fa-circle-o"></i> Upload File
               </a>
@@ -143,7 +144,7 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-users"></i> <span>Manage Employees</span>
             <span class="pull-right-container"></span>
@@ -156,7 +157,7 @@
               </a>
             </li>
 
-            <li>
+            <li class="active">
               <a href="<?php echo site_url('admin/all_employee')?>">
                 <i class="fa fa-circle-o"></i> All Employee
               </a>
@@ -185,68 +186,122 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Upload File
-        <small>Upload time ins and time outs of Employees</small>
+        Employees
+        <small>Manage employee's schedule</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
-        <li> Attendance</a></li>
-        <li class="active"><a href="#"><i class="fa fa-file"></i>Upload File</a></li>
+        <li> Employees</a></li>
+        <li class="active"><a href="#"><i class="fa fa-users"></i>Manage Employees</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="callout callout-success">
-        <h4>Upload Successful!</h4>
-
-        <p>You have successfully inserted the following to the database:</p>
-      </div>
-
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Uploaded Data</h3>
+      
+      <div class="row" style="padding: 0 5px;">
+        <div class="col-md-7">
+          
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Employees</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="employeeTable" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Encoded ID</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Time IN</th>
+                    <th>Time OUT</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Encoded ID</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Time IN</th>
+                    <th>Time OUT</th>
+                    <th>Action</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
-        <!-- /.box-header -->
+        <!-- /.col -->
+        <div class="col-md-5">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h4>Set employees schedule</h4>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
 
-        <div class="box-body">
-              
-          <table class="table table-bordered">
-            <tr>
-              <th>Date</th>
-              <th>Transaction</th>
-              <th>Person</th>
-              <th>Encoded_id</th>
-              <th>Door</th>
-            </tr>
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="bootstrap-timepicker">
+                    <div class="form-group">
+                      <label>Time IN:</label>
 
-            <?php foreach($csvData as $field){?>
-            <tr>
-              <td><?php echo $field['Date']?></td>
-              <td><?php echo $field['Transaction']?></td>
-              <td><?php echo $field['Person']?></td>
-              <td><?php echo $field['encoded_id']?></td>
-              <td><?php echo $field['Door']?></td>
-            </tr>
-            <?php }?>
-          </table>
+                      <div class="input-group">
+                        <input type="text" id="edit-timein" class="form-control timepicker" style="color: black;">
+                        <div class="input-group-addon">
+                          <i class="fa fa-clock-o"></i>
+                        </div>
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                  </div>
+                  <!-- /.bootstrap-timepicker -->
+                </div>
+                <!-- /.col -->
+
+                <div class="col-xs-6">
+                  <div class="bootstrap-timepicker">
+                    <div class="form-group">
+                      <label>Time OUT:</label>
+
+                      <div class="input-group">
+                        <input type="text" id="edit-timeout" class="form-control timepicker" style="color: black;">
+                        <div class="input-group-addon">
+                          <i class="fa fa-clock-o"></i>
+                        </div>
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                  </div>
+                  <!-- /.bootstrap-timepicker -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+              <button class="btn btn-flat btn-primary pull-right" id="daterange-btn">Go</button>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
-        <!-- /.box-body -->
       </div>
-      <!-- /.box -->
+      <!-- /.row -->
     </section>
+    <!-- /.content -->
+  </div>
   <!-- /.content-wrapper -->
 
-  </div>
-  <!-- WAG TANGGALIN KASE MASISIRA FOOTER???? DI KO ALAM BAKET --> 
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('admin/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
-
- </div>
 <!-- ./wrapper -->
-
 
 <!-- jQuery 3 -->
 <script src="<?php echo base_url(); ?>bower_components/jquery/dist/jquery.min.js"></script>
@@ -259,50 +314,147 @@
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- ChartJS -->
-<script src="<?php echo base_url(); ?>bower_components/Chart.js/Chart.js"></script>
+<!-- bootstrap time picker -->
+<script src="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="<?php echo base_url(); ?>plugins/iCheck/icheck.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
 <script>
-  $(function () {
-    $('#example1').DataTable()
-  })
+    var encoded_id;
+    var new_encoded_id;
+    var first_name;
+    var last_name;
+    var position;
+    var timeIn;
+    var timeOut;
 
-  $(document).on('change', ':file', function() {
-    var input = $(this),
-        numFiles = input.get(0).files ? input.get(0).files.length : 1,
-        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.trigger('fileselect', [numFiles, label]);
-  });
 
-  $(document).ready( function() {
-      $(':file').on('fileselect', function(event, numFiles, label) {
+    var ajaxPopulateTable = "<?php echo base_url("admin/manage_employees/populateTable"); ?>";
+    var getRowUrl = "<?php echo base_url("admin/manage_employees/ajaxGetRow"); ?>";
+    var countUrl = "<?php echo base_url("admin/manage_employees/ajaxCountRow"); ?>";
+    var updateUrl = "<?php echo base_url("admin/manage_employees/ajaxUpdate"); ?>";
 
-          var input = $(this).parents('.input-group').find(':text'),
-              log = numFiles > 1 ? numFiles + ' files selected' : label;
+    $(function () {
+   populateTable();
+    })
 
-          if( input.length ) {
-              input.val(log);
-          } else {
-              if( log ) alert(log);
-          }
+    function populateTable(){
+  
+    $('#employeeTable').DataTable().destroy();
 
-      });
-  });
-</script>
+    $('#employeeTable').DataTable({
+      "columns": [
+          { "width": "15%" },
+          { "width": "25%" },
+          { "width": "15%" },
+          { "width": "15%" },
+          { "width": "15%" },
+          { "width": "15%" }
+          ],
+          "order": [] ,
+          "ajax": ajaxPopulateTable
+    });
 
-<script type="text/javascript">
-  var fullPath = document.getElementById('upload').value;
-if (fullPath) {
-    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
-    var filename = fullPath.substring(startIndex);
-    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-        filename = filename.substring(1);
+    $("#employeeTable").on("click", "tr td .edit-btn", function(){
+
+    encoded_id = $(this).parents('tr').find('td:first').html();
+    console.log(encoded_id);
+
+    $.ajax({
+            url: getRowUrl,
+            type: 'post',
+            dataType: 'json', 
+            data: {'table' : 'users', 'set': 'encoded_id', 'value': encoded_id}, 
+            success: function(result){   
+
+              $.each(result, function(index, val) {
+
+                encoded_id = val.encoded_id;
+                //console.log(val.encoded_id);
+                $( "#edit-id" ).val(val.encoded_id);
+                $( "#edit-firstname" ).val(val.first_name);
+                $( "#edit-lastname" ).val(val.last_name);
+                $( "#edit-position" ).val(val.position);
+                $( "#edit-timein" ).val(val.time_in);
+                $( "#edit-timeout" ).val(val.time_out);
+            })
+     
+              
+            }
+          });   
+    });
+
+  }
+
+    //EDIT MODAL
+
+    $('#edit-update').click(function(){
+      new_encoded_id = $( "#edit-id" ).val();
+      first_name = $( "#edit-firstname" ).val();
+      last_name = $( "#edit-lastname" ).val();
+      position = $( "#edit-position" ).val();
+      timeIn = $( "#edit-timein" ).val();
+      timeOut = $( "#edit-timeout" ).val();
+      updateRow();
+    })
+
+
+    function updateRow(){ 
+
+      $.ajax({
+                url: countUrl,
+                type: 'post',
+                dataType: 'json', 
+                data: {'table' : 'users', 'set' : 'encoded_id', 'value' : new_encoded_id  }, 
+                success: function(result){
+                  var employeeCount = result;    
+                  if (new_encoded_id == null || new_encoded_id.trim() === ''){
+                    alert('Encoded ID cannot be empty');
+                  }
+                  else if(employeeCount > 0 && encoded_id != new_encoded_id){
+                    alert('Encoded ID already exist');
+                  }
+                  else{
+                    $.ajax({
+                      url: updateUrl,
+                      type: 'post',
+                      dataType: 'json', 
+                      data: {
+                      'table' : 'users',
+                      'encoded_id' : new_encoded_id, 
+                      'first_name': first_name, 
+                      'last_name': last_name,  
+                      'position': position, 
+                      'time_in': timeIn,
+                      'time_out': timeOut, 
+                      'set': encoded_id }, 
+                      success: function(result){
+                        console.log(result);
+                        populateTable();
+                        $('#employee_modal').modal('hide');
+                      }
+                    }); 
+                  }
+
+
+                }
+      }); 
+
     }
-    alert(filename);
-}
+
+    //Timepicker
+
+    $('.timepicker').timepicker({
+      showInputs: false,
+      showMeridian: false
+    })
+  
+
 </script>
+
 
 </body>
 </html>
+  
