@@ -42,10 +42,17 @@ class upload extends CI_Controller {
         // http://php.net/manual/en/function.array-slice.php
         $output = array_slice($input, 3);
         file_put_contents($file_p, implode("\n", $output));
+        $type1 = "\"\",\"Transaction\",\"Person\",\"Encoded ID\",\"Door\"";
+        $type2 = ",Transaction,Person,Encoded ID,Door";
+        $replace = "Date,Transaction,Person,encoded_id,Door";
 
         $file = file_get_contents($file_p);
-        $file = str_replace(",Transaction,Person,Encoded ID,Door", "Date,Transaction,Person,encoded_id,Door", $file);
 
+        //echo $file; exit;
+        $file = str_replace($type1, $replace, $file);
+        // echo $file; exit;
+        $file = str_replace($type2, $replace, $file);
+        //echo $file; exit;
 
         file_put_contents($file_p, $file);
 
@@ -61,10 +68,11 @@ class upload extends CI_Controller {
           $arr = explode(" ",$datetime); 
           $date = $arr[0];
           $time = $arr[1];
-          $dateExploded = explode("/",$date); 
-          $m = $dateExploded[0]; $d = $dateExploded[1]; $y = $dateExploded[2];
-          $db_date = $y.'/'.$m.'/'.$d.' '.$time;
-          $result[$i]['Date'] = $db_date;
+          // $dateExploded = explode("/",$date); 
+          // $m = $dateExploded[0]; $d = $dateExploded[1]; $y = $dateExploded[2];
+          // $db_date = $y.'/'.$m.'/'.$d.' '.$time;
+          // $result[$i]['Date'] = $db_date;
+          $result[$i]['Date'] = $date.' '.$time ;
         }
 
 

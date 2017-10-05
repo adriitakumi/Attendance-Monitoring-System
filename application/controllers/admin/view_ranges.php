@@ -83,6 +83,26 @@ class view_ranges extends CI_Controller {
                      
                 }
 
+                $records = $this->global_model->getRow('users', 'encoded_id', $encodedId);
+                $time_in = $records[0]->time_in;
+                $time_out = $records[0]->time_out;
+
+                $late = strtotime($timeIn) - strtotime($time_in);
+                $late = $late/60;
+
+                if ($late < 0)
+                {
+                    $late = abs($late).' mins early';
+                }
+
+                $overtime = strtotime($timeOut) - strtotime($time_out);
+                $overtime = $overtime/60;
+
+                if ($overtime < 0)
+                {
+                    $overtime = 'Left '.abs($late).' mins early';
+                }
+
                 if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
                 	{
 
@@ -90,8 +110,8 @@ class view_ranges extends CI_Controller {
 		                    $tableDate,
 		                    $timeIn,
 		                    $timeOut,
-		                    'WALA PANG OT',
-		                    'WALA PANG LATE'
+		                    $late.' mins.',
+		                    $overtime.' mins.'
 		                );
 
                     	$data[] = $arr;
