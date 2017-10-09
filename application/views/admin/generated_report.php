@@ -18,6 +18,8 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Datatable buttons -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/buttons.dataTables.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -214,9 +216,9 @@
                     <th>Name</th>
                     <th>Encoded ID</th>
                     <th>Time IN</th>
+                    <th>Door IN</th>
                     <th>Time OUT</th>
-                    <th>Overtime</th>
-                    <th>Late</th>
+                    <th>Door OUT</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -225,9 +227,9 @@
                     <th>Name</th>
                     <th>Encoded ID</th>
                     <th>Time IN</th>
+                    <th>Door IN</th>
                     <th>Time OUT</th>
-                    <th>Overtime</th>
-                    <th>Late</th>
+                    <th>Door OUT</th>
                   </tr>
                 </tfoot>
               </table>
@@ -265,6 +267,14 @@
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- DataTable buttons -->
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/buttons.flash.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/jszip.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/pdfmake.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/vfs_fonts.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
@@ -282,7 +292,11 @@
               { "width": "15%" },
               { "width": "15%" },
               { "width": "15%" }
-          ]
+          ],
+          dom: 'Bfrtip',
+          buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
     });
 </script>
 
