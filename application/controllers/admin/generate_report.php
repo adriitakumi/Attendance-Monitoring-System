@@ -103,17 +103,29 @@ class generate_report extends CI_Controller {
                     $splitTimeIn = explode(":", $hhmmssIn);
                     $timeIn = $splitTimeIn[0].':'.$splitTimeIn[1];  //ETO NA YUNG TIME IN
 
+                    $doorDBIn = $this->global_model->selectLike('csv', 'Date', $newDate, 'Date', $timeIn, $id, 'Door');
+            		$doorIN = $doorDBIn[0]->Door;
+
                     
                 }
 
                 $DateTimeOut = json_encode($this->global_model->getMax('csv', 'Date', $newDate, 'after', 'Date', $id));  //GETS TIME OUT FROM NEWDATE
 
             	if($DateTimeOut != '[{"Date":null}]'){
+            		$explodedDateTime = explode(":", $DateTimeOut);
+            		$newerDate = $explodedDateTime[1].':'.$explodedDateTime[2].':'.$explodedDateTime[3];
+            		$removeChar1 = str_replace('"', '', $newerDate);
+            		$removeChar2 = str_replace('}]', '', $removeChar1);
+
                     $explodedDateTimeOut = explode(" ", $DateTimeOut);
+                    $dateOut = str_replace('[{"Date":"', '', $explodedDateTimeOut[0]);
                     $hhmmssOut = str_replace('"}]', ' ', $explodedDateTimeOut[1]);
 
                     $splitTimeOut = explode(":", $hhmmssOut);
                     $timeOut = $splitTimeOut[0].':'.$splitTimeOut[1];  //ETO NA YUNG TIME OUT
+
+                    $doorDBOut = $this->global_model->selectLikeOut('csv', 'Date', $removeChar2, $id, 'Door');
+            		$doorOUT = $doorDBOut[0]->Door;
                      
                 }
 
@@ -141,12 +153,12 @@ class generate_report extends CI_Controller {
 
 		                $arr = array(
 		                    $tableDate,
-		                    $first_name.' '.$last_name,
+		                    $last_name.' '.$first_name,
 		                    $id,
 		                    $timeIn,
+		                    $doorIN,
 		                    $timeOut,
-		                    $late.' mins.',
-		                    $overtime.' mins.'
+		                    $doorOUT
 		                );
 
                     	$data[] = $arr;

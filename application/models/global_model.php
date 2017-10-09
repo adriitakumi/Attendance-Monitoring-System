@@ -43,6 +43,21 @@ class global_model extends CI_Model{
 		return $query;
 	}
 
+	public function selectLike($table, $set1, $value1, $set2, $value2,$encoded_id, $search){
+		$this->db->select($search);
+		$this->db->like($set1, $value1, 'after');
+		$this->db->like($set2, $value2, 'both');
+		$query = $this->db->get_where($table, array('encoded_id' => $encoded_id))->result();
+		return $query;
+	}
+
+	public function selectLikeOut($table, $set, $value, $encoded_id, $search){
+		$this->db->select($search);
+		$this->db->where($set, $value);
+		$query = $this->db->get_where($table, array('encoded_id' => $encoded_id))->result();
+		return $query;
+	}
+
 	public function getLike($table, $set, $value, $wildcard, $encoded_id){
 		$this->db->like($set, $value, $wildcard);
 		$query = $this->db->get_where($table, array('encoded_id' => $encoded_id))->result();
