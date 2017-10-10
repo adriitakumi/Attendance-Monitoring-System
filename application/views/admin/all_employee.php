@@ -211,22 +211,18 @@
               <table id="employeeTable" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th><input type="checkbox" class="flat-blue checkAll11"></th>
                     <th>Encoded ID</th>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Time IN</th>
-                    <th>Time OUT</th>
-                    <th>Action</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
+                    <th></th>
                     <th>Encoded ID</th>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Time IN</th>
-                    <th>Time OUT</th>
-                    <th>Action</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
                   </tr>
                 </tfoot>
               </table>
@@ -322,71 +318,68 @@
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
 <script>
-    var encoded_id;
-    var new_encoded_id;
-    var first_name;
-    var last_name;
-    var position;
-    var timeIn;
-    var timeOut;
+   var getUsersTable = "<?php echo base_url("admin/all_employee/populateTable"); ?>"
+  var confirmSelection = "<?php echo base_url("admin/all_employee/confirmSelection"); ?>"
+
+  $('#employeeTable').DataTable( {
+      'ajax': getUsersTable,
+      'drawCallback': function(){
+         $('input[type="checkbox"].check11').iCheck({
+            checkboxClass: 'icheckbox_flat-blue'
+         });
+      },
+      "lengthMenu": [[-1], ["All"]],
+      columns: [
+      { "width": "10%" },
+      { "width": "20%" },
+      { "width": "35%" },
+      { "width": "35%" }
+       ]
+  });
 
 
-    var ajaxPopulateTable = "<?php echo base_url("admin/manage_employees/populateTable"); ?>";
-    var getRowUrl = "<?php echo base_url("admin/manage_employees/ajaxGetRow"); ?>";
-    var countUrl = "<?php echo base_url("admin/manage_employees/ajaxCountRow"); ?>";
-    var updateUrl = "<?php echo base_url("admin/manage_employees/ajaxUpdate"); ?>";
+//Red color scheme for iCheck
+  $('input[type="checkbox"].flat-blue').iCheck({
+    checkboxClass: 'icheckbox_flat-blue'
+  })
 
-    $(function () {
-   populateTable();
-    })
 
-    function populateTable(){
-  
-    $('#employeeTable').DataTable().destroy();
+  $('.checkAll11').on('ifChecked', function (event) {
+      $('.check11').iCheck('check');
+      triggeredByChild = false;
+  });
 
-    $('#employeeTable').DataTable({
-      "columns": [
-          { "width": "15%" },
-          { "width": "25%" },
-          { "width": "15%" },
-          { "width": "15%" },
-          { "width": "15%" },
-          { "width": "15%" }
-          ],
-          "order": [] ,
-          "ajax": ajaxPopulateTable
+  $('.checkAll11').on('ifUnchecked', function (event) {
+      if (!triggeredByChild) {
+          $('.check11').iCheck('uncheck');
+      }
+      triggeredByChild = false;
+  });
+
+  $('.check11').on('ifUnchecked', function (event) {
+      triggeredByChild = true;
+      $('.checkAll11').iCheck('uncheck');
+  });
+
+  $('.check11').on('ifChecked', function(event){
+      if ($('.check11').filter(':checked').length == $('.check11').length) {
+        $('.checkAll11').iCheck('check');
+
+      }
+  });    
+    $('#get-checked-data').on('click', function(event) {
+         event.preventDefault(); 
+        // var checkedItems = {}, counter = 0;
+        // $("#check-list-box li.active").each(function(idx, li) {
+        //     checkedItems[counter] = $(li).text();
+        //     counter++;
+        // });
+        // $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+        checkboxes = document.getElementsByName('check[]');
+        $($('.check11').filter(':checked')).each(function(index, val){
+        alert(val.value);
+      });
     });
-
-    $("#employeeTable").on("click", "tr td .edit-btn", function(){
-
-    encoded_id = $(this).parents('tr').find('td:first').html();
-    console.log(encoded_id);
-
-    $.ajax({
-            url: getRowUrl,
-            type: 'post',
-            dataType: 'json', 
-            data: {'table' : 'users', 'set': 'encoded_id', 'value': encoded_id}, 
-            success: function(result){   
-
-              $.each(result, function(index, val) {
-
-                encoded_id = val.encoded_id;
-                //console.log(val.encoded_id);
-                $( "#edit-id" ).val(val.encoded_id);
-                $( "#edit-firstname" ).val(val.first_name);
-                $( "#edit-lastname" ).val(val.last_name);
-                $( "#edit-position" ).val(val.position);
-                $( "#edit-timein" ).val(val.time_in);
-                $( "#edit-timeout" ).val(val.time_out);
-            })
-     
-              
-            }
-          });   
-    });
-
-  }
 
     //EDIT MODAL
 
