@@ -16,10 +16,10 @@ class upload extends CI_Controller {
       $config = array(
       'upload_path' => "./uploads/",
       'allowed_types' => "csv",
-      'overwrite' => TRUE,
-      'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-      'max_height' => "768",
-      'max_width' => "1024"
+      'overwrite' => TRUE
+      //'max_size' => "5000000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+      //'max_height' => "768",
+      //'max_width' => "1024"
       );
 
 
@@ -60,22 +60,26 @@ class upload extends CI_Controller {
         $this->load->library('csv_reader');
         $result =   $this->csv_reader->parse_file($file_p);//path to csv file
 
-
         $i=0;
         foreach ($result as $row=>$res) {
           $i++;
           $datetime = $res['Date'];
-          $arr = explode(" ",$datetime); 
+          $arr = explode(" ",$datetime);
           $date = $arr[0];
           $time = $arr[1];
-          // $dateExploded = explode("/",$date); 
-          // $m = $dateExploded[0]; $d = $dateExploded[1]; $y = $dateExploded[2];
-          // $db_date = $y.'/'.$m.'/'.$d.' '.$time;
-          // $result[$i]['Date'] = $db_date;
-          $result[$i]['Date'] = $date.' '.$time ;
+
+          if(strpos($date, "-") === FALSE)
+          {
+            $dateExploded = explode("/",$date);
+            $m = $dateExploded[0]; $d = $dateExploded[1]; $y = $dateExploded[2];
+            $db_date = $y.'/'.$m.'/'.$d.' '.$time;
+            $result[$i]['Date'] = $db_date;
+          } else 
+          {
+            $result[$i]['Date'] = $date.' '.$time;
+          } 
+
         }
-
-
 
 
          $this->global_model->insert_batch('csv', $result);

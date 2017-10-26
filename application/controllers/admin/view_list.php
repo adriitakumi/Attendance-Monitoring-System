@@ -3,9 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class view_list extends CI_Controller {
 
+	public function __construct()
+	{
+	    parent::__construct();
+	    $this->sla_session->checkSession();
+	}
+
 	public function index()
 	{
 		$this->load->view('admin/view_list');
+	}
+
+	public function set_holiday()
+	{
+		$this->load->view('admin/set_holiday');
 	}
 
 	public function populateTable()
