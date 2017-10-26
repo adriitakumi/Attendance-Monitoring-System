@@ -168,12 +168,28 @@
           </ul>
         </li>
 
-        <li class="active">
-          <a href="<?php echo site_url('employee/generate_report');?>">
-            <i class="fa fa-file"></i>
-            <span>Generate Report</span>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-file"></i> <span>Reports</span>
+            <span class="pull-right-container"></span>
+            <i class="fa fa-angle-left pull-right"></i>
           </a>
+          <ul class="treeview-menu">
+            <li>
+              <a href="<?php echo site_url('admin/non_compliance_report');?>">
+                <i class="fa fa-circle-o"></i> Non-Compliance Report
+              </a>
+            </li>
+
+            <li class="active">
+              <a href="<?php echo site_url('admin/generate_report')?>">
+                <i class="fa fa-circle-o"></i> Employee Report
+              </a>
+            </li>
+
+          </ul>
         </li>
+
         <li class="header">LABELS</li>
       </ul>
     </section>
@@ -187,7 +203,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Generate Report
+        Generate Employee Report
         <small>Select Employees and Date Range</small>
       </h1>
       <ol class="breadcrumb">

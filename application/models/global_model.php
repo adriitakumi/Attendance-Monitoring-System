@@ -131,6 +131,14 @@ class global_model extends CI_Model{
 		$query = $this->db->update($table);
 		return $query;
 	}
+
+	public function updateAll($table, $data, $id){	
+		$this->db->where('encoded_id', $id);
+		//unset($data['set']);
+		$this->db->set($data);
+		$query = $this->db->update($table);
+		return $query;
+	}
 	
 
 }

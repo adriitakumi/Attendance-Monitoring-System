@@ -120,7 +120,7 @@
           </a>
         </li>
 
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#"><i class="fa fa-calendar"></i><span> Attendance</span>
             <span class="pull-right-container"></span>
             <i class="fa fa-angle-left pull-right"></i>
@@ -132,7 +132,7 @@
               </a>
             </li>
 
-            <li class="active">
+            <li>
               <a href="<?php echo site_url('admin/view_list');?>">
                 <i class="fa fa-circle-o"></i> View List
               </a>
@@ -169,10 +169,26 @@
           </ul>
         </li>
 
-        <li>
-          <a href="<?php echo site_url('admin/generate_report');?>">
-            <i class="fa fa-file"></i> Generate Report
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-file"></i> <span>Reports</span>
+            <span class="pull-right-container"></span>
+            <i class="fa fa-angle-left pull-right"></i>
           </a>
+          <ul class="treeview-menu">
+            <li>
+              <a href="<?php echo site_url('admin/non_compliance_report');?>">
+                <i class="fa fa-circle-o"></i> Non-Compliance Report
+              </a>
+            </li>
+
+            <li class="active">
+              <a href="<?php echo site_url('admin/generate_report')?>">
+                <i class="fa fa-circle-o"></i> Employee Report
+              </a>
+            </li>
+
+          </ul>
         </li>
 
         <li class="header">LABELS</li>
