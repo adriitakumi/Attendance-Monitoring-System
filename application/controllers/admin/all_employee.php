@@ -27,6 +27,8 @@ class all_employee extends CI_Controller {
 			$first_name = $records->first_name;
 			$last_name = $records->last_name;
 			$encoded_id = $records->encoded_id;
+			$time_in = $records->time_in;
+			$time_out = $records->time_out;
 			$checkbox = '<input type="checkbox" class="minimal-red check11" name="check[]" value="'.$encoded_id.'">';
 
 			
@@ -35,7 +37,9 @@ class all_employee extends CI_Controller {
 			    $checkbox,
 			    $encoded_id,
 			    $last_name,
-			    $first_name
+			    $first_name,
+			    $time_in,
+			    $time_out
 			    );
 
             	$data['data'][] = $arr;
@@ -54,5 +58,31 @@ class all_employee extends CI_Controller {
 		echo json_encode($data);
 
 		
+	}
+
+	public function ajaxUpdate(){
+		$table = $this->input->post('table');
+		$data = array(
+			'time_in' => $this->input->post('time_in'),
+			'time_out' => $this->input->post('time_out')
+		);
+		// $time_in = $this->input->post('time_in');
+		// $time_out = $this->input->post('time_out');		
+		//$data = $this->input->post();
+
+		$encoded_ids = $this->input->post('encoded_id');
+
+		foreach ($encoded_ids as $id) 
+		{
+			unset($data['table']);
+			$result = $this->global_model->updateAll($table, $data, $id);
+		}
+		
+		if ($result) {
+			echo 1;
+		}
+		else {
+			echo 0;
+		}
 	}
 }

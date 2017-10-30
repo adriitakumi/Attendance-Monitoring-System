@@ -131,6 +131,27 @@ class global_model extends CI_Model{
 		$query = $this->db->update($table);
 		return $query;
 	}
+
+	public function updateAll($table, $data, $id){	
+		$this->db->where('encoded_id', $id);
+		//unset($data['set']);
+		$this->db->set($data);
+		$query = $this->db->update($table);
+		return $query;
+	}
+
+	public function holiday($date){
+		$this->db->like('date', $date, 'before');
+		$res = $this->db->get('holidays');
+		$countRes = $res->num_rows();
+
+		if($countRes>0){
+			return 1;
+		}
+		else{
+			return 2;
+		}
+	}
 	
 
 }

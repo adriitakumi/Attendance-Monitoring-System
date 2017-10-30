@@ -3,26 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SilverLake Axis  | Manage Employees</title>
+  <title>SilverLake Axis  | Generated Report</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/iCheck/all.css">
+  <!-- Datatable buttons -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bower_components/datatables.net-bs/css/buttons.dataTables.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/skins/_all-skins.min.css">
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -144,7 +147,7 @@
           </ul>
         </li>
 
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i> <span>Manage Employees</span>
             <span class="pull-right-container"></span>
@@ -157,7 +160,7 @@
               </a>
             </li>
 
-            <li class="active">
+            <li>
               <a href="<?php echo site_url('admin/all_employee')?>">
                 <i class="fa fa-circle-o"></i> All Employee
               </a>
@@ -166,14 +169,14 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="active treeview">
           <a href="#">
             <i class="fa fa-file"></i> <span>Reports</span>
             <span class="pull-right-container"></span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li>
+            <li class="active">
               <a href="<?php echo site_url('admin/non_compliance_report');?>">
                 <i class="fa fa-circle-o"></i> Non-Compliance Report
               </a>
@@ -202,110 +205,145 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Employees
-        <small>Manage employee's schedule</small>
+        Generate Report
+        <small>Select Employees and Date Range</small>
       </h1>
       <ol class="breadcrumb">
         <li> Home</a></li>
-        <li> Employees</a></li>
-        <li class="active"><a href="#"><i class="fa fa-users"></i>Manage Employees</a></li>
+        <li class="active"><a href="#"><i class="fa fa-file"></i>Generate Report</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content">
-      
-      <div class="row" style="padding: 0 5px;">
-        <div class="col-md-7">
-          
-          <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Employees</h3>
+    <section class="content">      
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-right">
+              <li><a href="#tab_1-1" data-toggle="tab">Late and Early Out</a></li>
+              <li><a href="#tab_2-1" data-toggle="tab">Early Out</a></li>
+              <li><a href="#tab_3-1" data-toggle="tab">Late</a></li>
+              <li class="active"><a href="#tab_4-1" data-toggle="tab">All</a></li>
+              <li class="pull-left header"><i class="fa fa-th"></i> Non-Compliants</li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_1-1">
+                <table id="otalTable" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Name</th>
+                      <th>Door IN</th>
+                      <th>Time IN</th>
+                      <th>Door OUT</th>
+                      <th>Time OUT</th>
+                      <th>Non-Compliance</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Date</th>
+                      <th>Name</th>
+                      <th>Door IN</th>
+                      <th>Time IN</th>
+                      <th>Door OUT</th>
+                      <th>Time OUT</th>
+                      <th>Non-Compliance</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2-1">
+                <table id="eoTable" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Name</th>
+                      <th>Door IN</th>
+                      <th>Time IN</th>
+                      <th>Door OUT</th>
+                      <th>Time OUT</th>
+                      <th>Non-Compliance</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Date</th>
+                      <th>Name</th>
+                      <th>Door IN</th>
+                      <th>Time IN</th>
+                      <th>Door OUT</th>
+                      <th>Time OUT</th>
+                      <th>Non-Compliance</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_3-1">
+                <table id="lateTable" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Name</th>
+                      <th>Door IN</th>
+                      <th>Time IN</th>
+                      <th>Door OUT</th>
+                      <th>Time OUT</th>
+                      <th>Non-Compliance</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Date</th>
+                      <th>Name</th>
+                      <th>Door IN</th>
+                      <th>Time IN</th>
+                      <th>Door OUT</th>
+                      <th>Time OUT</th>
+                      <th>Non-Compliance</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_4-1">
+                <table id="allTable" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Date</th>
+                      <th>Door IN</th>
+                      <th>Time IN</th>
+                      <th>Door OUT</th>
+                      <th>Time OUT</th>
+                      <th>Non-Compliance</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Name</th>
+                      <th>Date</th>
+                      <th>Door IN</th>
+                      <th>Time IN</th>
+                      <th>Door OUT</th>
+                      <th>Time OUT</th>
+                      <th>Non-Compliance</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.tab-pane -->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="employeeTable" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th><input type="checkbox" class="flat-blue checkAll11"></th>
-                    <th>Encoded ID</th>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Time In</th>
-                    <th>Time Out</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th></th>
-                    <th>Encoded ID</th>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Time In</th>
-                    <th>Time Out</th>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.box-body -->
+            <!-- /.tab-content -->
           </div>
-          <!-- /.box -->
+          <!-- nav-tabs-custom -->
+
+          
         </div>
         <!-- /.col -->
-        <div class="col-md-5">
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h4>Set employees schedule</h4>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="bootstrap-timepicker">
-                    <div class="form-group">
-                      <label>Time IN:</label>
-
-                      <div class="input-group">
-                        <input type="text" id="timeIn" class="form-control timepicker" style="color: black;">
-                        <div class="input-group-addon">
-                          <i class="fa fa-clock-o"></i>
-                        </div>
-                      </div>
-                      <!-- /.input group -->
-                    </div>
-                    <!-- /.form group -->
-                  </div>
-                  <!-- /.bootstrap-timepicker -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-xs-6">
-                  <div class="bootstrap-timepicker">
-                    <div class="form-group">
-                      <label>Time OUT:</label>
-
-                      <div class="input-group">
-                        <input type="text" id="timeOut" class="form-control timepicker" style="color: black;">
-                        <div class="input-group-addon">
-                          <i class="fa fa-clock-o"></i>
-                        </div>
-                      </div>
-                      <!-- /.input group -->
-                    </div>
-                    <!-- /.form group -->
-                  </div>
-                  <!-- /.bootstrap-timepicker -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-              <button class="btn btn-flat btn-primary pull-right" id="get-checked-data">Go</button>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
       </div>
       <!-- /.row -->
     </section>
@@ -314,10 +352,14 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('admin/Dashboard')?>">Silverlake Axis</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="<?php echo site_url('admin/dashboard')?>">Silverlake Axis</a>.</strong> All rights
     reserved.
   </footer>
+
+ </div>
 <!-- ./wrapper -->
+
+
 
 <!-- jQuery 3 -->
 <script src="<?php echo base_url(); ?>bower_components/jquery/dist/jquery.min.js"></script>
@@ -330,132 +372,56 @@
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="<?php echo base_url(); ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="<?php echo base_url(); ?>plugins/iCheck/icheck.min.js"></script>
+<!-- DataTable buttons -->
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/buttons.flash.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/jszip.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/pdfmake.min.js"></script>
+<script src="<?php echo base_url(); ?>bower_components/datatables.net-bs/js/vfs_fonts.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>dist/js/adminlte.min.js"></script>
 
 <script>
-  var getUsersTable = "<?php echo base_url("admin/all_employee/populateTable"); ?>"
-  var confirmSelection = "<?php echo base_url("admin/all_employee/confirmSelection"); ?>"
-  var updateUrl = "<?php echo base_url("admin/all_employee/ajaxUpdate"); ?>"
+  var dtLate = <?php echo $dtLate ?>;
+  var dtEarlyOut = <?php echo $dtEarlyOut ?>;
+  var dtOtal = <?php echo $dtOtal ?>;
+  var dtAll = <?php echo $dtAll ?>;
 
-  $(function () {
-   populateTable();
-    })
-
-  function populateTable(){
-  
-    $('#employeeTable').DataTable().destroy();
-
-    $('#employeeTable').DataTable( {
-        'ajax': getUsersTable,
-        'drawCallback': function(){
-           $('input[type="checkbox"].check11').iCheck({
-              checkboxClass: 'icheckbox_flat-blue'
-           });
-        },
-        "lengthMenu": [[-1], ["All"]],
-        columns: [
-        { "width": "10%" },
-        { "width": "15%" },
-        { "width": "25%" },
-        { "width": "20%" },
-        { "width": "20%" },
-        { "width": "20%" }
-         ]
-    });
-  }
-
-
-  $('input[type="checkbox"].flat-blue').iCheck({
-    checkboxClass: 'icheckbox_flat-blue'
-  })
-
-
-  $('.checkAll11').on('ifChecked', function (event) {
-      $('.check11').iCheck('check');
-      triggeredByChild = false;
-  });
-
-  $('.checkAll11').on('ifUnchecked', function (event) {
-      if (!triggeredByChild) {
-          $('.check11').iCheck('uncheck');
-      }
-      triggeredByChild = false;
-  });
-
-  $('.check11').on('ifUnchecked', function (event) {
-      triggeredByChild = true;
-      $('.checkAll11').iCheck('uncheck');
-  });
-
-  $('.check11').on('ifChecked', function(event){
-      if ($('.check11').filter(':checked').length == $('.check11').length) {
-        $('.checkAll11').iCheck('check');
-
-      }
-  });    
-    $('#get-checked-data').on('click', function(event) {
-      // event.preventDefault(); 
-      // checkboxes = document.getElementsByName('check[]');
-      // $($('.check11').filter(':checked')).each(function(index, val){
-      //   alert(val.value);
-      // });
-
-      if ($('.check11').filter(':checked').length<=0 || $('#timeIn').val() == 0 || $('#timeOut').val() == 0)
-        {
-          alert('Please select employees and time range first!');
-        }
-      else{
-          console.log($('#timeIn').val()+' '+ $('#timeOut').val());
-          timeIn = $('#timeIn').val();
-          timeOut = $('#timeOut').val();
-        }
-
-        encoded_ids = [];
-        $($('.check11').filter(':checked')).each(function(index, val){
-            encoded_ids.push(val.value);
-        });
-
-        updateRecords();
+    $('#otalTable').DataTable( {
+          data: dtOtal,
+          dom: 'Bfrtip',
+          buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
     });
 
-    function updateRecords(){
-      $.ajax({
-        url: updateUrl,
-        type: 'post',
-        dataType: 'json', 
-        data: {
-        'table' : 'users',
-        'encoded_id' : encoded_ids,
-        'time_in': timeIn,
-        'time_out': timeOut
-        }, 
-        success: function(result){
-          console.log(result);
-          populateTable();
-          alert('Success!');
-        }
-      }); 
+    $('#eoTable').DataTable( {
+          data: dtEarlyOut,
+          dom: 'Bfrtip',
+          buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+    });
 
-    }
+    $('#lateTable').DataTable( {
+          data: dtLate,
+          dom: 'Bfrtip',
+          buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+    });
 
-
-    //Timepicker
-
-    $('.timepicker').timepicker({
-      showInputs: false,
-      showMeridian: false,
-      defaultTime: false
-    })
-  
-
+    $('#allTable').DataTable( {
+          data: dtAll,
+          dom: 'Bfrtip',
+          buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+          ],
+          "order": [[ 0, 'asc' ], [ 1, 'asc' ], [ 6, 'desc' ]]
+    });
 </script>
-
 
 </body>
 </html>
-  

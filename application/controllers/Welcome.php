@@ -39,6 +39,10 @@ class Welcome extends CI_Controller {
 		$this->load->view('pages/layout/boxed');
 	}
 
+	public function invoice_print()
+	{
+		$this->load->view('pages/examples/invoice-print');
+	}
 	public function fixed()
 	{
 		$this->load->view('pages/layout/fixed');
