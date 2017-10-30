@@ -139,6 +139,19 @@ class global_model extends CI_Model{
 		$query = $this->db->update($table);
 		return $query;
 	}
+
+	public function holiday($date){
+		$this->db->like('date', $date, 'before');
+		$res = $this->db->get('holidays');
+		$countRes = $res->num_rows();
+
+		if($countRes>0){
+			return 1;
+		}
+		else{
+			return 2;
+		}
+	}
 	
 
 }

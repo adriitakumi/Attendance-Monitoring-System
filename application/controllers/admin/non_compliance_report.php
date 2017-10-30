@@ -94,6 +94,7 @@ class non_compliance_report extends CI_Controller {
             	$d2 = $explodedDate[7];
             	$newDate = $y1.$y2.$y3.$y4.'-'.$m1.$m2.'-'.$d1.$d2;
             	$tableDate = $m1.$m2.'-'.$d1.$d2.'-'.$y1.$y2.$y3.$y4;
+            	$monthDay = $m1.$m2.'-'.$d1.$d2;
             	$timeIn = '';
             	$timeOut = '';
 
@@ -102,161 +103,170 @@ class non_compliance_report extends CI_Controller {
             	}
             	else{
 
-            	$DateTimeIn = json_encode($this->global_model->getMin('csv', 'Date', $newDate, 'after', 'Date', $id));  //GETS TIME IN FROM NEWDATE
+            		$isAHoliday = $this->global_model->holiday($monthDay);
 
-            	if($DateTimeIn != '[{"Date":null}]')
-            	{
-                    $explodedDateTimeIn = explode(" ", $DateTimeIn);
-                    $hhmmssIn = str_replace('"}]', ' ', $explodedDateTimeIn[1]);
+            		if($isAHoliday == 1){
 
-                    $splitTimeIn = explode(":", $hhmmssIn);
-                    $timeIn = $splitTimeIn[0].':'.$splitTimeIn[1];  //ETO NA YUNG TIME IN
+            		}
+            		elseif ($isAHoliday == 2) {
+            			$DateTimeIn = json_encode($this->global_model->getMin('csv', 'Date', $newDate, 'after', 'Date', $id));  //GETS TIME IN FROM NEWDATE
 
-                    $doorDBIn = $this->global_model->selectLike('csv', 'Date', $newDate, 'Date', $timeIn, $id, 'Door');
-            		$doorIN = $doorDBIn[0]->Door;                    
-                }
+		            	if($DateTimeIn != '[{"Date":null}]')
+		            	{
+		                    $explodedDateTimeIn = explode(" ", $DateTimeIn);
+		                    $hhmmssIn = str_replace('"}]', ' ', $explodedDateTimeIn[1]);
 
-                $DateTimeOut = json_encode($this->global_model->getMax('csv', 'Date', $newDate, 'after', 'Date', $id));  //GETS TIME OUT FROM NEWDATE
+		                    $splitTimeIn = explode(":", $hhmmssIn);
+		                    $timeIn = $splitTimeIn[0].':'.$splitTimeIn[1];  //ETO NA YUNG TIME IN
 
-            	if($DateTimeOut != '[{"Date":null}]')
-            	{
-            		$explodedDateTime = explode(":", $DateTimeOut);
-            		$newerDate = $explodedDateTime[1].':'.$explodedDateTime[2].':'.$explodedDateTime[3];
-            		$removeChar1 = str_replace('"', '', $newerDate);
-            		$removeChar2 = str_replace('}]', '', $removeChar1);
+		                    $doorDBIn = $this->global_model->selectLike('csv', 'Date', $newDate, 'Date', $timeIn, $id, 'Door');
+		            		$doorIN = $doorDBIn[0]->Door;                    
+		                }
 
-                    $explodedDateTimeOut = explode(" ", $DateTimeOut);
-                    $dateOut = str_replace('[{"Date":"', '', $explodedDateTimeOut[0]);
-                    $hhmmssOut = str_replace('"}]', ' ', $explodedDateTimeOut[1]);
+		                $DateTimeOut = json_encode($this->global_model->getMax('csv', 'Date', $newDate, 'after', 'Date', $id));  //GETS TIME OUT FROM NEWDATE
 
-                    $splitTimeOut = explode(":", $hhmmssOut);
-                    $timeOut = $splitTimeOut[0].':'.$splitTimeOut[1];  //ETO NA YUNG TIME OUT
+		            	if($DateTimeOut != '[{"Date":null}]')
+		            	{
+		            		$explodedDateTime = explode(":", $DateTimeOut);
+		            		$newerDate = $explodedDateTime[1].':'.$explodedDateTime[2].':'.$explodedDateTime[3];
+		            		$removeChar1 = str_replace('"', '', $newerDate);
+		            		$removeChar2 = str_replace('}]', '', $removeChar1);
 
-                    $doorDBOut = $this->global_model->selectLikeOut('csv', 'Date', $removeChar2, $id, 'Door');
-            		$doorOUT = $doorDBOut[0]->Door;
-                     
-                }
+		                    $explodedDateTimeOut = explode(" ", $DateTimeOut);
+		                    $dateOut = str_replace('[{"Date":"', '', $explodedDateTimeOut[0]);
+		                    $hhmmssOut = str_replace('"}]', ' ', $explodedDateTimeOut[1]);
+
+		                    $splitTimeOut = explode(":", $hhmmssOut);
+		                    $timeOut = $splitTimeOut[0].':'.$splitTimeOut[1];  //ETO NA YUNG TIME OUT
+
+		                    $doorDBOut = $this->global_model->selectLikeOut('csv', 'Date', $removeChar2, $id, 'Door');
+		            		$doorOUT = $doorDBOut[0]->Door;
+		                     
+		                }
 
 
 
 
-                $late = strtotime($time_in) - strtotime($timeIn);  //11-time in nung employee
-                $late = $late/60;
+		                $late = strtotime($time_in) - strtotime($timeIn);  //11-time in nung employee
+		                $late = $late/60;
 
-                $earlyout = strtotime($timeOut) - strtotime($time_out);  // time out nung employee -5
-                $earlyout = $earlyout/60;
+		                $earlyout = strtotime($timeOut) - strtotime($time_out);  // time out nung employee -5
+		                $earlyout = $earlyout/60;
 
-                if($late >= 0)
-                {
-                	$nonComplianceLate = '';
-                }
-                else
-                {
-                	$nonComplianceLate = 'Late by '.abs($late).' mins';
+		                if($late >= 0)
+		                {
+		                	$nonComplianceLate = '';
+		                }
+		                else
+		                {
+		                	$nonComplianceLate = 'Late by '.abs($late).' mins';
 
-                	if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
-	            	{
-		                $nclate = array(
-		                    $tableDate,
-		                    $last_name.' '.$first_name,
-		                    $doorIN,
-		                    $timeIn,
-		                    $doorOUT,
-		                    $timeOut,
-		                    $nonComplianceLate
-		                );
+		                	if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
+			            	{
+				                $nclate = array(
+				                    $tableDate,
+				                    $last_name.' '.$first_name,
+				                    $doorIN,
+				                    $timeIn,
+				                    $doorOUT,
+				                    $timeOut,
+				                    $nonComplianceLate
+				                );
 
-	                	$dtLate[] = $nclate;
-	                }
-                }
+			                	$dtLate[] = $nclate;
+			                }
+		                }
 
-                if($earlyout >= 0)
-                {
-                	$nonComplianceEarlyOut = '';
-                }
-                else
-                {
-                	$nonComplianceEarlyOut = 'Left '.abs($earlyout). ' mins early';
+		                if($earlyout >= 0)
+		                {
+		                	$nonComplianceEarlyOut = '';
+		                }
+		                else
+		                {
+		                	$nonComplianceEarlyOut = 'Left '.abs($earlyout). ' mins early';
 
-                	if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
-	            	{
-		                $ncearly = array(
-		                    $tableDate,
-		                    $last_name.' '.$first_name,
-		                    $doorIN,
-		                    $timeIn,
-		                    $doorOUT,
-		                    $timeOut,
-		                    $nonComplianceEarlyOut
-		                );
+		                	if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
+			            	{
+				                $ncearly = array(
+				                    $tableDate,
+				                    $last_name.' '.$first_name,
+				                    $doorIN,
+				                    $timeIn,
+				                    $doorOUT,
+				                    $timeOut,
+				                    $nonComplianceEarlyOut
+				                );
 
-	                	$dtEarlyOut[] = $ncearly;
-	                }
-                }
+			                	$dtEarlyOut[] = $ncearly;
+			                }
+		                }
 
-                if($earlyout >= 0 || $late >= 0)
-                {
-                	$nonCompliance = '';
-                }
-                else
-                {
-                	$nonCompliance = 'Late by '.abs($late).' mins <br>Left '.abs($earlyout). ' mins early';
+		                if($earlyout >= 0 || $late >= 0)
+		                {
+		                	$nonCompliance = '';
+		                }
+		                else
+		                {
+		                	$nonCompliance = 'Late by '.abs($late).' mins <br>Left '.abs($earlyout). ' mins early';
 
-                	if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
-	            	{
-		                $noncompliant = array(
-		                    $tableDate,
-		                    $last_name.' '.$first_name,
-		                    $doorIN,
-		                    $timeIn,
-		                    $doorOUT,
-		                    $timeOut,
-		                    $nonCompliance
-		                );
+		                	if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
+			            	{
+				                $noncompliant = array(
+				                    $tableDate,
+				                    $last_name.' '.$first_name,
+				                    $doorIN,
+				                    $timeIn,
+				                    $doorOUT,
+				                    $timeOut,
+				                    $nonCompliance
+				                );
 
-	                	$dtOtal[] = $noncompliant;
-	                }
-                }
+			                	$dtOtal[] = $noncompliant;
+			                }
+		                }
 
-                if($late < 0)
-                {
-                	$nonComplianceAll = 'Late by '.abs($late).' min/s';
+		                if($late < 0)
+		                {
+		                	$nonComplianceAll = 'Late by '.abs($late).' min/s';
 
-                	if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
-	            	{
-		                $ncAllLate = array(
-		                    $last_name.' '.$first_name,
-		                    $tableDate,
-		                    $doorIN,
-		                    $timeIn,
-		                    $doorOUT,
-		                    $timeOut,
-		                    $nonComplianceAll
-		                );
+		                	if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
+			            	{
+				                $ncAllLate = array(
+				                    $last_name.' '.$first_name,
+				                    $tableDate,
+				                    $doorIN,
+				                    $timeIn,
+				                    $doorOUT,
+				                    $timeOut,
+				                    $nonComplianceAll
+				                );
 
-	                	$dtAll[] = $ncAllLate;
-	                }
-                }
-                if($earlyout < 0)
-                {
-                	$nonComplianceAll = 'Early out by '.abs($earlyout).' min/s';
+			                	$dtAll[] = $ncAllLate;
+			                }
+		                }
+		                if($earlyout < 0)
+		                {
+		                	$nonComplianceAll = 'Early out by '.abs($earlyout).' min/s';
 
-                	if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
-	            	{
-		                $ncAllEarly = array(
-		                    $last_name.' '.$first_name,
-		                    $tableDate,
-		                    $doorIN,
-		                    $timeIn,
-		                    $doorOUT,
-		                    $timeOut,
-		                    $nonComplianceAll
-		                );
+		                	if($DateTimeIn != '[{"Date":null}]' || $DateTimeOut != '[{"Date":null}]')
+			            	{
+				                $ncAllEarly = array(
+				                    $last_name.' '.$first_name,
+				                    $tableDate,
+				                    $doorIN,
+				                    $timeIn,
+				                    $doorOUT,
+				                    $timeOut,
+				                    $nonComplianceAll
+				                );
 
-	                	$dtAll[] = $ncAllEarly;
-	                }
-                }
-            }
+			                	$dtAll[] = $ncAllEarly;
+			                }
+		                }
+            		}
+
+            	
+            	}
 
                 
             }		
